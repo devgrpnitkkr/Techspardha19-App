@@ -1,5 +1,7 @@
 <resources>
-    <string name="app_name">Techspardha</string>
+    <string name="app_name">Techspradha</string>
+    <string name="Lets_Start">Lets Start</string>
+    <string name="next">Next</string>
     <string name="navigation_drawer_open">open</string>
     <string name="navigation_drawer_close">close</string>
 </resources>

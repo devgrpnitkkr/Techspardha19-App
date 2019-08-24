@@ -2,29 +2,43 @@ package com.nitkkr.techspardha;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
 
 public class SplashScreen extends AppCompatActivity {
 
+    private static int SPLASH_TIME_OUT= 3000;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
-        Thread myThread = new Thread()
-        {
+        getSupportActionBar().hide();
+        new Handler().postDelayed(new Runnable(){
             @Override
             public void run() {
-                try {
-                    sleep(1200);
-                    Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+                SharedPreferences sp = getSharedPreferences("sp", Context.MODE_PRIVATE);
+                if (!sp.getBoolean("first", false)) {
+                    SharedPreferences.Editor editor = sp.edit();
+                    editor.putBoolean("first", true);
+                    editor.apply();
+                    Intent intent = new Intent(SplashScreen.this, MainScreen.class);
                     startActivity(intent);
                     finish();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
                 }
+                else{
+                    Intent intent1 = new Intent(SplashScreen.this, MainActivity.class);
+                    startActivity(intent1);
+                    finish();
+                
+                }
+
             }
-        };
-        myThread.start();
+        },SPLASH_TIME_OUT);
+
     }
 }
