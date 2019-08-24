@@ -29,6 +29,11 @@ dependencies {
     implementation "androidx.navigation:navigation-fragment:2.1.0-rc01"
     implementation "androidx.navigation:navigation-ui:2.1.0-rc01"
 
+    //gridview
+    implementation 'com.github.ceryle:FitGridView:v1.0.5'
+
+    //circular Image
+    implementation 'de.hdodenhof:circleimageview:3.0.0'
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.2.0'

@@ -8,8 +8,10 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
@@ -30,23 +32,23 @@ public class MainActivity extends AppCompatActivity {
 		NavigationView navigationView = findViewById(R.id.nav_view);
 
 
-//		navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-//			@Override
-//			public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-//				switch (menuItem.getItemId()){
-//					case R.id.nav_home:
-//						getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-//								Home).commit();
-//						populate();
-//						break;
-//					case R.id.nav_upadteprofile:
+		navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+			@Override
+			public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+				switch (menuItem.getItemId()){
+					case R.id.drawer_profile:
+                        Toast.makeText(getApplicationContext(),"clicled",Toast.LENGTH_LONG).show();
+						Intent intent = new Intent(getApplicationContext(),Profile.class);
+						startActivity(intent);
+						break;
+//					case R.id.drawer_MyEvents:
 //						getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
 //								UpdateProfile).commit();
-//				}
-//				drawer.closeDrawer(GravityCompat.START);
-//				return true;
-//			}
-//		});
+				}
+				drawer.closeDrawer(GravityCompat.START);
+				return true;
+			}
+		});
 
 		toggle = new ActionBarDrawerToggle(this,drawer,
 				R.string.navigation_drawer_open,R.string.navigation_drawer_close);
