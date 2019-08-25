@@ -1,6 +1,8 @@
 package com.nitkkr.techspardha.Fragments;
 
 import android.content.Context;
+import android.content.Intent;
+import android.content.res.Resources;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
@@ -8,11 +10,20 @@ import android.widget.Toast;
 
 import com.nitkkr.techspardha.R;
 
+import com.nitkkr.techspardha.Category.Cat;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import co.ceryle.fitgridview.FitGridAdapter;
 
 public class GrigViewMyAdapter extends FitGridAdapter {
 
-    public int[] drawables = {
+
+    String cat[];
+
+
+    private int[] drawables = {
             R.drawable.deafultpic,R.drawable.deafultpic,R.drawable.deafultpic,R.drawable.deafultpic,
             R.drawable.deafultpic,R.drawable.deafultpic,R.drawable.deafultpic,R.drawable.deafultpic,
             R.drawable.deafultpic,R.drawable.deafultpic,R.drawable.deafultpic,R.drawable.deafultpic};
@@ -27,14 +38,20 @@ public class GrigViewMyAdapter extends FitGridAdapter {
     @Override
     public void onBindView(final int position, View itemView) {
         Log.d("testing     ",position+"");
+
         ImageView iv = (ImageView) itemView.findViewById(R.id.grid_item_iv);
         if(position<12)
             iv.setImageResource(drawables[position]);
 
+        cat = context.getResources().getStringArray(R.array.Categories);
+
         itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(context, "Position: " + position, Toast.LENGTH_SHORT).show();
+                Intent i=new Intent(context,Cat.class);
+                i.putExtra("Category",cat[position]);
+                context.startActivity(i);
+
             }
         });
     }
