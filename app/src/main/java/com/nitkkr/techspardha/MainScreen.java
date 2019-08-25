@@ -34,7 +34,7 @@ public class MainScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_screen);
 
-
+        getSupportActionBar().hide();
         // Checking for first time launch - before calling setContentView()
         prefManager = new PreferenceManager(this);
         if (!prefManager.FirstLaunch()) {
@@ -121,7 +121,7 @@ public class MainScreen extends AppCompatActivity {
 
     private void launchHomeScreen() {
         prefManager.setFirstTimeLaunch(false);
-        startActivity(new Intent(MainScreen.this, MainActivity.class));
+        startActivity(new Intent(MainScreen.this, Login.class));
         finish();
     }
 
