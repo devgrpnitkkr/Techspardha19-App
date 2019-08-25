@@ -8,6 +8,8 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 
+import com.nitkkr.techspardha.Fragments.MainActivity;
+
 public class SplashScreen extends AppCompatActivity {
 
     private static int SPLASH_TIME_OUT= 3000;

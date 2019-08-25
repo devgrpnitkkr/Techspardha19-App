@@ -1,4 +1,4 @@
-package com.nitkkr.techspardha;
+package com.nitkkr.techspardha.Fragments;
 
 
 import androidx.annotation.NonNull;
@@ -15,6 +15,9 @@ import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
+//import com.nitkkr.techspardha.FragmentSponsership;
+import com.nitkkr.techspardha.Profile;
+import com.nitkkr.techspardha.R;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -38,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
 				switch (menuItem.getItemId()){
 					case R.id.drawer_profile:
                         Toast.makeText(getApplicationContext(),"clicled",Toast.LENGTH_LONG).show();
-						Intent intent = new Intent(getApplicationContext(),Profile.class);
+						Intent intent = new Intent(getApplicationContext(), Profile.class);
 						startActivity(intent);
 						break;
 //					case R.id.drawer_MyEvents:
@@ -86,6 +89,9 @@ public class MainActivity extends AppCompatActivity {
 							break;
 						case R.id.nav_food:
 							selectedFragment = new FragmentFood();
+							break;
+						case R.id.nav_GL:
+							selectedFragment = new FragmentGuestLecture();
 							break;
 					}
 

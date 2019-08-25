@@ -13,18 +13,20 @@
         <activity android:name=".EventInDetail"></activity>
         <activity android:name=".Category.Cat"/>
         <activity android:name=".Login"></activity>
-        <activity android:name=".MainActivity" />
 
 
 
         <activity android:name=".Profile"
-            android:parentActivityName=".MainActivity">
+            android:parentActivityName=".Fragments.MainActivity">
         </activity>
-        <activity android:name=".FragmentFood" />
-        <activity android:name=".FragmentSponsership" />
-        <activity android:name=".FragmentHome" />
 
         <activity android:name=".MainScreen"></activity>
+        <activity android:name=".Fragments.FragmentGuestLecture"></activity>
+
+        <activity android:name=".Fragments.FragmentFood" />
+        <activity android:name=".Fragments.FragmentSponsership" />
+        <activity android:name=".Fragments.FragmentHome" />
+        <activity android:name=".Fragments.MainActivity" />
         <activity android:name=".SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -32,7 +34,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
     </application>
 
 </manifest>

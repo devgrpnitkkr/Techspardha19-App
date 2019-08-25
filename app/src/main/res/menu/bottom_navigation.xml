@@ -12,4 +12,9 @@
         android:id="@+id/nav_sponsi"
         android:icon="@drawable/ic_sponsi"
         android:title="Sponsi"/>
+    <item
+        android:id="@+id/nav_GL"
+        android:icon="@drawable/gl"
+        android:title="GuestLecture"/>
+
 </menu>

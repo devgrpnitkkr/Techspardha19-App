@@ -1,4 +1,4 @@
-package com.nitkkr.techspardha;
+package com.nitkkr.techspardha.Fragments;
 
 import android.content.Context;
 import android.content.Intent;
@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.nitkkr.techspardha.R;
+
 import com.nitkkr.techspardha.Category.Cat;
 
 import java.util.ArrayList;
@@ -15,7 +17,7 @@ import java.util.List;
 
 import co.ceryle.fitgridview.FitGridAdapter;
 
-class MyAdapter extends FitGridAdapter {
+public class GrigViewMyAdapter extends FitGridAdapter {
 
 
     String cat[];
@@ -26,9 +28,9 @@ class MyAdapter extends FitGridAdapter {
             R.drawable.deafultpic,R.drawable.deafultpic,R.drawable.deafultpic,R.drawable.deafultpic,
             R.drawable.deafultpic,R.drawable.deafultpic,R.drawable.deafultpic,R.drawable.deafultpic};
 
-    private Context context;
+    public Context context;
 
-    MyAdapter(Context context) {
+    GrigViewMyAdapter(Context context) {
         super(context, R.layout.grid_item);
         this.context = context;
     }
