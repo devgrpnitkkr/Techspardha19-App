@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.nitkkr.techspardha">
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -10,17 +11,28 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".EventInDetail"></activity>
-        <activity android:name=".Category.Cat">
+        <activity android:name=".Category.Cat"/>
+        <activity android:name=".Login"></activity>
+        <activity android:name=".MainActivity" />
+
+
+
+        <activity android:name=".Profile"
+            android:parentActivityName=".MainActivity">
+        </activity>
+        <activity android:name=".FragmentFood" />
+        <activity android:name=".FragmentSponsership" />
+        <activity android:name=".FragmentHome" />
+
+        <activity android:name=".MainScreen"></activity>
+        <activity android:name=".SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Login"></activity>
-        <activity android:name=".MainActivity" />
-    </application>
 
-    <uses-permission android:name="android.permission.INTERNET" />
+    </application>
 
 </manifest>

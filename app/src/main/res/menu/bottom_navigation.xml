@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nav_home"
+        android:icon="@drawable/ic_home"
+        android:title="Home"/>
+    <item
+        android:id="@+id/nav_food"
+        android:icon="@drawable/ic_food"
+        android:title="Food"/>
+    <item
+        android:id="@+id/nav_sponsi"
+        android:icon="@drawable/ic_sponsi"
+        android:title="Sponsi"/>
+</menu>
