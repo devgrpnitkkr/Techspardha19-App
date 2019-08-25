@@ -1,9 +1,8 @@
-package com.nitkkr.techspardha;
+package com.nitkkr.techspardha.Fragments;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import android.content.DialogInterface;
@@ -11,11 +10,10 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.MenuInflater;
-import android.widget.Adapter;
+
+import com.nitkkr.techspardha.R;
 
 import co.ceryle.fitgridview.FitGridView;
 
@@ -30,7 +28,7 @@ public class FragmentHome extends Fragment {
         View view = inflater.inflate(R.layout.activity_fragment_home,container,false);
 
         gridView = (FitGridView) view.findViewById(R.id.gridView);
-        gridView.setFitGridAdapter(new MyAdapter(getContext()));
+        gridView.setFitGridAdapter(new GrigViewMyAdapter(getContext()));
 
         // you can change grid view size any time. don't forget calling update method.
         changeSize(3, 3);
@@ -51,7 +49,7 @@ public class FragmentHome extends Fragment {
         FitGridView gridView = new FitGridView(getContext());
         gridView.setNumColumns(3);
         gridView.setNumRows(4);
-        gridView.setFitGridAdapter(new MyAdapter(getContext()));
+        gridView.setFitGridAdapter(new GrigViewMyAdapter(getContext()));
         builder.setView(gridView);
 
         builder.show();

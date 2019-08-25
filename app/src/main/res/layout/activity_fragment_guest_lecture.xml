@@ -4,13 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Fragments.FragmentFood">
+    tools:context=".Fragments.FragmentGuestLecture">
 
-    <TextView
-        android:textColor="#fff"
-        android:textSize="60dp"
-        android:layout_width="wrap_content"
+    <com.yarolegovich.discretescrollview.DiscreteScrollView
+        android:id="@+id/picker"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="food"/>
+        app:dsv_orientation="horizontal" />
 
 </RelativeLayout>

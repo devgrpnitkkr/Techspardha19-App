@@ -4,9 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FragmentSponsership">
+    tools:context=".Fragments.FragmentSponsership">
 
     <TextView
+        android:textColor="#fff"
+        android:textSize="60dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Sponsi"

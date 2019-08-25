@@ -1,7 +1,29 @@
 <resources>
-    <string name="app_name">Techspradha</string>
+
+    <string name="app_name">Techspardha</string>
+
     <string name="Lets_Start">Lets Start</string>
     <string name="next">Next</string>
     <string name="navigation_drawer_open">open</string>
     <string name="navigation_drawer_close">close</string>
+
+
+    <string-array name="Categories">
+        <item>Astronomy</item>
+        <item>Design</item>
+        <item>Infromals</item>
+        <item>Programming</item>
+        <item>Managerial</item>
+        <item>Online-Events</item>
+        <item>Papyrus-Vitae</item>
+        <item>Quizzes</item>
+        <item>Robotics</item>
+
+    </string-array>
+
+
+
+
+
+
 </resources>
