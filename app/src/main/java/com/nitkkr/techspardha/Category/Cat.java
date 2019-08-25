@@ -8,6 +8,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Adapter;
@@ -27,6 +28,7 @@ public class Cat extends AppCompatActivity {
     private List<CatData> edata=new ArrayList<>();
     RecyclerView recyclerView;
     CatAdapter adapter;
+    Bundle bundle;
 
 
 
@@ -36,7 +38,8 @@ public class Cat extends AppCompatActivity {
         setContentView(R.layout.activity_category);
          recyclerView = (RecyclerView) findViewById(R.id.cat_recycler);
 
-        LoadJson("Programming");
+
+        LoadJson(getIntent().getExtras().getString("Category"));
 
     }
 
