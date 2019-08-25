@@ -19,6 +19,8 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.nitkkr.techspardha.Fragments.MainActivity;
+
 public class MainScreen extends AppCompatActivity {
 
     private ViewPager viewPager;

@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.nitkkr.techspardha">
 
+    <uses-permission android:name="android.permission.INTERNET" />
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,15 +10,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Profile"
-            android:parentActivityName=".MainActivity">
-        </activity>
-        <activity android:name=".FragmentFood" />
-        <activity android:name=".FragmentSponsership" />
-        <activity android:name=".FragmentHome" />
-        <activity android:name=".MainActivity"/>
-
-        <activity android:name=".MainScreen"></activity>
+        <activity android:name=".Fragments.FragmentGuestLecture"></activity>
+        <activity
+            android:name=".Profile"
+            android:parentActivityName=".Fragments.MainActivity"></activity>
+        <activity android:name=".Fragments.FragmentFood" />
+        <activity android:name=".Fragments.FragmentSponsership" />
+        <activity android:name=".Fragments.FragmentHome" />
+        <activity android:name=".Fragments.MainActivity" />
+        <activity android:name=".MainScreen" />
         <activity android:name=".SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -25,7 +26,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
     </application>
 
 </manifest>
