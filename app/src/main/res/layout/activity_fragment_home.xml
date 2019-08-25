@@ -9,6 +9,8 @@
     android:orientation="vertical"
     tools:context=".FragmentHome">
 
+
+
     <ImageView
         android:layout_weight=".8"
         android:paddingTop="10dp"
