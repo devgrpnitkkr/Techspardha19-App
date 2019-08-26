@@ -1,6 +1,8 @@
 package com.nitkkr.techspardha.Pojo;
 
-public class Coordinators
+import java.io.Serializable;
+
+public class Coordinators implements Serializable
 {
     private String coordinator_name;
 

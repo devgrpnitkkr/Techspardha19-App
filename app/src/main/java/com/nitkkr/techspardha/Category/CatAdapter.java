@@ -1,5 +1,7 @@
 package com.nitkkr.techspardha.Category;
 
+import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,6 +10,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
+import com.nitkkr.techspardha.EventInDetail;
 import com.nitkkr.techspardha.Pojo.Data;
 import com.nitkkr.techspardha.R;
 
@@ -42,6 +46,9 @@ public class CatAdapter extends RecyclerView.Adapter<CatAdapter.ViewHolder> {
         holder.img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Intent intent=new Intent(view.getContext(), EventInDetail.class);
+                intent.putExtra("Obj",myListData);
+                view.getContext().startActivity(intent);
 
             }
         });

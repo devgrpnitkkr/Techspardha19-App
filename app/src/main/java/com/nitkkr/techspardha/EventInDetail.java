@@ -6,10 +6,18 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
+import android.content.Intent;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
+import android.text.Html;
 import android.util.Log;
+import android.view.Window;
 import android.widget.Adapter;
+import android.widget.TextView;
 
+import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.nitkkr.techspardha.Pojo.Data;
 import com.nitkkr.techspardha.Pojo.EventCat;
 
@@ -20,11 +28,46 @@ public class EventInDetail extends AppCompatActivity {
 
     private List<Data> edata=new ArrayList<>();
     private Adapter adapter;
+    TextView rus;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event_in_detail);
+
+        rus=(TextView)findViewById(R.id.description);
+        Intent intent=getIntent();
+        Data cust=(Data) intent.getSerializableExtra("Obj");
+
+        String desc=cust.getDescription();
+        String etime=cust.getEndTime();
+        String stime=cust.getStartTime();
+        String ename=cust.getEventName();
+
+        String rules="";
+
+        for(int i=0;i<cust.getRules().length;i++){
+            rules=rules+cust.getRules()[i]+"\n";
+        }
+        String c1=cust.getCoordinators()[0].getCoordinator_name();
+        String c1n=cust.getCoordinators()[0].getCoordinator_number();
+
+        String c2=cust.getCoordinators()[1].getCoordinator_name();
+        String c2n=cust.getCoordinators()[1].getCoordinator_number();
+        rus.setText(desc);
+        CollapsingToolbarLayout collapsingToolbar =
+                (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
+        collapsingToolbar.setTitle(cust.getEventName());
+        collapsingToolbar.setExpandedTitleTextColor(ColorStateList.valueOf(Color.WHITE));
+        collapsingToolbar.setCollapsedTitleTextColor(Color.BLACK);
+
+
+
+
+
     }
     public void LoadJson(final String keyword,final String ename) {
 
