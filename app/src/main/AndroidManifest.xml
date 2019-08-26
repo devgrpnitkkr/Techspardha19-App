@@ -10,24 +10,24 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".EventInDetail"></activity>
-        <activity android:name=".Category.Cat"/>
-        <activity android:name=".Login"></activity>
+        <activity android:name=".events.eventDetail.EventInDetail"></activity>
+        <activity android:name=".events.eventList.CategoryList"/>
+        <activity android:name=".root.UserLogin"></activity>
 
 
 
-        <activity android:name=".Profile"
-            android:parentActivityName=".Fragments.MainActivity">
+        <activity android:name=".drawers.LeftDrawerProfile"
+            android:parentActivityName=".root.RootActivity">
         </activity>
 
-        <activity android:name=".MainScreen"></activity>
-        <activity android:name=".Fragments.FragmentGuestLecture"></activity>
+        <activity android:name=".root.IntroSlider"></activity>
+        <activity android:name=".Fragments.guestLecture.FragmentGuestLecture"></activity>
 
-        <activity android:name=".Fragments.FragmentFood" />
-        <activity android:name=".Fragments.FragmentSponsership" />
-        <activity android:name=".Fragments.FragmentHome" />
-        <activity android:name=".Fragments.MainActivity" />
-        <activity android:name=".SplashScreen">
+        <activity android:name=".Fragments.food.FragmentFood" />
+        <activity android:name=".Fragments.sponsership.FragmentSponsership" />
+        <activity android:name=".Fragments.home.FragmentEventCategory" />
+        <activity android:name=".root.RootActivity" />
+        <activity android:name=".MainActivitySplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -1,4 +1,4 @@
-package com.nitkkr.techspardha.Fragments;
+package com.nitkkr.techspardha.root;
 
 
 import androidx.annotation.NonNull;
@@ -16,11 +16,15 @@ import android.widget.Toast;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 //import com.nitkkr.techspardha.FragmentSponsership;
-import com.nitkkr.techspardha.Profile;
+import com.nitkkr.techspardha.Fragments.food.FragmentFood;
+import com.nitkkr.techspardha.Fragments.guestLecture.FragmentGuestLecture;
+import com.nitkkr.techspardha.Fragments.home.FragmentEventCategory;
+import com.nitkkr.techspardha.Fragments.sponsership.FragmentSponsership;
+import com.nitkkr.techspardha.drawers.LeftDrawerProfile;
 import com.nitkkr.techspardha.R;
 
 
-public class MainActivity extends AppCompatActivity {
+public class RootActivity extends AppCompatActivity {
 
 	private DrawerLayout drawer;
 	ActionBarDrawerToggle toggle;
@@ -41,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
 				switch (menuItem.getItemId()){
 					case R.id.drawer_profile:
                         Toast.makeText(getApplicationContext(),"clicled",Toast.LENGTH_LONG).show();
-						Intent intent = new Intent(getApplicationContext(), Profile.class);
+						Intent intent = new Intent(getApplicationContext(), LeftDrawerProfile.class);
 						startActivity(intent);
 						break;
 //					case R.id.drawer_MyEvents:
@@ -62,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
 		BottomNavigationView bottomNavigationView = findViewById(R.id.main_bottom_navigation_view);
 		bottomNavigationView.setOnNavigationItemSelectedListener(navListener);
 		getSupportFragmentManager().beginTransaction().replace(R.id.main_fragment_container,
-				new FragmentHome()).commit();
+				new FragmentEventCategory()).commit();
 
 	}
 
@@ -82,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
 
 					switch (menuItem.getItemId()){
 						case R.id.nav_home:
-							selectedFragment = new FragmentHome();
+							selectedFragment = new FragmentEventCategory();
 							break;
 						case R.id.nav_sponsi:
 							selectedFragment = new FragmentSponsership();

@@ -1,7 +1,7 @@
-package com.nitkkr.techspardha;
+package com.nitkkr.techspardha.retrofit;
 
-import com.nitkkr.techspardha.Pojo.CatData;
-import com.nitkkr.techspardha.Pojo.EventCat;
+import com.nitkkr.techspardha.events.categoryPojo.CategoryData;
+import com.nitkkr.techspardha.events.categoryPojo.EventCategory;
 
 import io.reactivex.Observable;
 import retrofit2.http.GET;
@@ -9,7 +9,7 @@ import retrofit2.http.Query;
 
 public interface Interface {
     @GET("description")
-    Observable<EventCat> getData(
+    Observable<EventCategory> getData(
             @Query("eventCategory") String category,
             @Query("eventName") String eName
 
@@ -17,7 +17,7 @@ public interface Interface {
     );
 
     @GET("description")
-    Observable<CatData> getCatData(
+    Observable<CategoryData> getCatData(
             @Query("eventCategory") String category
 
 

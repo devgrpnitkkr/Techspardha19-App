@@ -1,4 +1,4 @@
-package com.nitkkr.techspardha;
+package com.nitkkr.techspardha.retrofit;
 
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 

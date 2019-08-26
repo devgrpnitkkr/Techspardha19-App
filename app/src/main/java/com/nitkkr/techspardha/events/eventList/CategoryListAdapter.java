@@ -1,18 +1,14 @@
-package com.nitkkr.techspardha.Category;
+package com.nitkkr.techspardha.events.eventList;
 
-import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.google.gson.Gson;
-import com.nitkkr.techspardha.EventInDetail;
-import com.nitkkr.techspardha.Pojo.Data;
+import com.nitkkr.techspardha.events.eventDetail.EventInDetail;
+import com.nitkkr.techspardha.events.categoryPojo.Data;
 import com.nitkkr.techspardha.R;
 
 import java.util.ArrayList;
@@ -20,11 +16,11 @@ import java.util.ArrayList;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class CatAdapter extends RecyclerView.Adapter<CatAdapter.ViewHolder> {
+public class CategoryListAdapter extends RecyclerView.Adapter<CategoryListAdapter.ViewHolder> {
 
     ArrayList<Data> list;
 
-    public CatAdapter(ArrayList<Data> list){
+    public CategoryListAdapter(ArrayList<Data> list){
         this.list=list;
     }
 

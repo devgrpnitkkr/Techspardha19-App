@@ -1,4 +1,4 @@
-package com.nitkkr.techspardha.Fragments;
+package com.nitkkr.techspardha.Fragments.sponsership;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;

@@ -1,4 +1,4 @@
-package com.nitkkr.techspardha;
+package com.nitkkr.techspardha.root;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.PagerAdapter;
@@ -19,9 +19,10 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.nitkkr.techspardha.Fragments.MainActivity;
+import com.nitkkr.techspardha.root.db.IsLoggedIn;
+import com.nitkkr.techspardha.R;
 
-public class MainScreen extends AppCompatActivity {
+public class IntroSlider extends AppCompatActivity {
 
     private ViewPager viewPager;
     private MyViewPagerAdapter myViewPagerAdapter;
@@ -29,7 +30,7 @@ public class MainScreen extends AppCompatActivity {
     private TextView[] dots;
     private int[] layouts;
     private Button btnSkip, btnNext;
-    private PreferenceManager prefManager;
+    private IsLoggedIn prefManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +39,7 @@ public class MainScreen extends AppCompatActivity {
 
         getSupportActionBar().hide();
         // Checking for first time launch - before calling setContentView()
-        prefManager = new PreferenceManager(this);
+        prefManager = new IsLoggedIn(this);
         if (!prefManager.FirstLaunch()) {
             launchHomeScreen();
             finish();
@@ -123,7 +124,7 @@ public class MainScreen extends AppCompatActivity {
 
     private void launchHomeScreen() {
         prefManager.setFirstTimeLaunch(false);
-        startActivity(new Intent(MainScreen.this, Login.class));
+        startActivity(new Intent(IntroSlider.this, UserLogin.class));
         finish();
     }
 

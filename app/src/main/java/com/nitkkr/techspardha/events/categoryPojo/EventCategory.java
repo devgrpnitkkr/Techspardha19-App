@@ -1,6 +1,6 @@
-package com.nitkkr.techspardha.Pojo;
+package com.nitkkr.techspardha.events.categoryPojo;
 
-public class EventCat {
+public class EventCategory {
     private Data[] events;
 
     public Data[] getEvents ()

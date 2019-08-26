@@ -1,4 +1,4 @@
-package com.nitkkr.techspardha;
+package com.nitkkr.techspardha.events.eventDetail;
 
 import androidx.appcompat.app.AppCompatActivity;
 import io.reactivex.Observer;
@@ -9,17 +9,18 @@ import io.reactivex.schedulers.Schedulers;
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
-import android.graphics.Typeface;
 import android.os.Bundle;
-import android.text.Html;
 import android.util.Log;
 import android.view.Window;
 import android.widget.Adapter;
 import android.widget.TextView;
 
 import com.google.android.material.appbar.CollapsingToolbarLayout;
-import com.nitkkr.techspardha.Pojo.Data;
-import com.nitkkr.techspardha.Pojo.EventCat;
+import com.nitkkr.techspardha.retrofit.Interface;
+import com.nitkkr.techspardha.R;
+import com.nitkkr.techspardha.retrofit.RetroClient;
+import com.nitkkr.techspardha.events.categoryPojo.Data;
+import com.nitkkr.techspardha.events.categoryPojo.EventCategory;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,7 +50,7 @@ public class EventInDetail extends AppCompatActivity {
 
         String rules="";
 
-        for(int i=0;i<cust.getRules().length;i++){
+        for(int i=0;cust.getRules()!=null && i<cust.getRules().length;i++){
             rules=rules+cust.getRules()[i]+"\n";
         }
         String c1=cust.getCoordinators()[0].getCoordinator_name();
@@ -78,7 +79,7 @@ public class EventInDetail extends AppCompatActivity {
         service.getData(keyword,ename)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<EventCat>() {
+                .subscribe(new Observer<EventCategory>() {
 
                     @Override
                     public void onSubscribe(Disposable d) {
@@ -86,7 +87,7 @@ public class EventInDetail extends AppCompatActivity {
                     }
 
                     @Override
-                    public void onNext(EventCat eventCat) {
+                    public void onNext(EventCategory eventCategory) {
 
 
                     }
