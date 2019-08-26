@@ -1,4 +1,4 @@
-package com.nitkkr.techspardha.Pojo;
+package com.nitkkr.techspardha.events.categoryPojo;
 
 import java.io.Serializable;
 

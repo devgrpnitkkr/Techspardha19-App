@@ -1,8 +1,8 @@
-package com.nitkkr.techspardha;
+package com.nitkkr.techspardha.root.db;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-public class PreferenceManager {
+public class IsLoggedIn {
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor spEditor;
     Context context;
@@ -10,7 +10,7 @@ public class PreferenceManager {
     int MODE = 0;
     private static final String PREFERENCE = "Javapapers";
 
-    public PreferenceManager(Context context) {
+    public IsLoggedIn(Context context) {
         this.context = context;
         sharedPreferences = context.getSharedPreferences(PREFERENCE, MODE);
         spEditor = sharedPreferences.edit();

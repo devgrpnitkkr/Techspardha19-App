@@ -1,17 +1,17 @@
-package com.nitkkr.techspardha.Pojo;
+package com.nitkkr.techspardha.events.categoryPojo;
 
-public class CatData {
+public class CategoryData {
 
-    private EventCat data;
+    private EventCategory data;
 
     private String success;
 
-    public EventCat getData ()
+    public EventCategory getData ()
     {
         return data;
     }
 
-    public void setData (EventCat data)
+    public void setData (EventCategory data)
     {
         this.data = data;
     }

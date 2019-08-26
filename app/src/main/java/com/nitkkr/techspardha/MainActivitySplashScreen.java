@@ -8,9 +8,9 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 
-import com.nitkkr.techspardha.Fragments.MainActivity;
+import com.nitkkr.techspardha.root.RootActivity;
 
-public class SplashScreen extends AppCompatActivity {
+public class MainActivitySplashScreen extends AppCompatActivity {
 
     private static int SPLASH_TIME_OUT= 3000;
 
@@ -28,12 +28,12 @@ public class SplashScreen extends AppCompatActivity {
                     SharedPreferences.Editor editor = sp.edit();
                     editor.putBoolean("first", true);
                     editor.apply();
-                    Intent intent = new Intent(SplashScreen.this, MainScreen.class);
+                    Intent intent = new Intent(MainActivitySplashScreen.this, RootActivity.class);
                     startActivity(intent);
                     finish();
                 }
                 else{
-                    Intent intent1 = new Intent(SplashScreen.this, Login.class);
+                    Intent intent1 = new Intent(MainActivitySplashScreen.this, RootActivity.class);
                     startActivity(intent1);
                     finish();
                 

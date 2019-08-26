@@ -1,28 +1,23 @@
-package com.nitkkr.techspardha.Fragments;
+package com.nitkkr.techspardha.Fragments.guestLecture;
 
-import android.content.ClipData;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import androidx.cardview.widget.CardView;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.RequestOptions;
 import com.nitkkr.techspardha.R;
 //import com.yarolegovich.discretescrollview.R;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by yarolegovich on 07.03.2017.
  */
 
-public class ShowAdapter extends RecyclerView.Adapter<ShowAdapter.ViewHolder> {
+public class FragmentGuestLectureAdapter extends RecyclerView.Adapter<FragmentGuestLectureAdapter.ViewHolder> {
 
 //    private static final Uri URL_TAYA_BEHANCE = Uri.parse("https://www.behance.net/yurkivt");
 //    private static final Uri URL_SHOP_PHOTOS = Uri.parse("https://herriottgrace.com/collections/all");
@@ -31,7 +26,7 @@ public class ShowAdapter extends RecyclerView.Adapter<ShowAdapter.ViewHolder> {
 
     List<String> lst;
 
-        public ShowAdapter( List<String> lst) {
+        public FragmentGuestLectureAdapter(List<String> lst) {
             this.lst=lst;
         }
 

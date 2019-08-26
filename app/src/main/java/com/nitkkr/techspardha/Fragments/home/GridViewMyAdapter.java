@@ -1,23 +1,18 @@
-package com.nitkkr.techspardha.Fragments;
+package com.nitkkr.techspardha.Fragments.home;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.Resources;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.nitkkr.techspardha.R;
 
-import com.nitkkr.techspardha.Category.Cat;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.nitkkr.techspardha.events.eventList.CategoryList;
 
 import co.ceryle.fitgridview.FitGridAdapter;
 
-public class GrigViewMyAdapter extends FitGridAdapter {
+public class GridViewMyAdapter extends FitGridAdapter {
 
 
     String cat[];
@@ -30,7 +25,7 @@ public class GrigViewMyAdapter extends FitGridAdapter {
 
     public Context context;
 
-    GrigViewMyAdapter(Context context) {
+    GridViewMyAdapter(Context context) {
         super(context, R.layout.grid_item);
         this.context = context;
     }
@@ -48,8 +43,8 @@ public class GrigViewMyAdapter extends FitGridAdapter {
         itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i=new Intent(context,Cat.class);
-                i.putExtra("Category",cat[position]);
+                Intent i=new Intent(context, CategoryList.class);
+                i.putExtra("eventList",cat[position]);
                 context.startActivity(i);
 
             }
