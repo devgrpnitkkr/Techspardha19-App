@@ -1,5 +1,6 @@
 package com.nitkkr.techspardha.retrofit;
 
+import com.nitkkr.techspardha.Fragments.sponsership.sponsorshipPojo.SponsorshipData;
 import com.nitkkr.techspardha.events.categoryPojo.CategoryData;
 import com.nitkkr.techspardha.events.categoryPojo.EventCategory;
 
@@ -12,14 +13,14 @@ public interface Interface {
     Observable<EventCategory> getData(
             @Query("eventCategory") String category,
             @Query("eventName") String eName
-
-
     );
 
     @GET("description")
     Observable<CategoryData> getCatData(
             @Query("eventCategory") String category
+    );
 
-
+    @GET(".")
+    Observable<SponsorshipData> getSponsorship(
     );
 }

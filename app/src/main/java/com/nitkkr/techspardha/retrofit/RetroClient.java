@@ -45,6 +45,17 @@ public class RetroClient {
         }
         return retrofit;
     }
+    public static Retrofit getSponsorshipClient() {
+        final String sponsi="https://us-central1-techspardha-87928.cloudfunctions.net/api/sponsors/";
+        if (retrofit == null) {
+            retrofit = new Retrofit.Builder()
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                    .baseUrl(sponsi)
+                    .build();
+        }
+        return retrofit;
+    }
 
 
     public static OkHttpClient.Builder getUnsafeOkHttpClient() {
