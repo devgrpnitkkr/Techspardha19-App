@@ -2,6 +2,7 @@ package com.nitkkr.techspardha.retrofit;
 
 import com.nitkkr.techspardha.events.categoryPojo.CategoryData;
 import com.nitkkr.techspardha.events.categoryPojo.EventCategory;
+import com.nitkkr.techspardha.guestLecture.lecturesPojo.LectureData;
 
 import io.reactivex.Observable;
 import retrofit2.http.GET;
@@ -22,4 +23,10 @@ public interface Interface {
 
 
     );
+
+    @GET(".")
+    Observable<LectureData> getLectureData(
+
+    );
+
 }

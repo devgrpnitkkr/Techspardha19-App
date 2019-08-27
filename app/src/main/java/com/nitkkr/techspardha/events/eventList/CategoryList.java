@@ -42,7 +42,7 @@ public class CategoryList extends AppCompatActivity {
     public void LoadJson(final String keyword) {
 
 
-        Interface service = RetroClient.getClient().create(Interface.class);
+        Interface service = RetroClient.getClient("events").create(Interface.class);
 
 
         service

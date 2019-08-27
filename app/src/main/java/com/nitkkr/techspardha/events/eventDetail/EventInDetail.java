@@ -73,7 +73,7 @@ public class EventInDetail extends AppCompatActivity {
     public void LoadJson(final String keyword,final String ename) {
 
 
-        Interface service = RetroClient.getClient().create(Interface.class);
+        Interface service = RetroClient.getClient("events").create(Interface.class);
 
 
         service.getData(keyword,ename)
