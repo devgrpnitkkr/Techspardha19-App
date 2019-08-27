@@ -76,6 +76,7 @@ public class UserLogin extends AppCompatActivity {
             GoogleSignInAccount account = completedTask.getResult(ApiException.class);
             // Signed in successfully, show authenticated UI.
             startActivity(new Intent(UserLogin.this, RootActivity.class));
+            finish();
         } catch (ApiException e) {
             // The ApiException status code indicates the detailed failure reason.
             // Please refer to the GoogleSignInStatusCodes class reference for more information.
@@ -91,7 +92,14 @@ public class UserLogin extends AppCompatActivity {
         GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
         if(account != null) {
             startActivity(new Intent(UserLogin.this, RootActivity.class));
+            finish();
         }
+
         super.onStart();
+    }
+
+    @Override
+    public void onBackPressed() {
+        System.exit(0);
     }
 }

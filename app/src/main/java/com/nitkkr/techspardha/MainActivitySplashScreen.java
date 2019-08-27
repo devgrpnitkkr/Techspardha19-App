@@ -8,7 +8,9 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 
+import com.nitkkr.techspardha.root.IntroSlider;
 import com.nitkkr.techspardha.root.RootActivity;
+import com.nitkkr.techspardha.root.UserLogin;
 
 public class MainActivitySplashScreen extends AppCompatActivity {
 
@@ -28,12 +30,12 @@ public class MainActivitySplashScreen extends AppCompatActivity {
                     SharedPreferences.Editor editor = sp.edit();
                     editor.putBoolean("first", true);
                     editor.apply();
-                    Intent intent = new Intent(MainActivitySplashScreen.this, RootActivity.class);
+                    Intent intent = new Intent(MainActivitySplashScreen.this, IntroSlider.class);
                     startActivity(intent);
                     finish();
                 }
                 else{
-                    Intent intent1 = new Intent(MainActivitySplashScreen.this, RootActivity.class);
+                    Intent intent1 = new Intent(MainActivitySplashScreen.this, UserLogin.class);
                     startActivity(intent1);
                     finish();
                 
