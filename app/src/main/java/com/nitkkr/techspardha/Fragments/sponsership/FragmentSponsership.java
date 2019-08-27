@@ -48,7 +48,7 @@ public class FragmentSponsership extends Fragment {
          final List<SponsorshipData> sData=new ArrayList<>();
 
 
-        Interface service = RetroClient.getSponsorshipClient().create(Interface.class);
+        Interface service = RetroClient.getClient().create(Interface.class);
 
 
         service

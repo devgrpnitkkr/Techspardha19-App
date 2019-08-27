@@ -9,18 +9,18 @@ import retrofit2.http.GET;
 import retrofit2.http.Query;
 
 public interface Interface {
-    @GET("description")
+    @GET("events/description")
     Observable<EventCategory> getData(
             @Query("eventCategory") String category,
             @Query("eventName") String eName
     );
 
-    @GET("description")
+    @GET("events/description")
     Observable<CategoryData> getCatData(
             @Query("eventCategory") String category
     );
 
-    @GET(".")
+    @GET("sponsors/")
     Observable<SponsorshipData> getSponsorship(
     );
 }
