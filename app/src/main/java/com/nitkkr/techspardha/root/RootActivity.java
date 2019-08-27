@@ -41,10 +41,10 @@ public class RootActivity extends AppCompatActivity {
 
 //		if(mGoogleSignInClient.)
         GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
-        if(account == null) {
+        /*if(account == null) {
             finish();
             System.exit(0);
-        }
+        }*/
 
 		drawer = findViewById(R.id.main_drawer_layout);
 		NavigationView navigationView = findViewById(R.id.nav_view);

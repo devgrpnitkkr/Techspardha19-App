@@ -17,7 +17,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetroClient {
 
-    public static final String BASE_URL = "https://us-central1-techspardha-87928.cloudfunctions.net/api/events/";
+    public static final String BASE_URL = "https://us-central1-techspardha-87928.cloudfunctions.net/api/";
     public static Retrofit retrofit;
 
     /*  public static Retrofit getRetrofit() {
@@ -45,6 +45,7 @@ public class RetroClient {
         }
         return retrofit;
     }
+
 
 
     public static OkHttpClient.Builder getUnsafeOkHttpClient() {

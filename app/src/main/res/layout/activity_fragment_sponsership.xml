@@ -6,12 +6,13 @@
     android:layout_height="match_parent"
     tools:context=".Fragments.sponsership.FragmentSponsership">
 
-    <TextView
-        android:textColor="#fff"
-        android:textSize="60dp"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/spon_recycler"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Sponsi"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         />
 
 </RelativeLayout>
