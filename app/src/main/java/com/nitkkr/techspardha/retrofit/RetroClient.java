@@ -35,12 +35,12 @@ public class RetroClient {
 
           return retrofit;
       }*/
-    public static Retrofit getClient() {
+    public static Retrofit getClient(String addURL) {
         if (retrofit == null) {
             retrofit = new Retrofit.Builder()
                     .addConverterFactory(GsonConverterFactory.create())
                     .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                    .baseUrl(BASE_URL)
+                    .baseUrl(BASE_URL+addURL+"/")
                     .build();
         }
         return retrofit;
