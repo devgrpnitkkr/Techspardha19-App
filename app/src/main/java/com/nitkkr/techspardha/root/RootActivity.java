@@ -13,6 +13,9 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 //import com.nitkkr.techspardha.FragmentSponsership;
@@ -29,11 +32,19 @@ public class RootActivity extends AppCompatActivity {
 	private DrawerLayout drawer;
 	ActionBarDrawerToggle toggle;
 	private NavigationView navLayout;
+    GoogleSignInClient mGoogleSignInClient;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+
+//		if(mGoogleSignInClient.)
+        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
+        if(account == null) {
+            finish();
+            System.exit(0);
+        }
 
 		drawer = findViewById(R.id.main_drawer_layout);
 		NavigationView navigationView = findViewById(R.id.nav_view);
