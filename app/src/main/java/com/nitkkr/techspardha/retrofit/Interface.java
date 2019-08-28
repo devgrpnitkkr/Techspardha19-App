@@ -25,7 +25,7 @@ public interface Interface {
     Observable<SponsorshipData> getSponsorship(
     );
 
-    @GET(".")
+    @GET("lectures")
     Observable<LectureData> getLectureData(
 
     );

@@ -79,7 +79,7 @@ public class FragmentGuestLecture extends Fragment {
     public void LoadJson() {
 
 
-        Interface service = RetroClient.getClient("lectures").create(Interface.class);
+        Interface service = RetroClient.getClient().create(Interface.class);
 
 
         service
@@ -126,6 +126,11 @@ public class FragmentGuestLecture extends Fragment {
                        for(int i=0;i<lectureD.getData().getLectures().length;i++){
                            lst.add(lectureD.getData().getLectures()[i]);
                        }
+
+                       name.setText(lectureD.getData().getLectures()[0].getName());
+                       date.setText(lectureD.getData().getLectures()[0].getDate());
+                       time.setText(lectureD.getData().getLectures()[0].getTime());
+                       desc.setText(lectureD.getData().getLectures()[0].getDesc());
 
                        scrollView.setAdapter(new FragmentGuestLectureAdapter(lst,name,date,time,desc));
                     }

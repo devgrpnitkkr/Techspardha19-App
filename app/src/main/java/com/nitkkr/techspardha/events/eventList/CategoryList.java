@@ -25,6 +25,7 @@ public class CategoryList extends AppCompatActivity {
     RecyclerView recyclerView;
     CategoryListAdapter adapter;
     Bundle bundle;
+    String back;
 
 
 
@@ -35,14 +36,20 @@ public class CategoryList extends AppCompatActivity {
          recyclerView = (RecyclerView) findViewById(R.id.cat_recycler);
 
 
-        LoadJson(getIntent().getExtras().getString("eventList"));
+        try {
+            back=getIntent().getExtras().getString("eventList");
+            LoadJson(getIntent().getExtras().getString("eventList"));
+        } catch (Exception e) {
+            LoadJson(back);
+            e.printStackTrace();
+        }
 
     }
 
     public void LoadJson(final String keyword) {
 
 
-        Interface service = RetroClient.getClient("events").create(Interface.class);
+        Interface service = RetroClient.getClient().create(Interface.class);
 
 
         service
