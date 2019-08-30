@@ -9,10 +9,16 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -48,6 +54,14 @@ public class RootActivity extends AppCompatActivity {
 
 		drawer = findViewById(R.id.main_drawer_layout);
 		NavigationView navigationView = findViewById(R.id.nav_view);
+		final View navHeader = navigationView.getHeaderView(0);
+//		final View navHeader = navigationView.inflateHeaderView(R.layout.nav_header);
+		ImageView navHeaderPic = navHeader.findViewById(R.id.nav_header_image);
+		TextView name = navHeader.findViewById(R.id.nav_name);
+		Uri personPhoto = account.getPhotoUrl();
+		Log.d("testing...",personPhoto+"      "+navHeaderPic);
+		Glide.with(this).load(personPhoto).into(navHeaderPic);
+		name.setText(account.getDisplayName());
 
 
 		navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
@@ -78,6 +92,7 @@ public class RootActivity extends AppCompatActivity {
 		bottomNavigationView.setOnNavigationItemSelectedListener(navListener);
 		getSupportFragmentManager().beginTransaction().replace(R.id.main_fragment_container,
 				new FragmentEventCategory()).commit();
+		getSupportActionBar().setTitle("Home");
 
 	}
 
@@ -98,15 +113,19 @@ public class RootActivity extends AppCompatActivity {
 					switch (menuItem.getItemId()){
 						case R.id.nav_home:
 							selectedFragment = new FragmentEventCategory();
+							getSupportActionBar().setTitle("Home");
 							break;
 						case R.id.nav_sponsi:
 							selectedFragment = new FragmentSponsership();
+							getSupportActionBar().setTitle("Sponsership");
 							break;
 						case R.id.nav_food:
 							selectedFragment = new FragmentFood();
+							getSupportActionBar().setTitle("Food");
 							break;
 						case R.id.nav_GL:
 							selectedFragment = new FragmentGuestLecture();
+							getSupportActionBar().setTitle("Guest Lecture");
 							break;
 					}
 

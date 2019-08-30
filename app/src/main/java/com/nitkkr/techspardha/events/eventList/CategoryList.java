@@ -29,12 +29,13 @@ public class CategoryList extends AppCompatActivity {
 
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_category);
          recyclerView = (RecyclerView) findViewById(R.id.cat_recycler);
-
+        getSupportActionBar().setTitle(getIntent().getExtras().getString("eventList"));
 
         try {
             back=getIntent().getExtras().getString("eventList");
