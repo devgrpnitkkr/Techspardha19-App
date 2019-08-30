@@ -43,6 +43,7 @@ public class EventInDetail extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event_in_detail);
+        getSupportActionBar().hide();
 
         rus=(TextView)findViewById(R.id.description);
         Intent intent=getIntent();

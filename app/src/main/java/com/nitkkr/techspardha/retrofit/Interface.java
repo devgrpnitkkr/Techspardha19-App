@@ -3,6 +3,7 @@ package com.nitkkr.techspardha.retrofit;
 import com.nitkkr.techspardha.Fragments.sponsership.sponsorshipPojo.SponsorshipData;
 import com.nitkkr.techspardha.events.categoryPojo.CategoryData;
 import com.nitkkr.techspardha.events.categoryPojo.EventCategory;
+import com.nitkkr.techspardha.guestLecture.lecturesPojo.LectureData;
 
 import io.reactivex.Observable;
 import retrofit2.http.GET;
@@ -23,4 +24,10 @@ public interface Interface {
     @GET("sponsors/")
     Observable<SponsorshipData> getSponsorship(
     );
+
+    @GET("lectures")
+    Observable<LectureData> getLectureData(
+
+    );
+
 }

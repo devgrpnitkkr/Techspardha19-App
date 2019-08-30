@@ -25,6 +25,8 @@ public class CategoryList extends AppCompatActivity {
     RecyclerView recyclerView;
     CategoryListAdapter adapter;
     Bundle bundle;
+    String back;
+
 
 
 
@@ -33,9 +35,15 @@ public class CategoryList extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_category);
          recyclerView = (RecyclerView) findViewById(R.id.cat_recycler);
+        getSupportActionBar().setTitle(getIntent().getExtras().getString("eventList"));
 
-
-        LoadJson(getIntent().getExtras().getString("eventList"));
+        try {
+            back=getIntent().getExtras().getString("eventList");
+            LoadJson(getIntent().getExtras().getString("eventList"));
+        } catch (Exception e) {
+            LoadJson(back);
+            e.printStackTrace();
+        }
 
     }
 

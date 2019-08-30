@@ -10,18 +10,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".events.eventDetail.EventInDetail"></activity>
-        <activity android:name=".events.eventList.CategoryList"/>
-        <activity android:name=".root.UserLogin"></activity>
-
-
+        <activity android:name=".events.eventDetail.EventInDetail"/>
+<!--            android:parentActivityName=".events.eventList.CategoryList"/>-->
+        <activity android:name=".events.eventList.CategoryList"
+            android:parentActivityName=".root.RootActivity"/>
+        <activity android:name=".root.UserLogin"/>
 
         <activity android:name=".drawers.LeftDrawerProfile"
-            android:parentActivityName=".root.RootActivity">
-        </activity>
+            android:parentActivityName=".root.RootActivity"/>
 
-        <activity android:name=".root.IntroSlider"></activity>
-        <activity android:name=".Fragments.guestLecture.FragmentGuestLecture"></activity>
+        <activity android:name=".root.IntroSlider"/>
+        <activity android:name=".Fragments.guestLecture.FragmentGuestLecture"/>
 
         <activity android:name=".Fragments.food.FragmentFood" />
         <activity android:name=".Fragments.sponsership.FragmentSponsership" />
