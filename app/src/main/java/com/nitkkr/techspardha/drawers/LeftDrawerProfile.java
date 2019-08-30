@@ -38,6 +38,8 @@ public class LeftDrawerProfile extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
+        getSupportActionBar().setTitle("Profile");
+
         sign_out = findViewById(R.id.logout);
         nameTV = findViewById(R.id.name);
         emailTV = findViewById(R.id.email);
