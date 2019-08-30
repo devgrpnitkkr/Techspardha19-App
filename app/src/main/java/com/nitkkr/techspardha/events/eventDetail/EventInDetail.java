@@ -11,11 +11,15 @@ import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.view.Window;
 import android.widget.Adapter;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.google.android.material.appbar.CollapsingToolbarLayout;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.nitkkr.techspardha.retrofit.Interface;
 import com.nitkkr.techspardha.R;
 import com.nitkkr.techspardha.retrofit.RetroClient;
@@ -30,6 +34,7 @@ public class EventInDetail extends AppCompatActivity {
     private List<Data> edata=new ArrayList<>();
     private Adapter adapter;
     TextView rus;
+    Button register;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,17 +65,41 @@ public class EventInDetail extends AppCompatActivity {
         String c2=cust.getCoordinators()[1].getCoordinator_name();
         String c2n=cust.getCoordinators()[1].getCoordinator_number();
         rus.setText(desc);
-        CollapsingToolbarLayout collapsingToolbar =
-                (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
+        CollapsingToolbarLayout collapsingToolbar = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
         collapsingToolbar.setTitle(cust.getEventName());
         collapsingToolbar.setExpandedTitleTextColor(ColorStateList.valueOf(Color.WHITE));
         collapsingToolbar.setCollapsedTitleTextColor(Color.BLACK);
+
+        register=(Button)findViewById(R.id.register);
+
+        register.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+            }
+        });
 
 
 
 
 
     }
+
+
+    public void Register(){
+        DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference("users").child("007vy8080@gmail,com");
+
+
+
+
+    }
+
+
+
+
+
+
     public void LoadJson(final String keyword,final String ename) {
 
 

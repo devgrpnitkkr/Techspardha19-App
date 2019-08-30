@@ -79,6 +79,13 @@
                     android:layout_marginStart="5dp"
                     android:textColor="#fff"
                     android:textSize="20dp"/>
+
+                <Button
+                    android:id="@+id/register"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Register"/>
+
             </LinearLayout>
 
     </androidx.core.widget.NestedScrollView>
