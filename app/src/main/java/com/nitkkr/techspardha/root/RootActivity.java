@@ -29,8 +29,10 @@ import com.nitkkr.techspardha.Fragments.food.FragmentFood;
 import com.nitkkr.techspardha.Fragments.guestLecture.FragmentGuestLecture;
 import com.nitkkr.techspardha.Fragments.home.FragmentEventCategory;
 import com.nitkkr.techspardha.Fragments.sponsership.FragmentSponsership;
+import com.nitkkr.techspardha.drawers.AboutUs.AboutUs;
 import com.nitkkr.techspardha.drawers.LeftDrawerProfile;
 import com.nitkkr.techspardha.R;
+import com.nitkkr.techspardha.drawers.developers.Developers;
 
 
 public class RootActivity extends AppCompatActivity {
@@ -47,10 +49,10 @@ public class RootActivity extends AppCompatActivity {
 
 //		if(mGoogleSignInClient.)
         GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
-        /*if(account == null) {
+        if(account == null) {
             finish();
             System.exit(0);
-        }*/
+        }
 
 		drawer = findViewById(R.id.main_drawer_layout);
 		NavigationView navigationView = findViewById(R.id.nav_view);
@@ -69,8 +71,18 @@ public class RootActivity extends AppCompatActivity {
 			public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
 				switch (menuItem.getItemId()){
 					case R.id.drawer_profile:
-                        Toast.makeText(getApplicationContext(),"clicled",Toast.LENGTH_LONG).show();
+//                        Toast.makeText(getApplicationContext(),"clicled",Toast.LENGTH_LONG).show();
 						Intent intent = new Intent(getApplicationContext(), LeftDrawerProfile.class);
+						startActivity(intent);
+						break;
+					case R.id.drawer_developers:
+//						Toast.makeText(getApplicationContext(),"clicled",Toast.LENGTH_LONG).show();
+						intent = new Intent(getApplicationContext(), Developers.class);
+						startActivity(intent);
+						break;
+					case R.id.drawer_aboutus:
+//						Toast.makeText(getApplicationContext(),"clicled",Toast.LENGTH_LONG).show();
+						intent = new Intent(getApplicationContext(), AboutUs.class);
 						startActivity(intent);
 						break;
 //					case R.id.drawer_MyEvents:
@@ -117,7 +129,7 @@ public class RootActivity extends AppCompatActivity {
 							break;
 						case R.id.nav_sponsi:
 							selectedFragment = new FragmentSponsership();
-							getSupportActionBar().setTitle("Sponsership");
+							getSupportActionBar().setTitle("Sponsors");
 							break;
 						case R.id.nav_food:
 							selectedFragment = new FragmentFood();

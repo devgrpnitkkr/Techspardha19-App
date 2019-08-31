@@ -1,4 +1,4 @@
-package com.nitkkr.techspardha.guestLecture.lecturesPojo;
+package com.nitkkr.techspardha.Fragments.guestLecture.lecturesPojo;
 
 public class Lectures {
     private String date;

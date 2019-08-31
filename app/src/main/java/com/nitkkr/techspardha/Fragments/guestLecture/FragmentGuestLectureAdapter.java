@@ -13,9 +13,9 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.nitkkr.techspardha.R;
 import com.nitkkr.techspardha.events.categoryPojo.Data;
-import com.nitkkr.techspardha.guestLecture.lecturesPojo.Lectures;
+import com.nitkkr.techspardha.Fragments.guestLecture.lecturesPojo.Lectures;
 //import com.yarolegovich.discretescrollview.R;
-
+//
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,9 +36,9 @@ public class FragmentGuestLectureAdapter extends RecyclerView.Adapter<FragmentGu
 //    private static final Uri URL_APP_REPO = Uri.parse("https://github.com/yarolegovich/DiscreteScrollView");
 
 
-        public FragmentGuestLectureAdapter(List<Lectures> lst,TextView name,TextView date,TextView time,TextView desc) {
-            this.lst=lst; this.name=name;this.date=date;this.time=time;this.desc=desc;
-        }
+    public FragmentGuestLectureAdapter(List<Lectures> lst,TextView name,TextView date,TextView time,TextView desc) {
+        this.lst=lst; this.name=name;this.date=date;this.time=time;this.desc=desc;
+    }
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -53,7 +53,7 @@ public class FragmentGuestLectureAdapter extends RecyclerView.Adapter<FragmentGu
         Glide.with(holder.itemView.getContext())
                 .load(lst.get(position).getImageUrl())
                 .into(holder.image);
-        holder.image.setPadding(20,20,20,20);
+        holder.image.setPadding(10,10,10,10);
 
         //holder.name.setText(lst.get(position).getName());
 
@@ -74,7 +74,6 @@ public class FragmentGuestLectureAdapter extends RecyclerView.Adapter<FragmentGu
                 desc.setText(lst.get(position).getDesc());
             }
         });
-
     }
 
     @Override
