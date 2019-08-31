@@ -17,6 +17,9 @@
 
     <color name="icon_color" >#179FEB</color>
 
+<!--    <color name="icon_color2" >#fff</color>-->
+
+
     <array name="array_dot_active">
         <item>@color/dot_light_screen1</item>
         <item>@color/dot_light_screen2</item>

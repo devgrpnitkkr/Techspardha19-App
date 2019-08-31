@@ -1,124 +1,147 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Fragments.guestLecture.FragmentGuestLecture"
-    android:orientation="vertical">
+    android:background="#000"
+    >
 
-    <com.yarolegovich.discretescrollview.DiscreteScrollView
-        android:layout_marginTop="10dp"
-        android:id="@+id/picker"
+    <LinearLayout
+        android:weightSum="100"
         android:layout_width="match_parent"
-        android:layout_height="250dp"
-        app:dsv_orientation="horizontal"
-        />
-
-    <androidx.core.widget.NestedScrollView
-        android:layout_marginTop="50dp"
-        android:layout_width="match_parent"
-        android:backgroundTint="#101111"
         android:layout_height="match_parent"
-        android:background="@drawable/buttonbackground"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
-
-        <LinearLayout
-            android:layout_width="wrap_content"
+        android:id="@+id/gl_content"
+        android:orientation="vertical"
+        android:visibility="invisible">
+        <com.yarolegovich.discretescrollview.DiscreteScrollView
+            android:layout_marginTop="10dp"
+            android:id="@+id/guest_picker"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            app:dsv_orientation="horizontal"
+            android:background="#000"
+            android:backgroundTint="#000"
+            android:layout_weight="60"
+            />
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_weight="40"
+            android:layout_width="match_parent"
+            android:backgroundTint="#101111"
+            android:layout_height="match_parent"
+            android:background="@drawable/buttonbackground"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:weightSum="100">
-                <TextView
-                    android:layout_weight="70"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:text="Name :"
-                    android:textStyle="bold"
-                    android:textColor="#fff"
-                    android:textSize="20dp"/>
-                <TextView
-                    android:layout_weight="30"
-                    android:id="@+id/guest_name"
+                    android:orientation="horizontal"
+                    android:weightSum="100">
+                    <TextView
+                        android:layout_weight="70"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:text="Name :"
+                        android:textStyle="bold"
+                        android:textColor="#fff"
+                        android:textSize="20dp"/>
+                    <TextView
+                        android:layout_weight="30"
+                        android:id="@+id/guest_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:text="Guest Name"
+                        android:textStyle="bold"
+                        android:textColor="#fff"
+                        android:textSize="20dp"/>
+
+                </LinearLayout>
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:text="Guest Name"
-                    android:textStyle="bold"
+                    android:orientation="horizontal"
+                    android:weightSum="100">
+                    <TextView
+                        android:layout_weight="70"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:text="Date :"
+                        android:textStyle="bold"
+                        android:textColor="#fff"
+                        android:textSize="20dp"/>
+                    <TextView
+                        android:layout_weight="30"
+                        android:id="@+id/guest_date"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:text="Event Date"
+                        android:textStyle="bold"
+                        android:textColor="#fff"
+                        android:textSize="20dp"/>
+
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="100">
+                    <TextView
+                        android:layout_weight="70"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:text="Timing :"
+                        android:textStyle="bold"
+                        android:textColor="#fff"
+                        android:textSize="20dp"/>
+                    <TextView
+                        android:layout_weight="30"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:text="Event Time"
+                        android:textStyle="bold"
+                        android:textColor="#fff"
+                        android:id="@+id/guest_time"
+                        android:textSize="20dp"/>
+                </LinearLayout>
+                <TextView
+                    android:id="@+id/guest_description"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="8dp"
+                    android:fontFamily="@font/opensa"
+                    android:layout_marginStart="8dp"
+                    android:text="Development is all about identifying and analysing real life problems and using the skills to solve them.Once the idea is selected, prepare your app and give a presentation on it"
                     android:textColor="#fff"
                     android:textSize="20dp"/>
 
             </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:weightSum="100">
-                <TextView
-                    android:layout_weight="70"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:text="Date :"
-                    android:textStyle="bold"
-                    android:textColor="#fff"
-                    android:textSize="20dp"/>
-                <TextView
-                    android:layout_weight="30"
-                    android:id="@+id/guest_date"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:text="Event Date"
-                    android:textStyle="bold"
-                    android:textColor="#fff"
-                    android:textSize="20dp"/>
 
+        </androidx.core.widget.NestedScrollView>
+    </LinearLayout>
 
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:weightSum="100">
-                <TextView
-                    android:layout_weight="70"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:text="Timing :"
-                    android:textStyle="bold"
-                    android:textColor="#fff"
-                    android:textSize="20dp"/>
-                <TextView
-                    android:layout_weight="30"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:text="Event Time"
-                    android:textStyle="bold"
-                    android:textColor="#fff"
-                    android:id="@+id/guest_time"
-                    android:textSize="20dp"/>
-            </LinearLayout>
-            <TextView
-                android:id="@+id/guest_description"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:layout_marginEnd="8dp"
-                android:fontFamily="@font/opensa"
-                android:layout_marginStart="8dp"
-                android:text="Development is all about identifying and analysing real life problems and using the skills to solve them.Once the idea is selected, prepare your app and give a presentation on it"
-                android:textColor="#fff"
-                android:textSize="20dp"/>
+    <com.wang.avi.AVLoadingIndicatorView
+        android:paddingVertical="300dp"
+        android:paddingHorizontal="150dp"
+        android:id="@+id/guest_avi"
+        style="@style/AVLoadingIndicatorView.Large"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="visible"
+        app:indicatorColor="#179FEB"
+        app:indicatorName="LineScaleIndicator" />
 
-        </LinearLayout>
-
-    </androidx.core.widget.NestedScrollView>
-
-</LinearLayout>
+</RelativeLayout>

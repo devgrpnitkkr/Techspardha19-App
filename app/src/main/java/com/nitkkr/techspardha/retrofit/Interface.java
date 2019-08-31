@@ -1,9 +1,10 @@
 package com.nitkkr.techspardha.retrofit;
 
 import com.nitkkr.techspardha.Fragments.sponsership.sponsorshipPojo.SponsorshipData;
+import com.nitkkr.techspardha.drawers.developers.developersPojo.DevelopersData;
 import com.nitkkr.techspardha.events.categoryPojo.CategoryData;
 import com.nitkkr.techspardha.events.categoryPojo.EventCategory;
-import com.nitkkr.techspardha.guestLecture.lecturesPojo.LectureData;
+import com.nitkkr.techspardha.Fragments.guestLecture.lecturesPojo.LectureData;
 
 import io.reactivex.Observable;
 import retrofit2.http.GET;
@@ -27,6 +28,10 @@ public interface Interface {
 
     @GET("lectures")
     Observable<LectureData> getLectureData(
+
+    );
+    @GET("aboutAppDevs")
+    Observable<DevelopersData> getDevelopersData(
 
     );
 

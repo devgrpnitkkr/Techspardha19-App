@@ -29,6 +29,7 @@ dependencies {
     implementation 'com.google.android.gms:play-services-auth:16.0.0'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
     implementation 'androidx.cardview:cardview'
+    implementation 'androidx.viewpager:viewpager'
 
 
     //navigation view
@@ -48,6 +49,10 @@ dependencies {
     implementation 'com.github.bumptech.glide:glide:4.7.1'
     implementation 'com.google.firebase:firebase-database:16.0.4'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.7.1'
+
+    // progressbar
+    implementation 'net.bohush.geometricprogressview:geometricprogressview:1.1.1'
+    implementation 'com.wang.avi:library:2.1.3'
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.2.0'

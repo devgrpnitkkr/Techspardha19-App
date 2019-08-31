@@ -3,6 +3,7 @@ package com.nitkkr.techspardha.Fragments.guestLecture;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.content.res.ColorStateList;
@@ -14,6 +15,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.google.android.material.appbar.CollapsingToolbarLayout;
@@ -21,11 +23,13 @@ import com.nitkkr.techspardha.R;
 import com.nitkkr.techspardha.events.categoryPojo.CategoryData;
 import com.nitkkr.techspardha.events.categoryPojo.Data;
 import com.nitkkr.techspardha.events.eventList.CategoryListAdapter;
-import com.nitkkr.techspardha.guestLecture.lecturesPojo.LectureData;
-import com.nitkkr.techspardha.guestLecture.lecturesPojo.Lectures;
+import com.nitkkr.techspardha.Fragments.guestLecture.lecturesPojo.LectureData;
+import com.nitkkr.techspardha.Fragments.guestLecture.lecturesPojo.Lectures;
 import com.nitkkr.techspardha.retrofit.Interface;
 import com.nitkkr.techspardha.retrofit.RetroClient;
+import com.wang.avi.AVLoadingIndicatorView;
 import com.yarolegovich.discretescrollview.DiscreteScrollView;
+import com.yarolegovich.discretescrollview.util.ScrollListenerAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,6 +48,8 @@ public class FragmentGuestLecture extends Fragment {
     LectureData lectureD;
     DiscreteScrollView scrollView;
     TextView name,date,time,desc;
+    LinearLayout content ;
+    AVLoadingIndicatorView progress;
 
 
     @Nullable
@@ -63,9 +69,14 @@ public class FragmentGuestLecture extends Fragment {
         date=view.findViewById(R.id.guest_date);
         time=view.findViewById(R.id.guest_time);
         desc=view.findViewById(R.id.guest_description);
-        scrollView = view.findViewById(R.id.picker);
+        scrollView = view.findViewById(R.id.guest_picker);
+        content = view.findViewById(R.id.gl_content);
+        progress = view.findViewById(R.id.guest_avi);
+        int position =scrollView.getCurrentItem(); //returns adapter position of the currently selected item or -1 if adapter is empty.
+        scrollView.scrollToPosition(position); //position becomes selected
+        scrollView.smoothScrollToPosition(position); //position becomes selected with animated scroll
+        scrollView.setItemTransitionTimeMillis(100); //determines how much time it takes to change the item on fling, settle or smoothScroll
         LoadJson();
-
 
         return view;
     }
@@ -108,31 +119,33 @@ public class FragmentGuestLecture extends Fragment {
 
                     @Override
                     public void onComplete() {
+                        content.setVisibility(View.VISIBLE);
+                        progress.setVisibility(View.INVISIBLE);
 
-                       Log.i("gestPic",lectureD.getData().getLectures()[0].getImageUrl());
-                       Log.i("gestPic",lectureD.getData().getLectures()[1].getImageUrl());
-                       Log.i("gestPic",lectureD.getData().getLectures()[2].getImageUrl());
-                       Log.i("gestPic",lectureD.getData().getLectures()[3].getImageUrl());
-                       Log.i("gestPic",lectureD.getData().getLectures()[4].getImageUrl());
+                        Log.i("gestPic",lectureD.getData().getLectures()[0].getImageUrl());
+                        Log.i("gestPic",lectureD.getData().getLectures()[1].getImageUrl());
+                        Log.i("gestPic",lectureD.getData().getLectures()[2].getImageUrl());
+                        Log.i("gestPic",lectureD.getData().getLectures()[3].getImageUrl());
+                        Log.i("gestPic",lectureD.getData().getLectures()[4].getImageUrl());
 
-                       lst.add(lectureD.getData().getLectures()[0].getImageUrl());
-                       lst.add(lectureD.getData().getLectures()[1].getImageUrl());
-                       lst.add(lectureD.getData().getLectures()[2].getImageUrl());
-                       lst.add(lectureD.getData().getLectures()[3].getImageUrl());
-                       lst.add(lectureD.getData().getLectures()[4].getImageUrl());
+                        lst.add(lectureD.getData().getLectures()[0].getImageUrl());
+                        lst.add(lectureD.getData().getLectures()[1].getImageUrl());
+                        lst.add(lectureD.getData().getLectures()[2].getImageUrl());
+                        lst.add(lectureD.getData().getLectures()[3].getImageUrl());
+                        lst.add(lectureD.getData().getLectures()[4].getImageUrl());
 
-                       List<Lectures> lst=new ArrayList<>();
+                        List<Lectures> lst=new ArrayList<>();
 
-                       for(int i=0;i<lectureD.getData().getLectures().length;i++){
-                           lst.add(lectureD.getData().getLectures()[i]);
-                       }
+                        for(int i=0;i<lectureD.getData().getLectures().length;i++){
+                            lst.add(lectureD.getData().getLectures()[i]);
+                        }
 
-                       name.setText(lectureD.getData().getLectures()[0].getName());
-                       date.setText(lectureD.getData().getLectures()[0].getDate());
-                       time.setText(lectureD.getData().getLectures()[0].getTime());
-                       desc.setText(lectureD.getData().getLectures()[0].getDesc());
+                        name.setText(lectureD.getData().getLectures()[0].getName());
+                        date.setText(lectureD.getData().getLectures()[0].getDate());
+                        time.setText(lectureD.getData().getLectures()[0].getTime());
+                        desc.setText(lectureD.getData().getLectures()[0].getDesc());
 
-                       scrollView.setAdapter(new FragmentGuestLectureAdapter(lst,name,date,time,desc));
+                        scrollView.setAdapter(new FragmentGuestLectureAdapter(lst,name,date,time,desc));
                     }
                 });
 
