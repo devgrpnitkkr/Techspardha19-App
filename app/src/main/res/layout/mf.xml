@@ -6,7 +6,7 @@
     android:gravity="center">
     <com.nitkkr.techspardha.drawers.AboutUs.MyLinearLayout
         android:id="@+id/root"
-        android:layout_width="300dp"
+        android:layout_width="330dp"
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:gravity="center"

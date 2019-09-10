@@ -10,8 +10,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".drawers.AboutUs.AboutUs"
-            android:parentActivityName=".root.RootActivity"/>
+        <activity android:name=".Fragments.guestLecture.FragmentGuestLectureNew"></activity>
+        <activity
+            android:name=".drawers.AboutUs.AboutUs"
+            android:parentActivityName=".root.RootActivity" />
         <activity
             android:name=".drawers.developers.Developers"
             android:parentActivityName=".root.RootActivity" />
