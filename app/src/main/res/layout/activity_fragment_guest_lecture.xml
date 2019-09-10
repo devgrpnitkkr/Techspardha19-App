@@ -21,12 +21,13 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:dsv_orientation="horizontal"
-            android:background="#000"
+            android:background="@drawable/buttonbackground"
             android:backgroundTint="#000"
             android:layout_weight="60"
             />
 
         <androidx.core.widget.NestedScrollView
+            android:layout_marginTop="20dp"
             android:layout_weight="40"
             android:layout_width="match_parent"
             android:backgroundTint="#101111"

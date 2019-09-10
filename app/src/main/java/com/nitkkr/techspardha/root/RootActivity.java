@@ -15,6 +15,7 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,6 +23,9 @@ import com.bumptech.glide.Glide;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 //import com.nitkkr.techspardha.FragmentSponsership;
@@ -41,6 +45,7 @@ public class RootActivity extends AppCompatActivity {
 	ActionBarDrawerToggle toggle;
 	private NavigationView navLayout;
     GoogleSignInClient mGoogleSignInClient;
+    LinearLayout logout;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +60,7 @@ public class RootActivity extends AppCompatActivity {
         }
 
 		drawer = findViewById(R.id.main_drawer_layout);
+        logout = findViewById(R.id.nav_logout);
 		NavigationView navigationView = findViewById(R.id.nav_view);
 		final View navHeader = navigationView.getHeaderView(0);
 //		final View navHeader = navigationView.inflateHeaderView(R.layout.nav_header);
@@ -64,6 +70,15 @@ public class RootActivity extends AppCompatActivity {
 		Log.d("testing...",personPhoto+"      "+navHeaderPic);
 		Glide.with(this).load(personPhoto).into(navHeaderPic);
 		name.setText(account.getDisplayName());
+
+		// Configure sign-in to request the user's ID, email address, and basic
+		// profile. ID and basic profile are included in DEFAULT_SIGN_IN.
+		GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+				.requestEmail()
+				.build();
+
+		// Build a GoogleSignInClient with the options specified by gso.
+		mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
 
 
 		navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
@@ -105,6 +120,13 @@ public class RootActivity extends AppCompatActivity {
 		getSupportFragmentManager().beginTransaction().replace(R.id.main_fragment_container,
 				new FragmentEventCategory()).commit();
 		getSupportActionBar().setTitle("Home");
+
+		logout.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				signOut();
+			}
+		});
 
 	}
 
@@ -149,4 +171,15 @@ public class RootActivity extends AppCompatActivity {
 //					return false;
 				}
 			};
+	private void signOut() {
+		mGoogleSignInClient.signOut()
+				.addOnCompleteListener(this, new OnCompleteListener<Void>() {
+					@Override
+					public void onComplete(@NonNull Task<Void> task) {
+						Toast.makeText(RootActivity.this,"Successfully signed out",Toast.LENGTH_SHORT).show();
+						startActivity(new Intent(RootActivity.this, UserLogin.class));
+						finish();
+					}
+				});
+	}
 }

@@ -3,6 +3,7 @@ package com.nitkkr.techspardha.Fragments.guestLecture;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearSnapHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
@@ -13,10 +14,12 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.nitkkr.techspardha.R;
@@ -29,6 +32,9 @@ import com.nitkkr.techspardha.retrofit.Interface;
 import com.nitkkr.techspardha.retrofit.RetroClient;
 import com.wang.avi.AVLoadingIndicatorView;
 import com.yarolegovich.discretescrollview.DiscreteScrollView;
+import com.yarolegovich.discretescrollview.InfiniteScrollAdapter;
+import com.yarolegovich.discretescrollview.transform.Pivot;
+import com.yarolegovich.discretescrollview.transform.ScaleTransformer;
 import com.yarolegovich.discretescrollview.util.ScrollListenerAdapter;
 
 import java.util.ArrayList;
@@ -72,11 +78,22 @@ public class FragmentGuestLecture extends Fragment {
         scrollView = view.findViewById(R.id.guest_picker);
         content = view.findViewById(R.id.gl_content);
         progress = view.findViewById(R.id.guest_avi);
-        int position =scrollView.getCurrentItem(); //returns adapter position of the currently selected item or -1 if adapter is empty.
-        scrollView.scrollToPosition(position); //position becomes selected
-        scrollView.smoothScrollToPosition(position); //position becomes selected with animated scroll
-        scrollView.setItemTransitionTimeMillis(100); //determines how much time it takes to change the item on fling, settle or smoothScroll
+
+//        int position =scrollView.getCurrentItem(); //returns adapter position of the currently selected item or -1 if adapter is empty.
+//        scrollView.scrollToPosition(position); //position becomes selected
+//        scrollView.smoothScrollToPosition(position); //position becomes selected with animated scroll
+        scrollView.setItemTransitionTimeMillis(150); //determines how much time it takes to change the item on fling, settle or smoothScroll
         LoadJson();
+        scrollView.setItemTransformer(new ScaleTransformer.Builder()
+                .setMaxScale(1.05f)
+                .setMinScale(0.8f)
+                .setPivotX(Pivot.X.CENTER) // CENTER is a default one
+                .setPivotY(Pivot.Y.CENTER) // CENTER is a default one
+                .build());
+        scrollView.setOverScrollEnabled(false);
+
+
+
 
         return view;
     }
@@ -145,7 +162,13 @@ public class FragmentGuestLecture extends Fragment {
                         time.setText(lectureD.getData().getLectures()[0].getTime());
                         desc.setText(lectureD.getData().getLectures()[0].getDesc());
 
-                        scrollView.setAdapter(new FragmentGuestLectureAdapter(lst,name,date,time,desc));
+//                        InfiniteScrollAdapter wrapper = InfiniteScrollAdapter.wrap(new FragmentGuestLectureAdapter(scrollView,lst,name,date,time,desc));
+
+                        scrollView.setSlideOnFling(true);
+//                        scrollView.setOnI
+                        scrollView.setAdapter(new FragmentGuestLectureAdapter(scrollView,lst,name,date,time,desc));
+
+
                     }
                 });
 
