@@ -10,6 +10,8 @@ public class Data implements Serializable
 
         private String eventCategory;
 
+        private String banner;
+
         private Coordinators[] coordinators;
 
         private String flagship;
@@ -124,6 +126,12 @@ public class Data implements Serializable
             this.endTime = endTime;
         }
 
+        public String getBanner() {
+            return banner;
+        }
 
+        public void setBanner(String banner) {
+            this.banner = banner;
+        }
     }
 

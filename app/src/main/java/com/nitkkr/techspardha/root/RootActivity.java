@@ -31,6 +31,8 @@ import com.nitkkr.techspardha.Fragments.home.FragmentEventCategory;
 import com.nitkkr.techspardha.Fragments.sponsership.FragmentSponsership;
 import com.nitkkr.techspardha.drawers.LeftDrawerProfile;
 import com.nitkkr.techspardha.R;
+import com.nitkkr.techspardha.root.RegisteredEvents.Registered_events;
+import com.nitkkr.techspardha.root.db.userDataStore;
 
 
 public class RootActivity extends AppCompatActivity {
@@ -46,11 +48,24 @@ public class RootActivity extends AppCompatActivity {
 		setContentView(R.layout.activity_main);
 
 //		if(mGoogleSignInClient.)
-        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
+        final GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
         /*if(account == null) {
             finish();
             System.exit(0);
         }*/
+
+		userDataStore userData=userDataStore.getInstance(this);
+
+		//Log.i("suc",userData.getData().getOnBoard()+" "+userData.getData().getInformation().getCollege());
+
+
+
+
+		if(!userData.getState()){
+			DetailsDialogue detailsDialogue=new DetailsDialogue();
+			detailsDialogue.showDialog(RootActivity.this,userData.getData().getInformation().getEmail());
+		}
+
 
 		drawer = findViewById(R.id.main_drawer_layout);
 		NavigationView navigationView = findViewById(R.id.nav_view);
@@ -70,12 +85,13 @@ public class RootActivity extends AppCompatActivity {
 				switch (menuItem.getItemId()){
 					case R.id.drawer_profile:
                         Toast.makeText(getApplicationContext(),"clicled",Toast.LENGTH_LONG).show();
-						Intent intent = new Intent(getApplicationContext(), LeftDrawerProfile.class);
+                        Intent intent = new Intent(getApplicationContext(), LeftDrawerProfile.class);
 						startActivity(intent);
 						break;
-//					case R.id.drawer_MyEvents:
-//						getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-//								UpdateProfile).commit();
+					case R.id.drawer_MyEvents:
+						Intent i=new Intent(RootActivity.this, Registered_events.class);
+						i.putExtra("email",account.getEmail());
+						startActivity(i);
 				}
 				drawer.closeDrawer(GravityCompat.START);
 				return true;
@@ -137,4 +153,5 @@ public class RootActivity extends AppCompatActivity {
 //					return false;
 				}
 			};
+
 }

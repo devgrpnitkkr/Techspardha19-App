@@ -23,7 +23,12 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.nitkkr.techspardha.R;
+import com.nitkkr.techspardha.root.DetailsDialogue;
+import com.nitkkr.techspardha.root.RootActivity;
 import com.nitkkr.techspardha.root.UserLogin;
+import com.nitkkr.techspardha.root.db.userDataStore;
+
+import static com.google.android.gms.common.internal.safeparcel.SafeParcelable.NULL;
 
 public class LeftDrawerProfile extends AppCompatActivity {
 
@@ -31,6 +36,10 @@ public class LeftDrawerProfile extends AppCompatActivity {
     Button sign_out;
     TextView nameTV;
     TextView emailTV;
+    TextView phone;
+    TextView college;
+    TextView branch;
+    TextView year;
     ImageView photoIV;
 
     @Override
@@ -40,47 +49,55 @@ public class LeftDrawerProfile extends AppCompatActivity {
 
         getSupportActionBar().setTitle("Profile");
 
+
+
+
+        userDataStore userData=userDataStore.getInstance(this);
+        if(!userData.getState()){
+            DetailsDialogue detailsDialogue=new DetailsDialogue();
+
+            detailsDialogue.showDialog(LeftDrawerProfile.this,userData.getData().getInformation().getEmail());
+        }
+
+
         sign_out = findViewById(R.id.logout);
         nameTV = findViewById(R.id.name);
         emailTV = findViewById(R.id.email);
         photoIV = findViewById(R.id.pic);
+        phone=findViewById(R.id.phone);
+        college=findViewById(R.id.college);
+        branch=findViewById(R.id.branch);
+        year=findViewById(R.id.year);
 
-        // Configure sign-in to request the user's ID, email address, and basic
-        // profile. ID and basic profile are included in DEFAULT_SIGN_IN.
-        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestEmail()
-                .build();
-
-        // Build a GoogleSignInClient with the options specified by gso.
-        mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
-
-        GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(LeftDrawerProfile.this);
-        if (acct != null) {
-            String personName = acct.getDisplayName();
-            String personEmail = acct.getEmail();
-            Uri personPhoto = acct.getPhotoUrl();
-            nameTV.setText(personName);
-            emailTV.setText(personEmail);
-            Glide.with(this).load(personPhoto).into(photoIV);
+        if(userData.getData().getInformation().getName()!=NULL){
+            nameTV.setText(userData.getData().getInformation().getName());
+        }
+        if(userData.getData().getInformation().getEmail()!=NULL){
+            emailTV.setText(userData.getData().getInformation().getEmail());
+        }
+        if(userData.getData().getInformation().getPhone()!=NULL){
+            phone.setText(userData.getData().getInformation().getPhone());
+        }
+        if(userData.getData().getInformation().getCollege()!=NULL){
+            college.setText(userData.getData().getInformation().getCollege());
+        }
+        if(userData.getData().getInformation().getYear()!=NULL){
+            year.setText(userData.getData().getInformation().getYear());
+        }
+        if (userData.getData().getInformation().getPicture()!=NULL){
+            Glide.with(this)
+                    .load(userData.getData().getInformation().getPicture())
+                    .into(photoIV);
         }
 
-        sign_out.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                signOut();
-            }
-        });
+
+
+
+
+
+
+
     }
 
-    private void signOut() {
-        mGoogleSignInClient.signOut()
-                .addOnCompleteListener(this, new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        Toast.makeText(LeftDrawerProfile.this,"Successfully signed out",Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(LeftDrawerProfile.this, UserLogin.class));
-                        finish();
-                    }
-                });
-    }
+
 }

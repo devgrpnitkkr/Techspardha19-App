@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.nitkkr.techspardha.events.eventDetail.EventInDetail;
 import com.nitkkr.techspardha.events.categoryPojo.Data;
 import com.nitkkr.techspardha.R;
@@ -38,6 +39,9 @@ public class CategoryListAdapter extends RecyclerView.Adapter<CategoryListAdapte
         final Data myListData = list.get(position);
 
         holder.name.setText(myListData.getEventName());
+
+        //Glide.with().load(myListData.getBanner()).into(holder.img);
+
 
         holder.img.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -48,209 +48,87 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/textbox"
                 android:padding="10dp"
+                android:textStyle="bold"
                 android:backgroundTint="#DBDBDB"
                 android:textColor="#000"
                 android:textSize="18sp" />
 
-            <RelativeLayout
-                android:layout_width="390dp"
+
+            <TextView
+                android:id="@+id/name"
+                android:layout_marginTop="15dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
-                <LinearLayout
-                    android:id="@+id/input_layout"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="20dp"
-                    android:orientation="vertical"
-                    android:background="@drawable/edittextround">
-
-
-                    <TextView
-                        android:id="@+id/name"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/textbox"
-                        android:padding="10dp"
-                        android:backgroundTint="#DBDBDB"
-                        android:textColor="#000"
-                        android:textSize="18sp" />
+                android:background="@drawable/textbox"
+                android:padding="10dp"
+                android:textStyle="bold"
+                android:backgroundTint="#DBDBDB"
+                android:textColor="#000"
+                android:textSize="18sp" />
+            <TextView
+                android:id="@+id/phone"
+                android:layout_marginTop="15dp"
+                android:textStyle="bold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/textbox"
+                android:padding="10dp"
+                android:backgroundTint="#DBDBDB"
+                android:textColor="#000"
+                android:textSize="18sp" />
+            <TextView
+                android:id="@+id/college"
+                android:layout_marginTop="15dp"
+                android:textStyle="bold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/textbox"
+                android:padding="10dp"
+                android:backgroundTint="#DBDBDB"
+                android:textColor="#000"
+                android:textSize="18sp" />
+            <TextView
+                android:id="@+id/branch"
+                android:layout_marginTop="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/textbox"
+                android:padding="10dp"
+                android:backgroundTint="#DBDBDB"
+                android:textColor="#000"
+                android:textStyle="bold"
+                android:textSize="18sp" />
+            <TextView
+                android:id="@+id/year"
+                android:layout_marginTop="15dp"
+                android:textStyle="bold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/textbox"
+                android:padding="10dp"
+                android:backgroundTint="#DBDBDB"
+                android:textColor="#000"
+                android:textSize="18sp" />
 
                 </LinearLayout>
 
-            </RelativeLayout>
 
-            <RelativeLayout
-                android:layout_width="390dp"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-                <LinearLayout
-                    android:id="@+id/input_layout1"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="20dp"
-                    android:orientation="vertical"
-                    android:background="@drawable/edittextround">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="40dp"
-                        android:includeFontPadding="false"
-                        android:paddingLeft="5dp"
-                        android:paddingRight="5dp"
-                        android:visibility="invisible" />
 
-                    <EditText
-                        android:id="@+id/uprofile_college"
-                        android:layout_width="match_parent"
-                        android:layout_height="30dp"
-                        android:layout_marginBottom="10dp"
-                        android:layout_marginLeft="30dp"
-                        android:layout_marginRight="10dp"
-                        android:textColor="#fff"
-                        android:maxLines="1"
-                        android:background="@android:color/transparent" />
 
-                </LinearLayout>
 
-                <View
-                    android:id="@+id/view1"
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="40dp"
-                    android:layout_alignBottom="@+id/view1"
-                    android:background="#000"
-                    android:includeFontPadding="false"
-                    android:paddingBottom="10dp"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="10dp"
-                    android:text="College"
-                    android:textColor="#179FEB"
-                    android:textAppearance="@android:style/TextAppearance.Medium" />
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="390dp"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-                <LinearLayout
-                    android:id="@+id/input_layout2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="20dp"
-                    android:orientation="vertical"
-                    android:background="@drawable/edittextround">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="40dp"
-                        android:includeFontPadding="false"
-                        android:paddingLeft="5dp"
-                        android:paddingRight="5dp"
-                        android:visibility="invisible" />
-
-                    <EditText
-                        android:id="@+id/uprofile_codeforces"
-                        android:layout_width="match_parent"
-                        android:layout_height="30dp"
-                        android:layout_marginBottom="10dp"
-                        android:layout_marginLeft="30dp"
-                        android:layout_marginRight="10dp"
-                        android:textColor="#fff"
-                        android:maxLines="1"
-                        android:background="@android:color/transparent" />
-
-                </LinearLayout>
-
-                <View
-                    android:id="@+id/view2"
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="40dp"
-                    android:layout_alignBottom="@+id/view2"
-                    android:background="#000"
-                    android:includeFontPadding="false"
-                    android:paddingBottom="10dp"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="10dp"
-                    android:text="Branch"
-                    android:textColor="#179FEB"
-                    android:textAppearance="@android:style/TextAppearance.Medium" />
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="390dp"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-                <LinearLayout
-                    android:id="@+id/input_layout3"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="20dp"
-                    android:orientation="vertical"
-                    android:background="@drawable/edittextround">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="40dp"
-                        android:includeFontPadding="false"
-                        android:paddingLeft="5dp"
-                        android:paddingRight="5dp"
-                        android:visibility="invisible" />
-
-                    <EditText
-                        android:id="@+id/uprofile_hackerrank"
-                        android:layout_width="match_parent"
-                        android:layout_height="30dp"
-                        android:layout_marginBottom="10dp"
-                        android:layout_marginLeft="30dp"
-                        android:layout_marginRight="10dp"
-                        android:textColor="#fff"
-                        android:maxLines="1"
-                        android:background="@android:color/transparent" />
-
-                </LinearLayout>
-
-                <View
-                    android:id="@+id/view3"
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="40dp"
-                    android:layout_alignBottom="@+id/view3"
-                    android:background="#000"
-                    android:includeFontPadding="false"
-                    android:paddingBottom="10dp"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="10dp"
-                    android:text="Mobile Number"
-                    android:textColor="#179FEB"
-                    android:textAppearance="@android:style/TextAppearance.Medium" />
-            </RelativeLayout>
 
             <Button
                 android:id="@+id/logout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Sign Out"
-                android:textStyle="italic" android:textColor="#ffff"
+                android:textStyle="italic"
+
+                android:textColor="#ffff"
                 android:background="@drawable/buttonbackground"
                 android:layout_gravity="center" />
 
-        </LinearLayout>
     </LinearLayout>
 
 <!--    <LinearLayout-->

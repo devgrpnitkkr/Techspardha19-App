@@ -23,6 +23,6 @@ public class LectureData {
 
     @Override
     public String toString() {
-        return "ClassPojo [data = " + data + ", success = " + success + "]";
+        return "ClassPojo [Data = " + data + ", success = " + success + "]";
     }
 }
