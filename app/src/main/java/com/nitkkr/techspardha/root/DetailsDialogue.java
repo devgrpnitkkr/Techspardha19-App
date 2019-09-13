@@ -46,7 +46,6 @@ public class DetailsDialogue {
 
         final MaterialEditText phone=(MaterialEditText)dialog.findViewById(R.id.mobile);
         final MaterialEditText college=(MaterialEditText)dialog.findViewById(R.id.college);
-        final MaterialEditText branch=(MaterialEditText)dialog.findViewById(R.id.branch);
         final MaterialEditText year=(MaterialEditText)dialog.findViewById(R.id.year);
 
         Button register = (Button) dialog.findViewById(R.id.register);
@@ -67,8 +66,7 @@ public class DetailsDialogue {
 
 
 
-                    service
-                            .registerUser(String.valueOf(phone.getText()),String.valueOf(college.getText()),String.valueOf(year.getText()),String.valueOf(branch.getText()),email)
+                    service .registerUser(String.valueOf(phone.getText()),String.valueOf(college.getText()),String.valueOf(year.getText()),email)
                             .subscribeOn(Schedulers.io())
                             .observeOn(AndroidSchedulers.mainThread())
                             .subscribe(new Observer<RegisterData>() {

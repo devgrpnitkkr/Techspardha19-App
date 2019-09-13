@@ -51,7 +51,6 @@ public interface Interface {
             @Field("phone") String phone,
             @Field("college") String college,
             @Field("year") String year,
-            @Field("branch") String branch,
             @Field("email") String email
 
     );
