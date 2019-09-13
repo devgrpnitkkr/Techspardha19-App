@@ -7,12 +7,16 @@
 
 
     <RelativeLayout
+        android:background="@drawable/imageround"
+        android:paddingHorizontal="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <com.rengwuxian.materialedittext.MaterialEditText
             android:id="@+id/mobile"
+            android:textColor="#fff"
+            app:met_textColorHint="#fff"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
@@ -26,32 +30,27 @@
             android:id="@+id/college"
             android:layout_below="@id/mobile"
             android:layout_width="match_parent"
+            app:met_textColorHint="#fff"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginTop="15dp"
             android:hint="College"
+            android:inputType="text"
+            android:textColor="#fff"
             android:textAllCaps="true"
             app:met_floatingLabel="normal" />
 
+
         <com.rengwuxian.materialedittext.MaterialEditText
-            android:id="@+id/branch"
+            android:id="@+id/year"
+            app:met_textColorHint="#fff"
             android:layout_below="@id/college"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginTop="15dp"
-            android:hint="Branch"
-            android:textAllCaps="true"
-            app:met_floatingLabel="normal" />
-
-        <com.rengwuxian.materialedittext.MaterialEditText
-            android:id="@+id/year"
-            android:layout_below="@id/branch"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="15dp"
             android:hint="Year"
+            android:textColor="#fff"
             android:inputType="number"
             android:textAllCaps="true"
             app:met_floatingLabel="normal" />
@@ -62,7 +61,20 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Register"
+            android:background="#03A9F4"
+            android:textColor="#fff"
             android:id="@+id/register"/>
+
+        <TextView
+            android:layout_marginVertical="5dp"
+            android:layout_below="@id/register"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#8B0000"
+            android:gravity="center"
+            android:textSize="15dp"
+            android:text="* You can add your details only once."
+            />
 
     </RelativeLayout>
 

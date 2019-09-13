@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 
 import com.google.gson.Gson;
 import com.nitkkr.techspardha.root.userPojo.Udata;
+import com.nitkkr.techspardha.root.userPojo.userInfo;
 
 public class userDataStore {
     private static userDataStore userD;
@@ -21,38 +22,38 @@ public class userDataStore {
         sharedPreferences = context.getSharedPreferences("userDataStore",Context.MODE_PRIVATE);
     }
 
-    public void saveData(Udata uData,Boolean onboard ) {
+    public void saveData(userInfo uData, String onboard ) {
 
 
         SharedPreferences.Editor prefsEditor = sharedPreferences.edit();
         Gson gson = new Gson();
         String json = gson.toJson(uData);
         prefsEditor.putString("MyObject", json);
-        prefsEditor.putBoolean("OnBoard",onboard);
+        prefsEditor.putString("OnBoard",onboard);
         prefsEditor.commit();
     }
 
-    public void changeState(Boolean onboard){
+    public void changeState(String onboard){
         SharedPreferences.Editor prefsEditor = sharedPreferences.edit();
-        prefsEditor.putBoolean("OnBoard",onboard);
+        prefsEditor.putString("OnBoard",onboard);
         prefsEditor.apply();
 
 
     }
-    public Boolean getState(){
-        Boolean state=sharedPreferences.getBoolean("OnBoard",false);
+    public String getState(){
+        String state=sharedPreferences.getString("OnBoard","false");
         return state;
 
 
     }
 
 
-    public Udata getData() {
-        Udata udata=new Udata();
+    public userInfo getData() {
+        userInfo udata=new userInfo();
         if (sharedPreferences!= null) {
             Gson gson = new Gson();
             String json = sharedPreferences.getString("MyObject", "");
-            Udata obj = gson.fromJson(json, Udata.class);
+            userInfo obj = gson.fromJson(json, userInfo.class);
             return obj;
         }
         return udata;

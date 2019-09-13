@@ -6,15 +6,15 @@
         android:title="Home"/>
     <item
         android:id="@+id/nav_food"
-        android:icon="@drawable/ic_food"
+        android:icon="@drawable/food_icon"
         android:title="Food"/>
     <item
         android:id="@+id/nav_sponsi"
-        android:icon="@drawable/ic_sponsi"
-        android:title="Sponsi"/>
+        android:icon="@drawable/sponsor_icon"
+        android:title="Sponsors"/>
     <item
         android:id="@+id/nav_GL"
         android:icon="@drawable/gl"
-        android:title="GuestLecture"/>
+        android:title="Guest Lecture"/>
 
 </menu>

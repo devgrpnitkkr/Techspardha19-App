@@ -11,6 +11,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
+import com.nitkkr.techspardha.Database_Internal.DBManager;
 import com.nitkkr.techspardha.R;
 import com.nitkkr.techspardha.events.categoryPojo.Data;
 import com.nitkkr.techspardha.events.eventList.CategoryListAdapter;
@@ -26,6 +27,8 @@ public class Registered_events extends AppCompatActivity {
     private List<Registered> edata=new ArrayList<>();
     RecyclerView recyclerView;
     CategoryListAdapter adapter;
+    private DBManager dbManager;
+
 
 
 
@@ -36,9 +39,10 @@ public class Registered_events extends AppCompatActivity {
 
         recyclerView = (RecyclerView) findViewById(R.id.r_recycler);
 
-
         intent = getIntent();
-        LoadJson("2000preetamkm@gmail.com");
+        dbManager = new DBManager(this);
+        dbManager.open();
+        LoadJson(intent.getStringExtra("email"));
 
 
 
@@ -82,12 +86,10 @@ public class Registered_events extends AppCompatActivity {
                     public void onComplete() {
 
                         ArrayList<Data> eventd = new ArrayList<>();
-
-                        for (int i = 0; i < edata.get(0).getData().getEvents().length;i++) {
+                        for(int i=0;i<edata.get(0).getData().getEvents().length;i++) {
+                            Log.i("data", edata.get(0).getData().getEvents()[i].getEventName());
                             eventd.add(edata.get(0).getData().getEvents()[i]);
-                            Log.i("List Size Registered", eventd.get(i).getEventName());
-
-
+                            addtoDatabase(edata.get(0).getData().getEvents()[i]);
                         }
 
 
@@ -100,5 +102,11 @@ public class Registered_events extends AppCompatActivity {
                 });
 
 
+    }
+    public void addtoDatabase(Data data) {
+        if (!dbManager.ifNumberExists(data.getEventName())) {
+            dbManager.insert(data.getEventName(), data.getEventCategory(), data.getBanner());
+
+        }
     }
 }

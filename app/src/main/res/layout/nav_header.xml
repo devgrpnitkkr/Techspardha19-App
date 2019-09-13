@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="210dp"
+    android:layout_height="wrap_content"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@drawable/navback"
+    android:background="#000"
     android:orientation="vertical"
     android:padding="16dp"
     android:theme="@style/AppThemeCustom">
@@ -22,7 +22,7 @@
         android:id="@+id/nav_name"
         android:textColor="#fff"
         android:textStyle="bold"
-        android:textSize="30sp" />
+        android:textSize="25sp" />
 
 
 </LinearLayout>

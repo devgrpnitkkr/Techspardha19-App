@@ -1,12 +1,14 @@
 package com.nitkkr.techspardha.retrofit;
 
 import com.nitkkr.techspardha.Fragments.sponsership.sponsorshipPojo.SponsorshipData;
+import com.nitkkr.techspardha.drawers.developers.developersPojo.DevelopersData;
 import com.nitkkr.techspardha.events.categoryPojo.CategoryData;
 import com.nitkkr.techspardha.events.categoryPojo.EventCategory;
-import com.nitkkr.techspardha.guestLecture.lecturesPojo.LectureData;
 import com.nitkkr.techspardha.root.RegisteredEvents.Registered;
+import com.nitkkr.techspardha.root.registerPojo.EventRegister;
 import com.nitkkr.techspardha.root.registerPojo.RegisterData;
 import com.nitkkr.techspardha.root.userPojo.Udata;
+import com.nitkkr.techspardha.Fragments.guestLecture.lecturesPojo.LectureData;
 
 import io.reactivex.Observable;
 import retrofit2.http.Body;
@@ -53,10 +55,24 @@ public interface Interface {
             @Field("email") String email
 
     );
+    @GET("aboutAppDevs")
+    Observable<DevelopersData> getDevelopersData(
+
+    );
 
     @GET("user/eventApp")
     Observable<Registered> getRegisteredEvents(
             @Query("email") String email
+    );
+
+    @PUT("user/eventApp")
+    @FormUrlEncoded
+    Observable<EventRegister> eventregister(
+            @Field("email") String email,
+            @Field("eventName") String eventName,
+            @Field("eventCategory") String Category
+
+
     );
 
 

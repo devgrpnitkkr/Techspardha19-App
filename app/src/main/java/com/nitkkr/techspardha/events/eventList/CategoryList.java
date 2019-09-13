@@ -9,12 +9,14 @@ import io.reactivex.schedulers.Schedulers;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 
 import com.nitkkr.techspardha.retrofit.Interface;
 import com.nitkkr.techspardha.events.categoryPojo.CategoryData;
 import com.nitkkr.techspardha.events.categoryPojo.Data;
 import com.nitkkr.techspardha.R;
 import com.nitkkr.techspardha.retrofit.RetroClient;
+import com.wang.avi.AVLoadingIndicatorView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,6 +28,7 @@ public class CategoryList extends AppCompatActivity {
     CategoryListAdapter adapter;
     Bundle bundle;
     String back;
+    AVLoadingIndicatorView progress;
 
 
 
@@ -35,6 +38,7 @@ public class CategoryList extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_category);
          recyclerView = (RecyclerView) findViewById(R.id.cat_recycler);
+         progress = findViewById(R.id.category_avi);
         getSupportActionBar().setTitle(getIntent().getExtras().getString("eventList"));
 
         try {
@@ -81,6 +85,7 @@ public class CategoryList extends AppCompatActivity {
                     @Override
                     public void onComplete() {
 
+                        progress.setVisibility(View.GONE);
                         ArrayList<Data> eventd = new ArrayList<>();
 
                         for (int i = 0; i < edata.get(0).getData().getEvents().length; i++) {

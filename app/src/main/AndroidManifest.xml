@@ -3,6 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.nitkkr.techspardha">
 
+    <!--
+         The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
+         Google Maps Android API v2, but you must specify either coarse or fine
+         location permissions for the 'MyLocation' functionality.
+    -->
+    <uses-permission android:name="android.permission.CALL_PHONE" />
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -10,18 +16,29 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true"
         tools:replace="android:icon">
-        <activity android:name=".root.RegisteredEvents.Registered_events"></activity>
-        <activity android:name=".events.eventDetail.EventInDetail" /> <!-- android:parentActivityName=".events.eventList.CategoryList"/> -->
+
+
+
+
+        <activity android:name=".Fragments.guestLecture.FragmentGuestLecture" />
+        <activity android:name=".root.RegisteredEvents.Registered_events" />
+        <activity
+            android:name=".drawers.AboutUs.AboutUs"
+            android:parentActivityName=".root.RootActivity" />
+        <activity
+            android:name=".drawers.developers.Developers"
+            android:parentActivityName=".root.RootActivity" />
+        <activity android:name=".events.eventDetail.EventInDetail" />
         <activity
             android:name=".events.eventList.CategoryList"
-            android:parentActivityName=".root.RootActivity" />
+            android:parentActivityName=".root.RootActivity" /> <!-- android:parentActivityName=".events.eventList.CategoryList"/> -->
         <activity android:name=".root.UserLogin" />
         <activity
             android:name=".drawers.LeftDrawerProfile"
             android:parentActivityName=".root.RootActivity" />
         <activity android:name=".root.IntroSlider" />
-        <activity android:name=".Fragments.guestLecture.FragmentGuestLecture" />
         <activity android:name=".Fragments.food.FragmentFood" />
         <activity android:name=".Fragments.sponsership.FragmentSponsership" />
         <activity android:name=".Fragments.home.FragmentEventCategory" />
@@ -33,8 +50,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
     </application>
-
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
 </manifest>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="400dp"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center">
+    <com.nitkkr.techspardha.drawers.AboutUs.MyLinearLayout
+        android:id="@+id/root"
+        android:layout_width="330dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:paddingBottom="60dp"
+        android:weightSum="100"
+        android:background="@android:color/transparent">
+        <TextView
+            android:id="@+id/text"
+            android:layout_weight="5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:textColor="#fff"
+            android:text="AAAAAAAAA" />
+        <ImageView
+            android:id="@+id/aboutus_content"
+            android:layout_weight="95"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:background="@drawable/imageround">
+        </ImageView>
+    </com.nitkkr.techspardha.drawers.AboutUs.MyLinearLayout>
+</LinearLayout>

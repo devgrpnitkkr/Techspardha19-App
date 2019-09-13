@@ -24,6 +24,7 @@ import com.nitkkr.techspardha.events.categoryPojo.Data;
 import com.nitkkr.techspardha.events.eventList.CategoryListAdapter;
 import com.nitkkr.techspardha.retrofit.Interface;
 import com.nitkkr.techspardha.retrofit.RetroClient;
+import com.wang.avi.AVLoadingIndicatorView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,6 +32,7 @@ import java.util.List;
 public class FragmentSponsership extends Fragment {
     RecyclerView recyclerView;
     SponsorshipAdapter adapter;
+    AVLoadingIndicatorView progress;
 
 
 
@@ -38,6 +40,7 @@ public class FragmentSponsership extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.activity_fragment_sponsership,container,false);
+        progress = view.findViewById(R.id.sponsi_avi);
         loadJson();
         recyclerView=(RecyclerView)view.findViewById(R.id.spon_recycler);
         return view;
@@ -78,6 +81,7 @@ public class FragmentSponsership extends Fragment {
                     @Override
                     public void onComplete() {
 
+                        progress.setVisibility(View.GONE);
                         ArrayList<Paisa> paisa=new ArrayList<>();
                         for(int i=0;i<sData.get(0).getData().getPaisa().length;i++){
                             paisa.add(sData.get(0).getData().getPaisa()[i]);

@@ -19,12 +19,14 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.Task;
+import com.nitkkr.techspardha.Database_Internal.DBManager;
 import com.nitkkr.techspardha.R;
 import com.nitkkr.techspardha.events.categoryPojo.CategoryData;
 import com.nitkkr.techspardha.events.categoryPojo.Data;
 import com.nitkkr.techspardha.events.eventList.CategoryListAdapter;
 import com.nitkkr.techspardha.retrofit.Interface;
 import com.nitkkr.techspardha.retrofit.RetroClient;
+import com.nitkkr.techspardha.root.RegisteredEvents.Registered;
 import com.nitkkr.techspardha.root.db.userDataStore;
 import com.nitkkr.techspardha.root.userPojo.Udata;
 
@@ -36,6 +38,11 @@ public class UserLogin extends AppCompatActivity {
     int RC_SIGN_IN = 0;
     SignInButton signInButton;
     GoogleSignInClient mGoogleSignInClient;
+    private List<Registered> edata=new ArrayList<>();
+    private DBManager dbManager;
+
+
+
     String serverClientId = "14707849805-mrniiqiii2i7qufric66dv5jrt71k79i.apps.googleusercontent.com";
 
 
@@ -45,9 +52,7 @@ public class UserLogin extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         getSupportActionBar().hide();
 
-        //Initializing Views
         signInButton = findViewById(R.id.sign_in_button);
-
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
 
                 .requestEmail()
@@ -77,10 +82,8 @@ public class UserLogin extends AppCompatActivity {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        // Result returned from launching the Intent from GoogleSignInClient.getSignInIntent(...);
         if (requestCode == RC_SIGN_IN) {
-            // The Task returned from this call is always completed, no need to attach
-            // a listener.
+
             Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
             handleSignInResult(task);
         }
@@ -89,15 +92,12 @@ public class UserLogin extends AppCompatActivity {
     private void handleSignInResult(Task<GoogleSignInAccount> completedTask) {
         try {
             GoogleSignInAccount account = completedTask.getResult(ApiException.class);
-            // Signed in successfully, show authenticated UI.
-
             LoadJson(account.getIdToken());
 
         } catch (ApiException e) {
-            // The ApiException status code indicates the detailed failure reason.
-            // Please refer to the GoogleSignInStatusCodes class reference for more information.
+
             Log.d("Google Sign In Error", "signInResult:failed code=" + e.getStatusCode());
-            Toast.makeText(UserLogin.this, "Failed", Toast.LENGTH_LONG).show();
+            Toast.makeText(UserLogin.this, "Failed"+e.getStatusCode(), Toast.LENGTH_LONG).show();
         }
     }
 
@@ -108,6 +108,8 @@ public class UserLogin extends AppCompatActivity {
         if(account != null) {
 
             LoadJson(account.getIdToken());
+            startActivity(new Intent(UserLogin.this, RootActivity.class));
+            finish();
         }
 
         super.onStart();
@@ -160,8 +162,12 @@ public class UserLogin extends AppCompatActivity {
 
                         Log.i("succs",lst.get(0).getInformation().getName() );
                         userDataStore userData=userDataStore.getInstance(UserLogin.this);
-                        userData.saveData(lst.get(0),Boolean.valueOf(lst.get(0).getOnBoard()));
-                        Log.i("succs",userData.getData().getInformation().getEmail());
+                        userData.saveData(lst.get(0).getInformation(),lst.get(0).getOnBoard());
+
+                       Log.i("object",userData.getData().getOnBoard());
+                        if(userData.getData().getOnBoard().equals("true")){
+                            LoadEvents(userData.getData().getEmail());
+                        }
 
                         startActivity(new Intent(UserLogin.this, RootActivity.class));
                         finish();
@@ -170,6 +176,63 @@ public class UserLogin extends AppCompatActivity {
                     }
                 });
 
+
+    }
+    public void LoadEvents(final String keyword) {
+
+
+
+        Interface service = RetroClient.getClient().create(Interface.class);
+
+
+        service
+                .getRegisteredEvents(keyword)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<Registered>() {
+
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(Registered categoryData) {
+
+                        Log.i("Code", categoryData.getSuccess());
+                        edata.add(categoryData);
+
+                    }
+
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                        ArrayList<Data> eventd = new ArrayList<>();
+                        dbManager = new DBManager(UserLogin.this);
+                        dbManager.open();
+
+                        for(int i=0;i<edata.get(0).getData().getEvents().length;i++) {
+                            Log.i("data", edata.get(0).getData().getEvents()[i].getEventName());
+                            eventd.add(edata.get(0).getData().getEvents()[i]);
+                            addtoDatabase(edata.get(0).getData().getEvents()[i]);
+                        }
+
+
+
+                    }
+                });
+
+
+    }
+    public void addtoDatabase(Data data){
+
+        dbManager.insert(data.getEventName(),data.getEventCategory(),data.getBanner());
 
     }
 

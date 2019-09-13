@@ -16,6 +16,8 @@ import com.nitkkr.techspardha.retrofit.Interface;
 import com.nitkkr.techspardha.retrofit.RetroClient;
 import com.nitkkr.techspardha.root.db.userDataStore;
 import com.nitkkr.techspardha.root.registerPojo.RegisterData;
+import com.nitkkr.techspardha.root.userPojo.Udata;
+import com.nitkkr.techspardha.root.userPojo.userInfo;
 import com.rengwuxian.materialedittext.MaterialEditText;
 
 import java.util.ArrayList;
@@ -29,7 +31,8 @@ import io.reactivex.schedulers.Schedulers;
 import static com.google.android.gms.common.internal.safeparcel.SafeParcelable.NULL;
 
 public class DetailsDialogue {
-    List<RegisterData> lst=new ArrayList<>();
+    final List<userInfo> lst=new ArrayList<>();
+    Boolean isOnboarded=false;
 
     public void showDialog(final Activity activity, final String email){
 
@@ -47,19 +50,20 @@ public class DetailsDialogue {
         final MaterialEditText year=(MaterialEditText)dialog.findViewById(R.id.year);
 
         Button register = (Button) dialog.findViewById(R.id.register);
+
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+
                 Log.i("details",phone.getText().toString());
 
 
 
                 Interface service = RetroClient.getClient().create(Interface.class);
 
-                if((String.valueOf(phone.getText()) !=NULL)  &&
-                        (String.valueOf(college.getText()) !=NULL) &&
-                        (String.valueOf(branch.getText()) !=NULL) &&
-                        (String.valueOf(year.getText()) !=NULL)) {
+
+
 
 
 
@@ -77,7 +81,7 @@ public class DetailsDialogue {
                                 @Override
                                 public void onNext(RegisterData udata) {
 
-                                    lst.add(udata);
+                                    lst.add(udata.getInformation());
 
                                 }
 
@@ -91,7 +95,15 @@ public class DetailsDialogue {
                                 @Override
                                 public void onComplete() {
 
-                                    Log.i("succs", lst.get(0).getInformation().getCollege());
+
+                                    if (lst.get(0).getOnBoard().equals("true")){
+                                        Log.i("OnCLean", lst.get(0).getOnBoard());
+                                        userDataStore userData=userDataStore.getInstance(activity.getApplicationContext());
+                                        userData.saveData(lst.get(0),"true");
+                                        userData.changeState("true");
+                                        isOnboarded=true;
+                                    }
+
                                     dialog.cancel();
 
                                 }
@@ -104,9 +116,11 @@ public class DetailsDialogue {
 
 
 
-            }
         });
 
         dialog.show();
+    }
+    public boolean getResult(){
+        return isOnboarded;
     }
 }

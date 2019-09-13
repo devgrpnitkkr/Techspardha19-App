@@ -7,6 +7,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
+import io.reactivex.Observer;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -15,6 +19,7 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,17 +27,31 @@ import com.bumptech.glide.Glide;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 //import com.nitkkr.techspardha.FragmentSponsership;
+import com.nitkkr.techspardha.Database_Internal.DBManager;
 import com.nitkkr.techspardha.Fragments.food.FragmentFood;
 import com.nitkkr.techspardha.Fragments.guestLecture.FragmentGuestLecture;
 import com.nitkkr.techspardha.Fragments.home.FragmentEventCategory;
 import com.nitkkr.techspardha.Fragments.sponsership.FragmentSponsership;
+import com.nitkkr.techspardha.drawers.AboutUs.AboutUs;
 import com.nitkkr.techspardha.drawers.LeftDrawerProfile;
 import com.nitkkr.techspardha.R;
+import com.nitkkr.techspardha.events.categoryPojo.Data;
+import com.nitkkr.techspardha.events.eventList.CategoryListAdapter;
+import com.nitkkr.techspardha.retrofit.Interface;
+import com.nitkkr.techspardha.retrofit.RetroClient;
+import com.nitkkr.techspardha.root.RegisteredEvents.Registered;
 import com.nitkkr.techspardha.root.RegisteredEvents.Registered_events;
 import com.nitkkr.techspardha.root.db.userDataStore;
+import com.nitkkr.techspardha.drawers.developers.Developers;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class RootActivity extends AppCompatActivity {
@@ -41,36 +60,38 @@ public class RootActivity extends AppCompatActivity {
 	ActionBarDrawerToggle toggle;
 	private NavigationView navLayout;
     GoogleSignInClient mGoogleSignInClient;
+    LinearLayout logout;
+	Intent intent;
+	private DBManager dbManager;
+	GoogleSignInAccount account;
+	static Boolean noDetail=true;
+
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
-//		if(mGoogleSignInClient.)
-        final GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
-        /*if(account == null) {
+        account = GoogleSignIn.getLastSignedInAccount(this);
+        if(account == null) {
             finish();
             System.exit(0);
-        }*/
+        }
 
-		userDataStore userData=userDataStore.getInstance(this);
-
-		//Log.i("suc",userData.getData().getOnBoard()+" "+userData.getData().getInformation().getCollege());
+		final userDataStore userData=userDataStore.getInstance(this);
 
 
-
-
-		if(!userData.getState()){
+		if(userData.getState().equals("false")&&noDetail){
 			DetailsDialogue detailsDialogue=new DetailsDialogue();
-			detailsDialogue.showDialog(RootActivity.this,userData.getData().getInformation().getEmail());
+			detailsDialogue.showDialog(RootActivity.this,userData.getData().getEmail());
+			noDetail=false;
 		}
 
 
 		drawer = findViewById(R.id.main_drawer_layout);
+        logout = findViewById(R.id.nav_logout);
 		NavigationView navigationView = findViewById(R.id.nav_view);
 		final View navHeader = navigationView.getHeaderView(0);
-//		final View navHeader = navigationView.inflateHeaderView(R.layout.nav_header);
 		ImageView navHeaderPic = navHeader.findViewById(R.id.nav_header_image);
 		TextView name = navHeader.findViewById(R.id.nav_name);
 		Uri personPhoto = account.getPhotoUrl();
@@ -79,13 +100,37 @@ public class RootActivity extends AppCompatActivity {
 		name.setText(account.getDisplayName());
 
 
+		GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+				.requestEmail()
+				.build();
+
+		mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
+
+
 		navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
 			@Override
 			public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
 				switch (menuItem.getItemId()){
 					case R.id.drawer_profile:
-                        Toast.makeText(getApplicationContext(),"clicled",Toast.LENGTH_LONG).show();
-                        Intent intent = new Intent(getApplicationContext(), LeftDrawerProfile.class);
+
+						if(userData.getData().getOnBoard().equals("false")){
+							DetailsDialogue detailsDialogue=new DetailsDialogue();
+							detailsDialogue.showDialog(RootActivity.this,userData.getData().getEmail());
+						}else{
+							intent = new Intent(getApplicationContext(), LeftDrawerProfile.class);
+							startActivity(intent);
+
+						}
+						break;
+
+					case R.id.drawer_developers:
+//						Toast.makeText(getApplicationContext(),"clicled",Toast.LENGTH_LONG).show();
+						intent = new Intent(getApplicationContext(), Developers.class);
+						startActivity(intent);
+						break;
+					case R.id.drawer_aboutus:
+//						Toast.makeText(getApplicationContext(),"clicled",Toast.LENGTH_LONG).show();
+						intent = new Intent(getApplicationContext(), AboutUs.class);
 						startActivity(intent);
 						break;
 					case R.id.drawer_MyEvents:
@@ -110,6 +155,16 @@ public class RootActivity extends AppCompatActivity {
 				new FragmentEventCategory()).commit();
 		getSupportActionBar().setTitle("Home");
 
+		logout.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				dbManager = new DBManager(RootActivity.this);
+				dbManager.open();
+				dbManager.deleteAll();
+				signOut();
+			}
+		});
+
 	}
 
 	@Override
@@ -133,7 +188,7 @@ public class RootActivity extends AppCompatActivity {
 							break;
 						case R.id.nav_sponsi:
 							selectedFragment = new FragmentSponsership();
-							getSupportActionBar().setTitle("Sponsership");
+							getSupportActionBar().setTitle("Sponsors");
 							break;
 						case R.id.nav_food:
 							selectedFragment = new FragmentFood();
@@ -150,8 +205,23 @@ public class RootActivity extends AppCompatActivity {
 
 					return true;
 
-//					return false;
 				}
 			};
+
+	private void signOut() {
+		mGoogleSignInClient.signOut()
+				.addOnCompleteListener(this, new OnCompleteListener<Void>() {
+					@Override
+					public void onComplete(@NonNull Task<Void> task) {
+						Toast.makeText(RootActivity.this,"Successfully signed out",Toast.LENGTH_SHORT).show();
+						startActivity(new Intent(RootActivity.this, UserLogin.class));
+						finish();
+					}
+				});
+	}
+
+
+
+
 
 }

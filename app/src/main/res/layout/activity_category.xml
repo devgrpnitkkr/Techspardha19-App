@@ -15,4 +15,15 @@
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         />
 
+    <com.wang.avi.AVLoadingIndicatorView
+        android:paddingVertical="300dp"
+        android:paddingHorizontal="150dp"
+        android:id="@+id/category_avi"
+        style="@style/AVLoadingIndicatorView.Large"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="visible"
+        app:indicatorColor="#179FEB"
+        app:indicatorName="LineScaleIndicator" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

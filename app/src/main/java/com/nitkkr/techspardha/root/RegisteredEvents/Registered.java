@@ -1,7 +1,6 @@
 package com.nitkkr.techspardha.root.RegisteredEvents;
 
-import com.nitkkr.techspardha.events.categoryPojo.Data;
-import com.nitkkr.techspardha.root.registerPojo.RegisterData;
+
 
 public class Registered {
     private RegisteredEvents_Data data;

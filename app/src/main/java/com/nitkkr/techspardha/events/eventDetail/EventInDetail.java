@@ -1,40 +1,68 @@
 package com.nitkkr.techspardha.events.eventDetail;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cursoradapter.widget.SimpleCursorAdapter;
+import es.dmoral.toasty.Toasty;
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.content.res.ColorStateList;
+import android.database.Cursor;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.Adapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.nitkkr.techspardha.Database_Internal.DBManager;
+import com.nitkkr.techspardha.Database_Internal.DatabaseHelper;
 import com.nitkkr.techspardha.retrofit.Interface;
 import com.nitkkr.techspardha.R;
 import com.nitkkr.techspardha.retrofit.RetroClient;
 import com.nitkkr.techspardha.events.categoryPojo.Data;
 import com.nitkkr.techspardha.events.categoryPojo.EventCategory;
+import com.nitkkr.techspardha.root.DetailsDialogue;
+import com.nitkkr.techspardha.root.RootActivity;
+import com.nitkkr.techspardha.root.UserLogin;
+import com.nitkkr.techspardha.root.db.userDataStore;
+import com.nitkkr.techspardha.root.registerPojo.EventRegister;
+import com.nitkkr.techspardha.root.registerPojo.RegisterData;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+
+import static com.google.android.gms.common.internal.safeparcel.SafeParcelable.NULL;
 
 public class EventInDetail extends AppCompatActivity {
 
-    private List<Data> edata=new ArrayList<>();
     private Adapter adapter;
-    TextView rus;
+    TextView rus, erules, time, evenue, edate, c1, c2;
+    ImageView call1, call2;
     Button register;
+    userDataStore userData;
+    String ename;
+    String onBoarded = "false";
+    ArrayList<String> cordinatorName = new ArrayList<>();
+    ArrayList<String> cordinatorNumber = new ArrayList<>();
+    private List<EventRegister> edata = new ArrayList<>();
+
+    private DBManager dbManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,102 +73,188 @@ public class EventInDetail extends AppCompatActivity {
         setContentView(R.layout.activity_event_in_detail);
         getSupportActionBar().hide();
 
-        rus=(TextView)findViewById(R.id.description);
-        Intent intent=getIntent();
-        Data cust=(Data) intent.getSerializableExtra("Obj");
 
-        String desc=cust.getDescription();
-        String etime=cust.getEndTime();
-        String stime=cust.getStartTime();
-        String ename=cust.getEventName();
+        rus = (TextView) findViewById(R.id.description);
+        erules = (TextView) findViewById(R.id.rules);
+        time = (TextView) findViewById(R.id.time_event);
+        evenue = (TextView) findViewById(R.id.venue);
+        edate = (TextView) findViewById(R.id.date);
+        c1 = (TextView) findViewById(R.id.name1);
+        c2 = (TextView) findViewById(R.id.name2);
+        call1 = (ImageView) findViewById(R.id.phone1);
+        call2 = (ImageView) findViewById(R.id.phone2);
 
-        String rules="";
 
-        for(int i=0;cust.getRules()!=null && i<cust.getRules().length;i++){
-            rules=rules+cust.getRules()[i]+"\n";
+        Intent intent = getIntent();
+        final Data cust = (Data) intent.getSerializableExtra("Obj");
+
+
+        String desc = cust.getDescription();
+        String etime = cust.getEndTime();
+        String stime = cust.getStartTime();
+
+        for (int i = 0; i < cust.getCoordinators().length; i++) {
+            cordinatorName.add(cust.getCoordinators()[i].getCoordinator_name());
+            cordinatorNumber.add(cust.getCoordinators()[i].getCoordinator_number());
         }
-        String c1=cust.getCoordinators()[0].getCoordinator_name();
-        String c1n=cust.getCoordinators()[0].getCoordinator_number();
 
-        String c2=cust.getCoordinators()[1].getCoordinator_name();
-        String c2n=cust.getCoordinators()[1].getCoordinator_number();
+        c1.setText(cordinatorName.get(0));
+        if (cordinatorNumber.size() > 1) {
+            c2.setText(cordinatorName.get(1));
+        }
+
+
+        call1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("+91" + cordinatorNumber.get(0)));
+                if (checkSelfPermission(Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+                    return;
+                }
+                startActivity(intent);
+            }
+        });
+        if (cordinatorNumber.size() > 1) {
+            call2.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("+91" + cordinatorNumber.get(1)));
+                    if (checkSelfPermission(Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+                        return;
+                    }
+                    startActivity(intent);
+                }
+            });
+        }
+
+
+
+
+        ename=cust.getEventName();
+
+        String rules = "";
+
+        for (int i = 0; cust.getRules() != null && i < cust.getRules().length; i++) {
+            rules = rules + cust.getRules()[i] + "\n";
+        }
+        erules.setText(rules);
+
         rus.setText(desc);
+
+
+        edate.setText(getDate(stime));
+        time.setText(getDate(etime));
+        evenue.setText(cust.getVenue());
+
+
+
+
+
+
+
+
         CollapsingToolbarLayout collapsingToolbar = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
         collapsingToolbar.setTitle(cust.getEventName());
         collapsingToolbar.setExpandedTitleTextColor(ColorStateList.valueOf(Color.WHITE));
         collapsingToolbar.setCollapsedTitleTextColor(Color.BLACK);
 
-        register=(Button)findViewById(R.id.register);
+        register = (Button) findViewById(R.id.register);
 
-        register.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        dbManager = new DBManager(this);
+        dbManager.open();
+
+        userData=userDataStore.getInstance(EventInDetail.this);
+        onBoarded=userData.getData().getOnBoard();
+
+        Log.i("use",userData.getData().getOnBoard());
+
+        if ((dbManager.ifNumberExists(cust.getEventName()))) {
+           setRegisterButton();
+        } else {
+            register.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if(onBoarded.equals("true")){
+                        LoadJson(userData.getData().getEmail(),cust.getEventName(),cust.getEventCategory());
+
+                    }else{
+                        DetailsDialogue detailsDialogue=new DetailsDialogue();
+                        detailsDialogue.showDialog(EventInDetail.this,userData.getData().getEmail());
 
 
-            }
-        });
+                        if(detailsDialogue.getResult()){
+                        setRegisterButton();
+                    }
+                }
 
+                }
+            });
 
-
+        }
 
 
     }
 
 
-    public void Register(){
-        DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference("users").child("007vy8080@gmail,com");
 
-
-
-
-    }
-
-
-
-
-
-
-    public void LoadJson(final String keyword,final String ename) {
-
+    public void LoadJson(final String email,final String eventName,final  String Category) {
 
         Interface service = RetroClient.getClient().create(Interface.class);
 
 
-        service.getData(keyword,ename)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<EventCategory>() {
-
-                    @Override
-                    public void onSubscribe(Disposable d) {
-
-                    }
-
-                    @Override
-                    public void onNext(EventCategory eventCategory) {
 
 
-                    }
+            Log.i("json","called");
+            service
+                    .eventregister(email,eventName,Category)
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(new Observer<EventRegister>() {
 
+                        @Override
+                        public void onSubscribe(Disposable d) {
 
-                    @Override
-                    public void onError(Throwable e) {
-
-                    }
-
-                    @Override
-                    public void onComplete() {
-
-                        int n=edata.get(0).getRules().length;
-
-                        for(int i=0;i<n;i++){
-                            Log.i("Value",edata.get(0).getRules()[i]);
                         }
 
+                        @Override
+                        public void onNext(EventRegister udata) {
 
+                           edata.add(udata);
+
+                        }
+
+                        @Override
+                        public void onError(Throwable e) {
+
+                            Log.i("jsone", e.getMessage());
+
+                        }
+
+                        @Override
+                        public void onComplete() {
+
+                            Log.i("status",edata.get(0).getSuccess());
+                        if(edata.get(0).getSuccess().equals("true")){
+                            Toasty.success(getApplicationContext(), edata.get(0).getStatus(), Toast.LENGTH_SHORT, true).show();
+                            setRegisterButton();
+                        }else{
+                            Toasty.error(getApplicationContext(), "Try Again", Toast.LENGTH_SHORT, true).show();
+
+                        }
                     }
-                });
+        });
 
+    }
 
+    public void setRegisterButton(){
+        register.setText("Registered for "+ename+"!");
+        register.setClickable(false);
+
+    }
+    public String getDate(String ms){
+        Long ls=Long.parseLong(ms);
+        Date date=new  Date(ls);
+        SimpleDateFormat dateformat = new SimpleDateFormat("MMM dd, yyyy HH:mm");
+        return dateformat.format(date);
     }
 }
