@@ -1,16 +1,12 @@
-package com.nitkkr.techspardha.events.categoryPojo;
+package com.nitkkr.techspardha.Pojo;
 
-import java.io.Serializable;
-
-public class Data implements Serializable
+    public class Data
     {
         private String venue;
 
         private String file;
 
         private String eventCategory;
-
-        private String banner;
 
         private Coordinators[] coordinators;
 
@@ -126,12 +122,6 @@ public class Data implements Serializable
             this.endTime = endTime;
         }
 
-        public String getBanner() {
-            return banner;
-        }
 
-        public void setBanner(String banner) {
-            this.banner = banner;
-        }
     }
 

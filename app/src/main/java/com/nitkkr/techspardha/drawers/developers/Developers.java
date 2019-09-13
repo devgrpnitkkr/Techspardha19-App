@@ -66,6 +66,7 @@ public class Developers extends AppCompatActivity {
         i3 = findViewById(R.id.dev_img3);
         i4 = findViewById(R.id.dev_img4);
         i5 = findViewById(R.id.dev_img5);
+
         LoadJson();
 
     }
@@ -105,6 +106,13 @@ public class Developers extends AppCompatActivity {
                     public void onComplete() {
 
                         progress.setVisibility(View.INVISIBLE);
+
+                        i0.setVisibility(View.VISIBLE);
+                        i1.setVisibility(View.VISIBLE);
+                        i2.setVisibility(View.VISIBLE);
+                        i3.setVisibility(View.VISIBLE);
+                        i4.setVisibility(View.VISIBLE);
+                        i5.setVisibility(View.VISIBLE);
 
                         Glide.with(getApplicationContext()).load(DeveloperD.getData().getInformation()[0].getImageUrl()).into(i0);
                         Glide.with(getApplicationContext()).load(DeveloperD.getData().getInformation()[1].getImageUrl()).into(i1);

@@ -7,6 +7,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
+import io.reactivex.Observer;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -29,6 +33,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 //import com.nitkkr.techspardha.FragmentSponsership;
+import com.nitkkr.techspardha.Database_Internal.DBManager;
 import com.nitkkr.techspardha.Fragments.food.FragmentFood;
 import com.nitkkr.techspardha.Fragments.guestLecture.FragmentGuestLecture;
 import com.nitkkr.techspardha.Fragments.home.FragmentEventCategory;
@@ -36,7 +41,17 @@ import com.nitkkr.techspardha.Fragments.sponsership.FragmentSponsership;
 import com.nitkkr.techspardha.drawers.AboutUs.AboutUs;
 import com.nitkkr.techspardha.drawers.LeftDrawerProfile;
 import com.nitkkr.techspardha.R;
+import com.nitkkr.techspardha.events.categoryPojo.Data;
+import com.nitkkr.techspardha.events.eventList.CategoryListAdapter;
+import com.nitkkr.techspardha.retrofit.Interface;
+import com.nitkkr.techspardha.retrofit.RetroClient;
+import com.nitkkr.techspardha.root.RegisteredEvents.Registered;
+import com.nitkkr.techspardha.root.RegisteredEvents.Registered_events;
+import com.nitkkr.techspardha.root.db.userDataStore;
 import com.nitkkr.techspardha.drawers.developers.Developers;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class RootActivity extends AppCompatActivity {
@@ -46,24 +61,37 @@ public class RootActivity extends AppCompatActivity {
 	private NavigationView navLayout;
     GoogleSignInClient mGoogleSignInClient;
     LinearLayout logout;
+	Intent intent;
+	private DBManager dbManager;
+	GoogleSignInAccount account;
+	static Boolean noDetail=true;
+
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
-//		if(mGoogleSignInClient.)
-        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
+        account = GoogleSignIn.getLastSignedInAccount(this);
         if(account == null) {
             finish();
             System.exit(0);
         }
 
+		final userDataStore userData=userDataStore.getInstance(this);
+
+
+		if(userData.getState().equals("false")&&noDetail){
+			DetailsDialogue detailsDialogue=new DetailsDialogue();
+			detailsDialogue.showDialog(RootActivity.this,userData.getData().getEmail());
+			noDetail=false;
+		}
+
+
 		drawer = findViewById(R.id.main_drawer_layout);
         logout = findViewById(R.id.nav_logout);
 		NavigationView navigationView = findViewById(R.id.nav_view);
 		final View navHeader = navigationView.getHeaderView(0);
-//		final View navHeader = navigationView.inflateHeaderView(R.layout.nav_header);
 		ImageView navHeaderPic = navHeader.findViewById(R.id.nav_header_image);
 		TextView name = navHeader.findViewById(R.id.nav_name);
 		Uri personPhoto = account.getPhotoUrl();
@@ -71,13 +99,11 @@ public class RootActivity extends AppCompatActivity {
 		Glide.with(this).load(personPhoto).into(navHeaderPic);
 		name.setText(account.getDisplayName());
 
-		// Configure sign-in to request the user's ID, email address, and basic
-		// profile. ID and basic profile are included in DEFAULT_SIGN_IN.
+
 		GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
 				.requestEmail()
 				.build();
 
-		// Build a GoogleSignInClient with the options specified by gso.
 		mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
 
 
@@ -86,10 +112,17 @@ public class RootActivity extends AppCompatActivity {
 			public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
 				switch (menuItem.getItemId()){
 					case R.id.drawer_profile:
-//                        Toast.makeText(getApplicationContext(),"clicled",Toast.LENGTH_LONG).show();
-						Intent intent = new Intent(getApplicationContext(), LeftDrawerProfile.class);
-						startActivity(intent);
+
+						if(userData.getData().getOnBoard().equals("false")){
+							DetailsDialogue detailsDialogue=new DetailsDialogue();
+							detailsDialogue.showDialog(RootActivity.this,userData.getData().getEmail());
+						}else{
+							intent = new Intent(getApplicationContext(), LeftDrawerProfile.class);
+							startActivity(intent);
+
+						}
 						break;
+
 					case R.id.drawer_developers:
 //						Toast.makeText(getApplicationContext(),"clicled",Toast.LENGTH_LONG).show();
 						intent = new Intent(getApplicationContext(), Developers.class);
@@ -100,9 +133,10 @@ public class RootActivity extends AppCompatActivity {
 						intent = new Intent(getApplicationContext(), AboutUs.class);
 						startActivity(intent);
 						break;
-//					case R.id.drawer_MyEvents:
-//						getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-//								UpdateProfile).commit();
+					case R.id.drawer_MyEvents:
+						Intent i=new Intent(RootActivity.this, Registered_events.class);
+						i.putExtra("email",account.getEmail());
+						startActivity(i);
 				}
 				drawer.closeDrawer(GravityCompat.START);
 				return true;
@@ -124,6 +158,9 @@ public class RootActivity extends AppCompatActivity {
 		logout.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
+				dbManager = new DBManager(RootActivity.this);
+				dbManager.open();
+				dbManager.deleteAll();
 				signOut();
 			}
 		});
@@ -168,9 +205,9 @@ public class RootActivity extends AppCompatActivity {
 
 					return true;
 
-//					return false;
 				}
 			};
+
 	private void signOut() {
 		mGoogleSignInClient.signOut()
 				.addOnCompleteListener(this, new OnCompleteListener<Void>() {
@@ -182,4 +219,9 @@ public class RootActivity extends AppCompatActivity {
 					}
 				});
 	}
+
+
+
+
+
 }

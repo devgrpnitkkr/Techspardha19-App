@@ -37,6 +37,11 @@ import com.yarolegovich.discretescrollview.transform.Pivot;
 import com.yarolegovich.discretescrollview.transform.ScaleTransformer;
 import com.yarolegovich.discretescrollview.util.ScrollListenerAdapter;
 
+import com.yarolegovich.discretescrollview.InfiniteScrollAdapter;
+import com.yarolegovich.discretescrollview.transform.Pivot;
+import com.yarolegovich.discretescrollview.transform.ScaleTransformer;
+import com.yarolegovich.discretescrollview.util.ScrollListenerAdapter;
+
 import java.util.ArrayList;
 import java.util.List;
 

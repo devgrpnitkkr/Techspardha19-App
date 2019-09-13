@@ -8,6 +8,7 @@
     <string name="navigation_drawer_close">close</string>
 
 
+    <string name="title_activity_maps">Map</string>
     <string-array name="Categories">
         <item>Astronomy</item>
         <item>Design</item>

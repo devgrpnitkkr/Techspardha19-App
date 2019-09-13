@@ -1,15 +1,14 @@
-package com.nitkkr.techspardha.events.eventList;
+package com.nitkkr.techspardha.Category;
 
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
-import com.nitkkr.techspardha.events.eventDetail.EventInDetail;
-import com.nitkkr.techspardha.events.categoryPojo.Data;
+import com.nitkkr.techspardha.Pojo.Data;
 import com.nitkkr.techspardha.R;
 
 import java.util.ArrayList;
@@ -17,11 +16,11 @@ import java.util.ArrayList;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class CategoryListAdapter extends RecyclerView.Adapter<CategoryListAdapter.ViewHolder> {
+public class CatAdapter extends RecyclerView.Adapter<CatAdapter.ViewHolder> {
 
     ArrayList<Data> list;
 
-    public CategoryListAdapter(ArrayList<Data> list){
+    public CatAdapter(ArrayList<Data> list){
         this.list=list;
     }
 
@@ -40,15 +39,9 @@ public class CategoryListAdapter extends RecyclerView.Adapter<CategoryListAdapte
 
         holder.name.setText(myListData.getEventName());
 
-        //Glide.with().load(myListData.getBanner()).into(holder.img);
-
-
         holder.img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(view.getContext(), EventInDetail.class);
-                intent.putExtra("Obj",myListData);
-                view.getContext().startActivity(intent);
 
             }
         });

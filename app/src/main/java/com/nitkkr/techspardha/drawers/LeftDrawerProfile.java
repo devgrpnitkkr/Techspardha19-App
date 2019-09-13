@@ -3,10 +3,15 @@ package com.nitkkr.techspardha.drawers;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NavUtils;
+import io.reactivex.Observer;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
 
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -16,22 +21,28 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.google.android.gms.auth.api.signin.GoogleSignIn;
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
-import com.google.android.gms.auth.api.signin.GoogleSignInClient;
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.nitkkr.techspardha.R;
-import com.nitkkr.techspardha.root.UserLogin;
+import com.nitkkr.techspardha.retrofit.Interface;
+import com.nitkkr.techspardha.retrofit.RetroClient;
+import com.nitkkr.techspardha.root.DetailsDialogue;
+import com.nitkkr.techspardha.root.db.userDataStore;
+import com.nitkkr.techspardha.root.userPojo.Udata;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static com.google.android.gms.common.internal.safeparcel.SafeParcelable.NULL;
 
 public class LeftDrawerProfile extends AppCompatActivity {
 
-    GoogleSignInClient mGoogleSignInClient;
-    Button sign_out;
     TextView nameTV;
     TextView emailTV;
+    TextView phone;
+    TextView college;
+    TextView branch;
+    TextView year;
     ImageView photoIV;
+    userDataStore userData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,48 +50,102 @@ public class LeftDrawerProfile extends AppCompatActivity {
         setContentView(R.layout.activity_profile);
 
         getSupportActionBar().setTitle("Profile");
-
-        sign_out = findViewById(R.id.logout);
+        userData=userDataStore.getInstance(this);
         nameTV = findViewById(R.id.name);
         emailTV = findViewById(R.id.email);
         photoIV = findViewById(R.id.pic);
+        phone=findViewById(R.id.phone);
+        college=findViewById(R.id.college);
+        branch=findViewById(R.id.branch);
+        year=findViewById(R.id.year);
 
-        // Configure sign-in to request the user's ID, email address, and basic
-        // profile. ID and basic profile are included in DEFAULT_SIGN_IN.
-        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestEmail()
-                .build();
+        if(userData.getState().equals("false")){
+            DetailsDialogue detailsDialogue=new DetailsDialogue();
+            detailsDialogue.showDialog(LeftDrawerProfile.this,userData.getData().getEmail());
 
-        // Build a GoogleSignInClient with the options specified by gso.
-        mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
-
-        GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(LeftDrawerProfile.this);
-        if (acct != null) {
-            String personName = acct.getDisplayName();
-            String personEmail = acct.getEmail();
-            Uri personPhoto = acct.getPhotoUrl();
-            nameTV.setText(personName);
-            emailTV.setText(personEmail);
-            Glide.with(this).load(personPhoto).into(photoIV);
+            Log.i("dial","dklsmd");
+            LoadJson(userData.getData().getEmail());
+        }else{
+            setData(userData);
         }
 
-        sign_out.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                signOut();
-            }
-        });
+        Log.i("getEmail",userData.getData().getOnBoard());
+
     }
 
-    private void signOut() {
-        mGoogleSignInClient.signOut()
-                .addOnCompleteListener(this, new OnCompleteListener<Void>() {
+    public void LoadJson(final String keyword) {
+
+        final List<Udata> lst=new ArrayList<>();
+
+
+        Interface service = RetroClient.getClient().create(Interface.class);
+
+
+        service
+                .getData(keyword)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<Udata>() {
+
                     @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        Toast.makeText(LeftDrawerProfile.this,"Successfully signed out",Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(LeftDrawerProfile.this, UserLogin.class));
-                        finish();
+                    public void onSubscribe(Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(Udata udata) {
+
+                        lst.add(udata);
+
+
+                    }
+
+
+                    @Override
+                    public void onError(Throwable e) {
+                        Log.i("Code", e.getMessage());
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                        Log.i("userD",lst.get(0).getInformation().getOnBoard() );
+                        userDataStore user=userDataStore.getInstance(LeftDrawerProfile.this);
+                        user.saveData(lst.get(0).getInformation(),lst.get(0).getOnBoard());
+                        setData(user);
+
+
                     }
                 });
+
+
     }
+
+    public void setData(userDataStore Data){
+        if(Data.getData().getName()!=NULL){
+            nameTV.setText(Data.getData().getName());
+        }
+        if(Data.getData().getEmail()!=NULL){
+            emailTV.setText(Data.getData().getEmail());
+        }
+        if(Data.getData().getPhone()!=NULL){
+            phone.setText(Data.getData().getPhone());
+        }
+        if(Data.getData().getCollege()!=NULL){
+            college.setText(Data.getData().getCollege());
+        }
+        if(Data.getData().getYear()!=NULL){
+            year.setText(Data.getData().getYear());
+        }
+        if (Data.getData().getPicture()!=NULL){
+            Glide.with(this)
+                    .load(Data.getData().getPicture())
+                    .into(photoIV);
+        }
+
+
+    }
+
+
 }
