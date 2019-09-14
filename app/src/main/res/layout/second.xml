@@ -9,8 +9,8 @@
         android:layout_height="wrap_content"
         android:text="second"
         android:textColor="@color/dot_light_screen2"
-        android:textSize="30dp"
+        android:textSize="30sp"
         android:textStyle="bold"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="32dp" />
+        android:layout_marginTop="32sp" />
 </RelativeLayout>

@@ -9,9 +9,9 @@
         android:layout_height="wrap_content"
         android:text="Forth"
         android:textColor="#a854d4"
-        android:textSize="30dp"
+        android:textSize="30sp"
         android:textStyle="bold"
 
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="32dp" />
+        android:layout_marginTop="32sp" />
 </RelativeLayout>

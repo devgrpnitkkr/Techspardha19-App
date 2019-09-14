@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#101111"
-        android:padding="8dp">
+        android:padding="8sp">
 
         <TextView
             android:id="@+id/titlesponsi"
@@ -40,7 +40,7 @@
                 android:id="@+id/imgspon"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="12sp"
                 android:layout_weight="0.25"
                 android:cropToPadding="true"
                 android:src="@drawable/imgcat"
@@ -56,7 +56,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/edittextround"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="12sp"
                 android:layout_weight="0.25"
                 android:cropToPadding="true"
                 android:src="@drawable/imgcat"
@@ -72,7 +72,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/edittextround"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="12sp"
                 android:layout_weight="0.25"
                 android:cropToPadding="true"
                 android:src="@drawable/imgcat"
@@ -88,7 +88,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/edittextround"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="12sp"
                 android:layout_weight="0.25"
                 android:cropToPadding="true"
 

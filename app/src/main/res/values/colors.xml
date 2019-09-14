@@ -16,6 +16,12 @@
     <color name="dot_light_screen5">#ED4591</color>
 
     <color name="icon_color" >#179FEB</color>
+    <color name="detail_head">#E4FFBB</color>
+    <color name="background">#101111</color>
+
+    <color name="txt_color">#fff</color>
+    <color name="loading">#179FEB</color>
+    <color name="register_button">#03A9F4</color>
 
 <!--    <color name="icon_color2" >#fff</color>-->
 

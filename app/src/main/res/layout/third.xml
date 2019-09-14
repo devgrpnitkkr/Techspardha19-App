@@ -12,12 +12,12 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="155dp"
-        android:layout_marginTop="69dp"
-        android:layout_marginEnd="179dp"
-        android:layout_marginBottom="608dp"
+        android:layout_marginStart="155sp"
+        android:layout_marginTop="69sp"
+        android:layout_marginEnd="179sp"
+        android:layout_marginBottom="608sp"
         android:text="Third"
         android:textColor="#2278d4"
-        android:textSize="30dp"
+        android:textSize="30sp"
         android:textStyle="bold" />
 </RelativeLayout>

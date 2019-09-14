@@ -10,9 +10,9 @@
     <LinearLayout
         android:id="@+id/layoutBars"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="60sp"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="51dp"
+        android:layout_marginBottom="51sp"
         android:gravity="center"
         android:orientation="horizontal">
     </LinearLayout>
@@ -23,14 +23,14 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="134dp"
-        android:layout_marginBottom="0dp"
+        android:layout_marginEnd="134sp"
+        android:layout_marginBottom="0sp"
         android:background="@null"
         android:textColor="@color/dot_light_screen1"
-        android:textSize="20dp" />
+        android:textSize="20sp" />
     <View
         android:layout_width="match_parent"
-        android:layout_height="1dp"
+        android:layout_height="1sp"
         android:alpha=".4"
         android:background="@android:color/white"
         android:layout_above="@+id/next"
@@ -41,9 +41,9 @@
         android:layout_height="wrap_content"
         android:background="@null"
         android:text="Skip"
-        android:textSize="20dp"
+        android:textSize="20sp"
         android:textColor="#7efaea"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="34dp" />
+        android:layout_marginTop="34sp" />
 </RelativeLayout>

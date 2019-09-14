@@ -19,8 +19,8 @@
             app:met_textColorHint="#fff"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="15dp"
+            android:layout_marginStart="10sp"
+            android:layout_marginTop="15sp"
             android:hint="Mobile no"
             android:inputType="number"
             android:textAllCaps="true"
@@ -32,8 +32,8 @@
             android:layout_width="match_parent"
             app:met_textColorHint="#fff"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="15dp"
+            android:layout_marginStart="10sp"
+            android:layout_marginTop="15sp"
             android:hint="College"
             android:inputType="text"
             android:textColor="#fff"
@@ -47,8 +47,8 @@
             android:layout_below="@id/college"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="15dp"
+            android:layout_marginStart="10sp"
+            android:layout_marginTop="15sp"
             android:hint="Year"
             android:textColor="#fff"
             android:inputType="number"
@@ -66,13 +66,13 @@
             android:id="@+id/register"/>
 
         <TextView
-            android:layout_marginVertical="5dp"
+            android:layout_marginVertical="5sp"
             android:layout_below="@id/register"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="#8B0000"
             android:gravity="center"
-            android:textSize="15dp"
+            android:textSize="15sp"
             android:text="* You can add your details only once."
             />
 
