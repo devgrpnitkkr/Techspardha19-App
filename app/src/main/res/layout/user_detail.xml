@@ -13,51 +13,192 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <com.rengwuxian.materialedittext.MaterialEditText
-            android:id="@+id/mobile"
-            android:textColor="#fff"
-            app:met_textColorHint="#fff"
+        <RelativeLayout
+            android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10sp"
-            android:layout_marginTop="15sp"
-            android:hint="Mobile no"
-            android:inputType="number"
-            android:textAllCaps="true"
-            app:met_floatingLabel="normal" />
+            android:id="@+id/layout_mobile"
+            android:orientation="vertical">
 
-        <com.rengwuxian.materialedittext.MaterialEditText
-            android:id="@+id/college"
-            android:layout_below="@id/mobile"
+
+            <LinearLayout
+                android:id="@+id/input_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:orientation="vertical"
+                android:background="@drawable/edittextround">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="40dp"
+                    android:includeFontPadding="false"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:visibility="invisible" />
+
+                <EditText
+                    android:id="@+id/mobile"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="10dp"
+                    android:textColor="#fff"
+                    android:maxLines="1"
+                    android:background="@android:color/transparent" />
+
+            </LinearLayout>
+
+            <View
+                android:id="@+id/view"
+                android:layout_width="match_parent"
+                android:layout_height="40dp" />
+
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:layout_alignBottom="@+id/view"
+                android:background="#000"
+                android:includeFontPadding="false"
+                android:paddingBottom="10dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:text="Mobile no."
+                android:textColor="#179FEB"
+                android:textAppearance="@android:style/TextAppearance.Medium" />
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:layout_marginTop="10dp"
+            android:layout_below="@id/layout_mobile"
             android:layout_width="match_parent"
-            app:met_textColorHint="#fff"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10sp"
-            android:layout_marginTop="15sp"
-            android:hint="College"
-            android:inputType="text"
-            android:textColor="#fff"
-            android:textAllCaps="true"
-            app:met_floatingLabel="normal" />
+            android:id="@+id/layout_college"
+            android:orientation="vertical">
 
 
-        <com.rengwuxian.materialedittext.MaterialEditText
-            android:id="@+id/year"
-            app:met_textColorHint="#fff"
-            android:layout_below="@id/college"
+            <LinearLayout
+                android:id="@+id/input_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:orientation="vertical"
+                android:background="@drawable/edittextround">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="40dp"
+                    android:includeFontPadding="false"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:visibility="invisible" />
+
+                <EditText
+                    android:id="@+id/college"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="10dp"
+                    android:textColor="#fff"
+                    android:maxLines="1"
+                    android:background="@android:color/transparent" />
+
+            </LinearLayout>
+
+            <View
+                android:id="@+id/view"
+                android:layout_width="match_parent"
+                android:layout_height="40dp" />
+
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:layout_alignBottom="@+id/view"
+                android:background="#000"
+                android:includeFontPadding="false"
+                android:paddingBottom="10dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:text="College"
+                android:textColor="#179FEB"
+                android:textAppearance="@android:style/TextAppearance.Medium" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_marginTop="10dp"
+            android:layout_below="@id/layout_college"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10sp"
-            android:layout_marginTop="15sp"
-            android:hint="Year"
-            android:textColor="#fff"
-            android:inputType="number"
-            android:textAllCaps="true"
-            app:met_floatingLabel="normal" />
+            android:id="@+id/layout_year"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:id="@+id/input_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:orientation="vertical"
+                android:background="@drawable/edittextround">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="40dp"
+                    android:includeFontPadding="false"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:visibility="invisible" />
+
+                <EditText
+                    android:id="@+id/year"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="10dp"
+                    android:textColor="#fff"
+                    android:maxLines="1"
+                    android:background="@android:color/transparent" />
+
+            </LinearLayout>
+
+            <View
+                android:id="@+id/view"
+                android:layout_width="match_parent"
+                android:layout_height="40dp" />
+
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:layout_alignBottom="@+id/view"
+                android:background="#000"
+                android:includeFontPadding="false"
+                android:paddingBottom="10dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:text="Year"
+                android:textColor="#179FEB"
+                android:textAppearance="@android:style/TextAppearance.Medium" />
+        </RelativeLayout>
 
 
         <Button
-            android:layout_below="@id/year"
+            android:layout_below="@id/layout_year"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Register"
@@ -66,13 +207,14 @@
             android:id="@+id/register"/>
 
         <TextView
-            android:layout_marginVertical="5sp"
+            android:layout_marginVertical="5dp"
             android:layout_below="@id/register"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="#8B0000"
             android:gravity="center"
-            android:textSize="15sp"
+            android:textStyle="bold"
+            android:textSize="15dp"
             android:text="* You can add your details only once."
             />
 
