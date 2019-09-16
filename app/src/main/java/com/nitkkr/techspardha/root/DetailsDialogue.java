@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.EditText;
 
 import com.nitkkr.techspardha.R;
 import com.nitkkr.techspardha.retrofit.Interface;
@@ -44,9 +45,9 @@ public class DetailsDialogue {
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
 
 
-        final MaterialEditText phone=(MaterialEditText)dialog.findViewById(R.id.mobile);
-        final MaterialEditText college=(MaterialEditText)dialog.findViewById(R.id.college);
-        final MaterialEditText year=(MaterialEditText)dialog.findViewById(R.id.year);
+        final EditText phone=(EditText) dialog.findViewById(R.id.mobile);
+        final EditText college=(EditText)dialog.findViewById(R.id.college);
+        final EditText year=(EditText)dialog.findViewById(R.id.year);
 
         Button register = (Button) dialog.findViewById(R.id.register);
 

@@ -36,11 +36,13 @@ import com.google.android.material.navigation.NavigationView;
 import com.nitkkr.techspardha.Database_Internal.DBManager;
 import com.nitkkr.techspardha.Fragments.food.FragmentFood;
 import com.nitkkr.techspardha.Fragments.guestLecture.FragmentGuestLecture;
+import com.nitkkr.techspardha.Fragments.guestLecture.GuestLecture2;
 import com.nitkkr.techspardha.Fragments.home.FragmentEventCategory;
 import com.nitkkr.techspardha.Fragments.sponsership.FragmentSponsership;
 import com.nitkkr.techspardha.drawers.AboutUs.AboutUs;
 import com.nitkkr.techspardha.drawers.LeftDrawerProfile;
 import com.nitkkr.techspardha.R;
+import com.nitkkr.techspardha.drawers.TeamTech.Team_Techsparsha;
 import com.nitkkr.techspardha.events.categoryPojo.Data;
 import com.nitkkr.techspardha.events.eventList.CategoryListAdapter;
 import com.nitkkr.techspardha.retrofit.Interface;
@@ -133,6 +135,11 @@ public class RootActivity extends AppCompatActivity {
 						intent = new Intent(getApplicationContext(), AboutUs.class);
 						startActivity(intent);
 						break;
+					case R.id.drawer_teamtechspardha:
+//						Toast.makeText(getApplicationContext(),"clicled",Toast.LENGTH_LONG).show();
+						intent = new Intent(getApplicationContext(), Team_Techsparsha.class);
+						startActivity(intent);
+						break;
 					case R.id.drawer_MyEvents:
 						Intent i=new Intent(RootActivity.this, Registered_events.class);
 						i.putExtra("email",account.getEmail());
@@ -195,7 +202,7 @@ public class RootActivity extends AppCompatActivity {
 							getSupportActionBar().setTitle("Food");
 							break;
 						case R.id.nav_GL:
-							selectedFragment = new FragmentGuestLecture();
+							selectedFragment = new GuestLecture2();
 							getSupportActionBar().setTitle("Guest Lecture");
 							break;
 					}

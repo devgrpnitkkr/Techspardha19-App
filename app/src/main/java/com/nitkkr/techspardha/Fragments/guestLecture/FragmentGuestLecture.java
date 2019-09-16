@@ -109,6 +109,7 @@ public class FragmentGuestLecture extends Fragment {
         super.onCreateOptionsMenu(menu, inflater);
     }
 
+
     public void LoadJson() {
 
 
