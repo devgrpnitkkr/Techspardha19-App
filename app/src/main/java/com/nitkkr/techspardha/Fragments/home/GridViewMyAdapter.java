@@ -19,9 +19,9 @@ public class GridViewMyAdapter extends FitGridAdapter {
 
 
     private int[] drawables = {
-            R.drawable.deafultpic,R.drawable.deafultpic,R.drawable.deafultpic,R.drawable.deafultpic,
-            R.drawable.deafultpic,R.drawable.deafultpic,R.drawable.deafultpic,R.drawable.deafultpic,
-            R.drawable.deafultpic,R.drawable.deafultpic,R.drawable.deafultpic,R.drawable.deafultpic};
+            R.drawable.astronomy,R.drawable.design,R.drawable.informals,R.drawable.programming,
+            R.drawable.m,R.drawable.onlineevents,R.drawable.papyrusvitae,R.drawable.quizzes,
+            R.drawable.robotics ,R.drawable.deafultpic,R.drawable.deafultpic,R.drawable.deafultpic};
 
     public Context context;
 
