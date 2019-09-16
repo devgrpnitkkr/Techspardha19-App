@@ -14,7 +14,8 @@
         tools:replace="android:icon">
         <activity android:name=".drawers.TeamTech.Team_Techsparsha"></activity>
         <activity android:name=".Fragments.guestLecture.FragmentGuestLecture" />
-        <activity android:name=".root.RegisteredEvents.Registered_events" />
+        <activity android:name=".root.RegisteredEvents.Registered_events"
+            android:parentActivityName=".root.RootActivity"/>
         <activity
             android:name=".drawers.AboutUs.AboutUs"
             android:parentActivityName=".root.RootActivity" />

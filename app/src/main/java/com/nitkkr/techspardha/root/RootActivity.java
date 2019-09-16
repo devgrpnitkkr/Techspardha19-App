@@ -7,6 +7,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
+
+import es.dmoral.toasty.Toasty;
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
@@ -116,6 +118,7 @@ public class RootActivity extends AppCompatActivity {
 					case R.id.drawer_profile:
 
 						if(userData.getData().getOnBoard().equals("false")){
+							Toasty.info(getApplicationContext(),"Please Enter Your Details first",Toast.LENGTH_LONG).show();
 							DetailsDialogue detailsDialogue=new DetailsDialogue();
 							detailsDialogue.showDialog(RootActivity.this,userData.getData().getEmail());
 						}else{

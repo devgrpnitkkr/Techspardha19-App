@@ -10,6 +10,7 @@ import io.reactivex.schedulers.Schedulers;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 
 import com.nitkkr.techspardha.Database_Internal.DBManager;
 import com.nitkkr.techspardha.R;
@@ -17,6 +18,7 @@ import com.nitkkr.techspardha.events.categoryPojo.Data;
 import com.nitkkr.techspardha.events.eventList.CategoryListAdapter;
 import com.nitkkr.techspardha.retrofit.Interface;
 import com.nitkkr.techspardha.retrofit.RetroClient;
+import com.wang.avi.AVLoadingIndicatorView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,6 +30,7 @@ public class Registered_events extends AppCompatActivity {
     RecyclerView recyclerView;
     CategoryListAdapter adapter;
     private DBManager dbManager;
+    AVLoadingIndicatorView progress;
 
 
 
@@ -37,7 +40,10 @@ public class Registered_events extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registeres_events);
 
+        getSupportActionBar().setTitle("My Events");
+
         recyclerView = (RecyclerView) findViewById(R.id.r_recycler);
+        progress = findViewById(R.id.myevents_avi);
 
         intent = getIntent();
         dbManager = new DBManager(this);
@@ -84,6 +90,7 @@ public class Registered_events extends AppCompatActivity {
 
                     @Override
                     public void onComplete() {
+                        progress.setVisibility(View.GONE);
 
                         ArrayList<Data> eventd = new ArrayList<>();
                         for(int i=0;i<edata.get(0).getData().getEvents().length;i++) {
@@ -91,7 +98,6 @@ public class Registered_events extends AppCompatActivity {
                             eventd.add(edata.get(0).getData().getEvents()[i]);
                             addtoDatabase(edata.get(0).getData().getEvents()[i]);
                         }
-
 
                         adapter = new CategoryListAdapter(eventd);
 

@@ -13,10 +13,11 @@
 
     <ImageView
         android:layout_weight=".8"
-        android:paddingTop="10sp"
+        android:paddingTop="10dp"
+        android:paddingHorizontal="20dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/coverpic"
+        android:src="@drawable/new_logo"
         />
 
     <co.ceryle.fitgridview.FitGridView

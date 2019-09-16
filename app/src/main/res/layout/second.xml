@@ -2,15 +2,23 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#fff">
+    android:background="#6B9AFA">
 
+
+    <ImageView
+        android:layout_marginHorizontal="50dp"
+        android:id="@+id/intro_second_image"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:src="@drawable/secondimage"
+        />
     <TextView
+        android:layout_below="@id/intro_second_image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="second"
-        android:textColor="@color/dot_light_screen2"
-        android:textSize="30sp"
-        android:textStyle="bold"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="32sp" />
+        android:textSize="18sp"
+        android:gravity="center"
+        android:textColor="@color/txt_color"
+        android:paddingHorizontal="30dp"
+        android:text="Techspardha is the annual techno-managerial festival of National Institute of Technology, Kurukshetra. It started in 1995 as Technospect (later changed to Literati). The year 2013 marked the Golden Jubilee of NIT Kurukshetra, thus it was renamed as Techspardha. Etymologically, the word ‘Techspardha’ is composed of two words, ‘Tech’ in English is a contraction of technology and ‘Spardha’ in Hindi means competition.[citation needed] Techspardha is known for hosting a variety of events that include competitions, exhibitions, guest lectures as well as workshops."/>
 </RelativeLayout>
