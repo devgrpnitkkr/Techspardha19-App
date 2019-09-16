@@ -56,7 +56,6 @@ public class LeftDrawerProfile extends AppCompatActivity {
         photoIV = findViewById(R.id.pic);
         phone=findViewById(R.id.phone);
         college=findViewById(R.id.college);
-        branch=findViewById(R.id.branch);
         year=findViewById(R.id.year);
 
         if(userData.getState().equals("false")){

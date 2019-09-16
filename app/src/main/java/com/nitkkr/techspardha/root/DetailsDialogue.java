@@ -9,7 +9,11 @@ import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
+
+import androidx.recyclerview.widget.ListAdapter;
 
 import com.nitkkr.techspardha.R;
 import com.nitkkr.techspardha.retrofit.Interface;
@@ -18,6 +22,7 @@ import com.nitkkr.techspardha.root.db.userDataStore;
 import com.nitkkr.techspardha.root.registerPojo.RegisterData;
 import com.nitkkr.techspardha.root.userPojo.Udata;
 import com.nitkkr.techspardha.root.userPojo.userInfo;
+import com.reginald.editspinner.EditSpinner;
 import com.rengwuxian.materialedittext.MaterialEditText;
 
 import java.util.ArrayList;
@@ -36,25 +41,27 @@ public class DetailsDialogue {
 
     public void showDialog(final Activity activity, final String email){
 
-        final Dialog dialog = new Dialog(activity
-        );
+        final Dialog dialog = new Dialog(activity);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setCancelable(true);
         dialog.setContentView(R.layout.user_detail);
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
 
 
-        final MaterialEditText phone=(MaterialEditText)dialog.findViewById(R.id.mobile);
-        final MaterialEditText college=(MaterialEditText)dialog.findViewById(R.id.college);
-        final MaterialEditText year=(MaterialEditText)dialog.findViewById(R.id.year);
+        final EditText phone=dialog.findViewById(R.id.mobile);
+        final EditText college=dialog.findViewById(R.id.college);
+        final EditSpinner year = dialog.findViewById(R.id.year);
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(activity,android.R.layout.simple_spinner_dropdown_item,
+                dialog.getContext().getApplicationContext().getResources().getStringArray(R.array.years));
+        year.setAdapter(adapter);
+
 
         Button register = (Button) dialog.findViewById(R.id.register);
 
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
                 Log.i("details",phone.getText().toString());
 
 
@@ -117,7 +124,9 @@ public class DetailsDialogue {
         });
 
         dialog.show();
+
     }
+
     public boolean getResult(){
         return isOnboarded;
     }

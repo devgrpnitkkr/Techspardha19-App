@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -15,5 +15,15 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.012"
         tools:layout_editor_absoluteX="16dp" />
+    <com.wang.avi.AVLoadingIndicatorView
+        android:paddingVertical="300dp"
+        android:paddingHorizontal="150dp"
+        android:id="@+id/myevents_avi"
+        style="@style/AVLoadingIndicatorView.Large"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="visible"
+        app:indicatorColor="#179FEB"
+        app:indicatorName="LineScaleIndicator" />
 
-</LinearLayout>
+</RelativeLayout>

@@ -62,8 +62,6 @@ public class EventInDetail extends AppCompatActivity {
                         for(int i=0;i<n;i++){
                             Log.i("Value",edata.get(0).getRules()[i]);
                         }
-
-
                     }
                 });
 

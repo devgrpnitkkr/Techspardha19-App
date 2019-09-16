@@ -2,6 +2,8 @@ package com.nitkkr.techspardha.events.eventDetail;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cursoradapter.widget.SimpleCursorAdapter;
+import androidx.recyclerview.widget.ListAdapter;
+
 import es.dmoral.toasty.Toasty;
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -14,14 +16,17 @@ import android.content.pm.PackageManager;
 import android.content.res.ColorStateList;
 import android.database.Cursor;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.Adapter;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -41,6 +46,8 @@ import com.nitkkr.techspardha.root.UserLogin;
 import com.nitkkr.techspardha.root.db.userDataStore;
 import com.nitkkr.techspardha.root.registerPojo.EventRegister;
 import com.nitkkr.techspardha.root.registerPojo.RegisterData;
+import com.reginald.editspinner.EditSpinner;
+import com.wang.avi.AVLoadingIndicatorView;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -53,7 +60,7 @@ public class EventInDetail extends AppCompatActivity {
 
     private Adapter adapter;
     TextView rus, erules, time, evenue, edate, c1, c2;
-    ImageView call1, call2;
+    LinearLayout call1, call2;
     Button register;
     userDataStore userData;
     String ename;
@@ -61,6 +68,7 @@ public class EventInDetail extends AppCompatActivity {
     ArrayList<String> cordinatorName = new ArrayList<>();
     ArrayList<String> cordinatorNumber = new ArrayList<>();
     private List<EventRegister> edata = new ArrayList<>();
+    AVLoadingIndicatorView progress;
 
     private DBManager dbManager;
 
@@ -81,8 +89,10 @@ public class EventInDetail extends AppCompatActivity {
         edate = (TextView) findViewById(R.id.date);
         c1 = (TextView) findViewById(R.id.name1);
         c2 = (TextView) findViewById(R.id.name2);
-        call1 = (ImageView) findViewById(R.id.phone1);
-        call2 = (ImageView) findViewById(R.id.phone2);
+        call1 =  findViewById(R.id.phone1);
+        call2 = findViewById(R.id.phone2);
+        progress = findViewById(R.id.eventindetail_avi);
+
 
 
         Intent intent = getIntent();
@@ -107,10 +117,11 @@ public class EventInDetail extends AppCompatActivity {
         call1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("+91" + cordinatorNumber.get(0)));
-                if (checkSelfPermission(Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
-                    return;
-                }
+                Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:"+"+91" + cordinatorNumber.get(0)));
+
+//                if (checkSelfPermission(Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+//                    return;
+//                }
                 startActivity(intent);
             }
         });
@@ -118,10 +129,10 @@ public class EventInDetail extends AppCompatActivity {
             call2.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("+91" + cordinatorNumber.get(1)));
-                    if (checkSelfPermission(Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
-                        return;
-                    }
+                    Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:"+"+91" + cordinatorNumber.get(1)));
+//                    if (checkSelfPermission(Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+//                        return;
+//                    }
                     startActivity(intent);
                 }
             });
@@ -175,13 +186,13 @@ public class EventInDetail extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     if(onBoarded.equals("true")){
+                        progress.setVisibility(View.VISIBLE);
                         LoadJson(userData.getData().getEmail(),cust.getEventName(),cust.getEventCategory());
 
                     }else{
+                        Toasty.info(getApplicationContext(),"Please Enter Your Details first",Toast.LENGTH_LONG).show();
                         DetailsDialogue detailsDialogue=new DetailsDialogue();
                         detailsDialogue.showDialog(EventInDetail.this,userData.getData().getEmail());
-
-
                         if(detailsDialogue.getResult()){
                         setRegisterButton();
                     }
@@ -232,7 +243,7 @@ public class EventInDetail extends AppCompatActivity {
 
                         @Override
                         public void onComplete() {
-
+                            progress.setVisibility(View.GONE);
                             Log.i("status",edata.get(0).getSuccess());
                         if(edata.get(0).getSuccess().equals("true")){
                             Toasty.success(getApplicationContext(), edata.get(0).getStatus(), Toast.LENGTH_SHORT, true).show();
@@ -248,6 +259,7 @@ public class EventInDetail extends AppCompatActivity {
 
     public void setRegisterButton(){
         register.setText("Registered for "+ename+"!");
+        register.setBackground(getDrawable(R.drawable.greenbutton));
         register.setClickable(false);
 
     }

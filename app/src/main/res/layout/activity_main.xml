@@ -73,7 +73,6 @@
 					android:layout_weight="90"/>
 			</LinearLayout>
 		</LinearLayout>
-
 	</com.google.android.material.navigation.NavigationView>
 
 
