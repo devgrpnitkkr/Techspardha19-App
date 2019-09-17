@@ -99,7 +99,7 @@ public class Registered_events extends AppCompatActivity {
                             addtoDatabase(edata.get(0).getData().getEvents()[i]);
                         }
 
-                        adapter = new CategoryListAdapter(eventd);
+                        adapter = new CategoryListAdapter(eventd,getApplicationContext());
 
                         recyclerView.setHasFixedSize(true);
                         recyclerView.setAdapter(adapter);
