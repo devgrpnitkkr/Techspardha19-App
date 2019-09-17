@@ -7,19 +7,39 @@ import androidx.fragment.app.Fragment;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.nitkkr.techspardha.Database_Internal.DBManager;
 import com.nitkkr.techspardha.R;
+import com.nitkkr.techspardha.events.categoryPojo.Data;
+import com.nitkkr.techspardha.retrofit.Interface;
+import com.nitkkr.techspardha.retrofit.RetroClient;
+import com.nitkkr.techspardha.root.RegisteredEvents.Registered;
+import com.nitkkr.techspardha.root.RootActivity;
+import com.nitkkr.techspardha.root.UserLogin;
+import com.nitkkr.techspardha.root.db.userDataStore;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import co.ceryle.fitgridview.FitGridView;
+import io.reactivex.Observer;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
 
 public class FragmentEventCategory extends Fragment {
 
     FitGridView gridView;
+    private List<Registered> edata=new ArrayList<>();
+    private DBManager dbManager;
+    userDataStore userData;
+
 
 
     @Nullable
@@ -29,9 +49,9 @@ public class FragmentEventCategory extends Fragment {
 
         gridView = (FitGridView) view.findViewById(R.id.gridView);
         gridView.setFitGridAdapter(new GridViewMyAdapter(getContext()));
-
-        // you can change grid view size any time. don't forget calling update method.
+        userData=userDataStore.getInstance(getContext());
         changeSize(3, 3);
+
 
         return view;
     }
@@ -39,6 +59,8 @@ public class FragmentEventCategory extends Fragment {
     public void onClick(View v) {
         showAlert();
     }
+
+
 
     private void showAlert() {
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
@@ -55,43 +77,16 @@ public class FragmentEventCategory extends Fragment {
         builder.show();
     }
 
-//    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getActivity().getMenuInflater();
-        inflater.inflate(R.menu.menu, menu);
-        return true;
-    }
-    private int counter = 0;
-
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//        if (item.getItemId() == R.id.menu_item) {
-//            switch (counter) {
-//                case 0:
-//                    item.setTitle("2*2");
-//                    changeSize(2, 2);
-//                    break;
-//                case 1:
-//                    item.setTitle("3*3");
-//                    changeSize(3, 3);
-//                    break;
-//                case 2:
-//                    item.setTitle("4*3");
-//                    changeSize(4, 3);
-//                    break;
-//
-//            }
-//        }
-//        counter = ++counter % 3;
-//
-//        return super.onOptionsItemSelected(item);
-//    }
 
     private void changeSize(int r, int c) {
         gridView.setNumRows(r);
         gridView.setNumColumns(c);
         gridView.update();
     }
+
+
+
+
 
 
 

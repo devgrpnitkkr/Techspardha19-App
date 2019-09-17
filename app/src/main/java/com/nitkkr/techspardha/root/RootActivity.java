@@ -66,9 +66,11 @@ public class RootActivity extends AppCompatActivity {
     GoogleSignInClient mGoogleSignInClient;
     LinearLayout logout;
 	Intent intent;
+	private List<Registered> edata=new ArrayList<>();
 	private DBManager dbManager;
 	GoogleSignInAccount account;
 	static Boolean noDetail=true;
+	 userDataStore userData;
 
 
 	@Override
@@ -81,8 +83,7 @@ public class RootActivity extends AppCompatActivity {
             finish();
             System.exit(0);
         }
-
-		final userDataStore userData=userDataStore.getInstance(this);
+        userData=userDataStore.getInstance(this);
 
 
 		if(userData.getState().equals("false")&&noDetail){
@@ -109,6 +110,7 @@ public class RootActivity extends AppCompatActivity {
 				.build();
 
 		mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
+
 
 
 		navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
@@ -218,6 +220,23 @@ public class RootActivity extends AppCompatActivity {
 				}
 			};
 
+	@Override
+	protected void onPostResume() {
+		//Log.i("vapas","MAIN sTART HUIN");
+		super.onPostResume();
+		LoadEvents(userData.getData().getEmail());
+
+	}
+
+	@Override
+	protected void onStart() {
+		Log.i("vapas","MAIN sTART HUIN");
+		LoadEvents(userData.getData().getEmail());
+		super.onStart();
+
+
+	}
+
 	private void signOut() {
 		mGoogleSignInClient.signOut()
 				.addOnCompleteListener(this, new OnCompleteListener<Void>() {
@@ -229,6 +248,65 @@ public class RootActivity extends AppCompatActivity {
 					}
 				});
 	}
+
+	public void LoadEvents(final String keyword) {
+
+
+
+		Interface service = RetroClient.getClient().create(Interface.class);
+
+
+		service
+				.getRegisteredEvents(keyword)
+				.subscribeOn(Schedulers.io())
+				.observeOn(AndroidSchedulers.mainThread())
+				.subscribe(new Observer<Registered>() {
+
+					@Override
+					public void onSubscribe(Disposable d) {
+
+					}
+
+					@Override
+					public void onNext(Registered categoryData) {
+
+						Log.i("Code", categoryData.getSuccess());
+						edata.add(categoryData);
+
+					}
+
+
+					@Override
+					public void onError(Throwable e) {
+
+					}
+
+					@Override
+					public void onComplete() {
+
+						ArrayList<Data> eventd = new ArrayList<>();
+						dbManager = new DBManager(RootActivity.this);
+						dbManager.open();
+
+						for(int i=0;i<edata.get(0).getData().getEvents().length;i++) {
+							Log.i("data", edata.get(0).getData().getEvents()[i].getEventName());
+							eventd.add(edata.get(0).getData().getEvents()[i]);
+							addtoDatabase(edata.get(0).getData().getEvents()[i]);
+						}
+
+
+
+					}
+				});
+
+
+	}
+	public void addtoDatabase(Data data){
+
+		dbManager.insert(data.getEventName(),data.getEventCategory(),data.getBanner());
+
+	}
+
 
 
 

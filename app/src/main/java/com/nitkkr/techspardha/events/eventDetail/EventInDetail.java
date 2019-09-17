@@ -30,6 +30,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -63,8 +64,9 @@ public class EventInDetail extends AppCompatActivity {
     LinearLayout call1, call2;
     Button register;
     userDataStore userData;
-    String ename;
+    String ename,cate,ban;
     String onBoarded = "false";
+    ImageView img;
     ArrayList<String> cordinatorName = new ArrayList<>();
     ArrayList<String> cordinatorNumber = new ArrayList<>();
     private List<EventRegister> edata = new ArrayList<>();
@@ -81,7 +83,7 @@ public class EventInDetail extends AppCompatActivity {
         setContentView(R.layout.activity_event_in_detail);
         getSupportActionBar().hide();
 
-
+        img=(ImageView)findViewById(R.id.expandedImage);
         rus = (TextView) findViewById(R.id.description);
         erules = (TextView) findViewById(R.id.rules);
         time = (TextView) findViewById(R.id.time_event);
@@ -102,6 +104,9 @@ public class EventInDetail extends AppCompatActivity {
         String desc = cust.getDescription();
         String etime = cust.getEndTime();
         String stime = cust.getStartTime();
+        cate=cust.getEventCategory();
+        ban=cust.getBanner();
+
 
         for (int i = 0; i < cust.getCoordinators().length; i++) {
             cordinatorName.add(cust.getCoordinators()[i].getCoordinator_name());
@@ -156,6 +161,9 @@ public class EventInDetail extends AppCompatActivity {
         edate.setText(getDate(stime));
         time.setText(getDate(etime));
         evenue.setText(cust.getVenue());
+
+        Glide.with(getApplicationContext()).load(cust.getBanner()).into(img);
+        img.setScaleType(ImageView.ScaleType.FIT_XY);
 
 
 
@@ -261,7 +269,7 @@ public class EventInDetail extends AppCompatActivity {
         register.setText("Registered for "+ename+"!");
         register.setBackground(getDrawable(R.drawable.greenbutton));
         register.setClickable(false);
-
+        dbManager.insert(ename,cate,ban);
     }
     public String getDate(String ms){
         Long ls=Long.parseLong(ms);
@@ -269,4 +277,5 @@ public class EventInDetail extends AppCompatActivity {
         SimpleDateFormat dateformat = new SimpleDateFormat("MMM dd, yyyy HH:mm");
         return dateformat.format(date);
     }
+
 }

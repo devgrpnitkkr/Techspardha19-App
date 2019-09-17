@@ -43,6 +43,7 @@ public class CategoryListAdapter extends RecyclerView.Adapter<CategoryListAdapte
         holder.name.setText(myListData.getEventName());
 
         Glide.with(context).load(myListData.getBanner()).into(holder.img);
+        holder.img.setScaleType(ImageView.ScaleType.FIT_XY);
 
 
         holder.img.setOnClickListener(new View.OnClickListener() {
