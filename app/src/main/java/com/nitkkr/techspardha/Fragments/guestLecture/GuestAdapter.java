@@ -74,12 +74,6 @@ class GuestAdapter extends RecyclerView.Adapter<GuestAdapter.TimeLineViewHolder>
                 showDialog(myListData.getName(),myListData.getDesc(),myListData.getImageUrl());
             }
         });
-//        holder.img.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                showDialog(myListData.getName(),myListData.getDesc(),myListData.getImageUrl());
-//            }
-//        });
 
         char d=myListData.getDate().charAt(1);
 
