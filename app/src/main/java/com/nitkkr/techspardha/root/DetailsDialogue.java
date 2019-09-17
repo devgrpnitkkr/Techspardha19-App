@@ -51,6 +51,7 @@ public class DetailsDialogue {
         final EditText phone=dialog.findViewById(R.id.mobile);
         final EditText college=dialog.findViewById(R.id.college);
         final EditSpinner year = dialog.findViewById(R.id.year);
+        year.setEnabled(false);
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(activity,android.R.layout.simple_spinner_dropdown_item,
                 dialog.getContext().getApplicationContext().getResources().getStringArray(R.array.years));
