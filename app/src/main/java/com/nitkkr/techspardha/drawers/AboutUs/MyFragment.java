@@ -40,8 +40,8 @@ public class MyFragment extends Fragment {
                 inflater.inflate(R.layout.mf, container, false);
 
         int pos = this.getArguments().getInt("pos");
-        TextView tv = (TextView) l.findViewById(R.id.text);
-        tv.setText("Position = " + pos);
+//        TextView tv = (TextView) l.findViewById(R.id.text);
+//        tv.setText("Position = " + pos);
 
         ImageView intro = l.findViewById(R.id.aboutus_content);
         intro.setImageResource(mResources[pos]);

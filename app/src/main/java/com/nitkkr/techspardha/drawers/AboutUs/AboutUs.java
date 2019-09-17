@@ -9,7 +9,7 @@ import com.nitkkr.techspardha.R;
 
 public class AboutUs extends AppCompatActivity {
 
-    public final static int PAGES = 5;
+    public final static int PAGES = 4;
     public final static int LOOPS = 1000;
     public final static int FIRST_PAGE = PAGES * LOOPS / 2;
 
@@ -34,10 +34,10 @@ public class AboutUs extends AppCompatActivity {
 
         // Necessary or the pager will only have one extra page to show
         // make this at least however many pages you can see
-        pager.setOffscreenPageLimit(3);
+        pager.setOffscreenPageLimit(4);
 
         // Set margin for pages as a negative number, so a part of next and
         // previous pages will be showed
-        pager.setPageMargin(-200);
+        pager.setPageMargin(-100);
     }
 }

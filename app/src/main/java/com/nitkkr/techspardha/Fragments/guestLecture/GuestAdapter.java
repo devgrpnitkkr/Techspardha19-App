@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -67,12 +68,18 @@ class GuestAdapter extends RecyclerView.Adapter<GuestAdapter.TimeLineViewHolder>
                 .into(holder.img);
 
         holder.mTimelineView.setElevation(5);
-        holder.img.setOnClickListener(new View.OnClickListener() {
+        holder.click.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View view) {
                 showDialog(myListData.getName(),myListData.getDesc(),myListData.getImageUrl());
             }
         });
+//        holder.img.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                showDialog(myListData.getName(),myListData.getDesc(),myListData.getImageUrl());
+//            }
+//        });
 
         char d=myListData.getDate().charAt(1);
 
@@ -104,6 +111,7 @@ class GuestAdapter extends RecyclerView.Adapter<GuestAdapter.TimeLineViewHolder>
         ImageView img;
         TextView time,date;
         TextView name;
+        LinearLayout click;
 
 
         public TimeLineViewHolder(@NonNull View itemView,int viewType) {
@@ -111,6 +119,8 @@ class GuestAdapter extends RecyclerView.Adapter<GuestAdapter.TimeLineViewHolder>
             img=(ImageView)itemView.findViewById(R.id.imgg);
             time=(TextView) itemView.findViewById(R.id.timeg);
             date=(TextView) itemView.findViewById(R.id.dateg);
+            click = itemView.findViewById(R.id.timeline_layout);
+
 
             name=(TextView) itemView.findViewById(R.id.nameguest);
 

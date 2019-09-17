@@ -29,7 +29,7 @@ public class IntroSlider extends AppCompatActivity {
     private LinearLayout dotsLayout;
     private TextView[] dots;
     private int[] layouts;
-    private Button btnSkip, btnNext;
+    private Button btnNext;
     private IsLoggedIn prefManager;
 
     @Override
@@ -53,8 +53,8 @@ public class IntroSlider extends AppCompatActivity {
 
         viewPager = (ViewPager) findViewById(R.id.view_pager);
         dotsLayout = (LinearLayout) findViewById(R.id.layoutBars);
-        btnSkip = (Button) findViewById(R.id.skip);
-        btnNext = (Button) findViewById(R.id.next);
+        btnNext = findViewById(R.id.intro_next);
+        btnNext.setText("NEXT");
 
 
         // layouts of all welcome sliders
@@ -63,7 +63,7 @@ public class IntroSlider extends AppCompatActivity {
                 R.layout.first,
                 R.layout.second,
                 R.layout.third,
-                R.layout.forth,
+                R.layout.fourth,
         };
 
         // adding bottom dots
@@ -76,12 +76,7 @@ public class IntroSlider extends AppCompatActivity {
         viewPager.setAdapter(myViewPagerAdapter);
         viewPager.addOnPageChangeListener(viewPagerPageChangeListener);
 
-        btnSkip.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                launchHomeScreen();
-            }
-        });
+
 
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -139,11 +134,9 @@ public class IntroSlider extends AppCompatActivity {
             if (position == layouts.length - 1) {
                 // last page. make button text to GOT IT
                 btnNext.setText(getString(R.string.Lets_Start));
-                btnSkip.setVisibility(View.GONE);
             } else {
                 // still pages are left
                 btnNext.setText(getString(R.string.next));
-                btnSkip.setVisibility(View.VISIBLE);
             }
         }
 

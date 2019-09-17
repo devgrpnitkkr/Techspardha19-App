@@ -32,6 +32,7 @@
     android:background="#000">
 
     <LinearLayout
+        android:id="@+id/timeline_layout"
         android:layout_width="match_parent"
         android:orientation="horizontal"
         android:layout_height="wrap_content">
