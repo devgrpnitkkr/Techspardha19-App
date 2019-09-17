@@ -26,7 +26,6 @@
             android:layout_weight="95"
             android:layout_width="match_parent"
             android:layout_height="120dp"
-            android:background="@drawable/imageround">
-        </ImageView>
+            android:background="@drawable/imageround"/>
     </com.nitkkr.techspardha.drawers.AboutUs.MyLinearLayout>
 </LinearLayout>

@@ -14,10 +14,10 @@ import androidx.fragment.app.Fragment;
 public class MyFragment extends Fragment {
 
     int[] mResources = {
-            R.drawable.intro_1,
-            R.drawable.intro_2,
-            R.drawable.intro_3,
-            R.drawable.intro_4,
+            R.layout.first,
+            R.layout.second,
+            R.layout.third,
+            R.layout.forth,
             R.drawable.intro_5,
     };
 
