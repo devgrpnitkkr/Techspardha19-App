@@ -4,18 +4,9 @@
     android:layout_height="match_parent"
     android:background="#fff">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Forth"
-        android:textColor="#a854d4"
-        android:textSize="30dp"
-        android:textStyle="bold"
-
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="32dp" />
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="400dp"
         android:src="@drawable/fourthimage"/>
+
 </RelativeLayout>

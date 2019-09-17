@@ -7,8 +7,8 @@
     tools:context=".Fragments.food.FragmentFood">
 
     <TextView
-        android:textColor="#fff"
-        android:textSize="60dp"
+        android:textColor="@color/txt_color"
+        android:textSize="60sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="food"/>

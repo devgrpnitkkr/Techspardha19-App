@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#000">
+    android:background="@color/background">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/cat_recycler"
@@ -16,14 +16,14 @@
         />
 
     <com.wang.avi.AVLoadingIndicatorView
-        android:paddingVertical="300dp"
-        android:paddingHorizontal="150dp"
+        android:paddingVertical="300sp"
+        android:paddingHorizontal="150sp"
         android:id="@+id/category_avi"
         style="@style/AVLoadingIndicatorView.Large"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:visibility="visible"
-        app:indicatorColor="#179FEB"
+        app:indicatorColor="@color/loading"
         app:indicatorName="LineScaleIndicator" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
