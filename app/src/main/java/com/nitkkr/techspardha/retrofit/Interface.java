@@ -1,6 +1,7 @@
 package com.nitkkr.techspardha.retrofit;
 
 import com.nitkkr.techspardha.Fragments.sponsership.sponsorshipPojo.SponsorshipData;
+import com.nitkkr.techspardha.drawers.TeamTech.pojo.tech1;
 import com.nitkkr.techspardha.drawers.developers.developersPojo.DevelopersData;
 import com.nitkkr.techspardha.events.categoryPojo.CategoryData;
 import com.nitkkr.techspardha.events.categoryPojo.EventCategory;
@@ -71,6 +72,10 @@ public interface Interface {
             @Field("eventName") String eventName,
             @Field("eventCategory") String Category
 
+
+    );
+    @GET("contacts")
+    Observable<tech1> getTeam(
 
     );
 

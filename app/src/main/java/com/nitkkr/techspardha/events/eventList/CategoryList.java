@@ -96,7 +96,7 @@ public class CategoryList extends AppCompatActivity {
                         }
 
 
-                        adapter = new CategoryListAdapter(eventd);
+                        adapter = new CategoryListAdapter(eventd,getApplicationContext());
 
                         recyclerView.setHasFixedSize(true);
                         recyclerView.setAdapter(adapter);

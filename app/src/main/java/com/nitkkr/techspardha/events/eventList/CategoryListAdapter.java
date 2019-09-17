@@ -1,5 +1,6 @@
 package com.nitkkr.techspardha.events.eventList;
 
+import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,8 +21,9 @@ import androidx.recyclerview.widget.RecyclerView;
 public class CategoryListAdapter extends RecyclerView.Adapter<CategoryListAdapter.ViewHolder> {
 
     ArrayList<Data> list;
-
-    public CategoryListAdapter(ArrayList<Data> list){
+    Context context;
+    public CategoryListAdapter(ArrayList<Data> list, Context context){
+        this.context=context;
         this.list=list;
     }
 
@@ -40,7 +42,7 @@ public class CategoryListAdapter extends RecyclerView.Adapter<CategoryListAdapte
 
         holder.name.setText(myListData.getEventName());
 
-        //Glide.with().load(myListData.getBanner()).into(holder.img);
+        Glide.with(context).load(myListData.getBanner()).into(holder.img);
 
 
         holder.img.setOnClickListener(new View.OnClickListener() {

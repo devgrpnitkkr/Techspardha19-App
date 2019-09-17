@@ -39,10 +39,6 @@ public class FragmentGuestLectureAdapter extends RecyclerView.Adapter<FragmentGu
 
 
 
-//    private static final Uri URL_TAYA_BEHANCE = Uri.parse("https://www.behance.net/yurkivt");
-//    private static final Uri URL_SHOP_PHOTOS = Uri.parse("https://herriottgrace.com/collections/all");
-//    private static final Uri URL_CITY_ICONS = Uri.parse("https://www.flaticon.com");
-//    private static final Uri URL_APP_REPO = Uri.parse("https://github.com/yarolegovich/DiscreteScrollView");
 
 
     public FragmentGuestLectureAdapter(DiscreteScrollView scrollView, List<Lectures> lst, TextView name, TextView date, TextView time, TextView desc) {
@@ -88,8 +84,7 @@ public class FragmentGuestLectureAdapter extends RecyclerView.Adapter<FragmentGu
                 desc.setText(lst.get(position).getDesc());
             }
         });
-//        if(selectedPosition!=-1)
-//        scrollView.smoothScrollToPosition(selectedPosition);
+
 
 
 
