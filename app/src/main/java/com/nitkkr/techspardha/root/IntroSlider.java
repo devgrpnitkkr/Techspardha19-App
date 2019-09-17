@@ -53,6 +53,8 @@ public class IntroSlider extends AppCompatActivity {
 
         viewPager = (ViewPager) findViewById(R.id.view_pager);
         dotsLayout = (LinearLayout) findViewById(R.id.layoutBars);
+        btnNext = findViewById(R.id.intro_next);
+        btnNext.setText("NEXT");
 
 
         // layouts of all welcome sliders
@@ -61,7 +63,7 @@ public class IntroSlider extends AppCompatActivity {
                 R.layout.first,
                 R.layout.second,
                 R.layout.third,
-                R.layout.forth,
+                R.layout.fourth,
         };
 
         // adding bottom dots

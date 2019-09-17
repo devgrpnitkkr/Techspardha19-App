@@ -12,7 +12,8 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:replace="android:icon">
-        <activity android:name=".drawers.TeamTech.Team_Techsparsha"></activity>
+        <activity android:name=".drawers.TeamTech.Team_Techsparsha"
+            android:parentActivityName=".root.RootActivity"/>
         <activity android:name=".Fragments.guestLecture.FragmentGuestLecture" />
         <activity android:name=".root.RegisteredEvents.Registered_events"
             android:parentActivityName=".root.RootActivity"/>

@@ -30,7 +30,7 @@ public class Team_Techsparsha extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_team__techsparsha);
         recyclerView = (RecyclerView) findViewById(R.id.cat_recycler);
-
+        getSupportActionBar().setTitle("Team Techspardha");
 
         Loadjson();
 

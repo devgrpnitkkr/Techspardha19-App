@@ -1,0 +1,33 @@
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/fourth_gradient">
+
+    <ImageView
+        android:layout_marginTop="60dp"
+        android:paddingHorizontal="30dp"
+        android:id="@+id/fourth_image"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:src="@drawable/fourthimage"/>
+
+    <TextView
+        android:layout_below="@id/fourth_image"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="GUEST"
+        android:textSize="70dp"
+        android:gravity="center"
+        android:textColor="#fff"
+        android:id="@+id/fourth_2"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Lectures"
+        android:layout_below="@id/fourth_2"
+        android:gravity="center"
+        android:textSize="40sp"
+        android:textColor="#fff"/>
+
+</RelativeLayout>
