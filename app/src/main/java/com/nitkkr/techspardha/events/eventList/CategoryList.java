@@ -11,11 +11,14 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
+import com.nitkkr.techspardha.Database_Internal.DBManager;
 import com.nitkkr.techspardha.retrofit.Interface;
 import com.nitkkr.techspardha.events.categoryPojo.CategoryData;
 import com.nitkkr.techspardha.events.categoryPojo.Data;
 import com.nitkkr.techspardha.R;
 import com.nitkkr.techspardha.retrofit.RetroClient;
+import com.nitkkr.techspardha.root.RegisteredEvents.Registered;
+import com.nitkkr.techspardha.root.db.userDataStore;
 import com.wang.avi.AVLoadingIndicatorView;
 
 import java.util.ArrayList;
@@ -29,6 +32,10 @@ public class CategoryList extends AppCompatActivity {
     Bundle bundle;
     String back;
     AVLoadingIndicatorView progress;
+    private List<Registered> cdata=new ArrayList<>();
+    private DBManager dbManager;
+    userDataStore userData;
+
 
 
 
@@ -48,8 +55,11 @@ public class CategoryList extends AppCompatActivity {
             LoadJson(back);
             e.printStackTrace();
         }
+        userData=userDataStore.getInstance(CategoryList.this);
+
 
     }
+
 
     public void LoadJson(final String keyword) {
 
@@ -105,7 +115,9 @@ public class CategoryList extends AppCompatActivity {
                 });
 
 
-        }
+    }
+
+
 
 
 
