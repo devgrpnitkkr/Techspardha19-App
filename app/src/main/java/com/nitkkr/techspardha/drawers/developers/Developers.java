@@ -105,7 +105,7 @@ public class Developers extends AppCompatActivity {
                     @Override
                     public void onComplete() {
 
-                        progress.setVisibility(View.INVISIBLE);
+                        progress.setVisibility(View.GONE);
 
                         i0.setVisibility(View.VISIBLE);
                         i1.setVisibility(View.VISIBLE);

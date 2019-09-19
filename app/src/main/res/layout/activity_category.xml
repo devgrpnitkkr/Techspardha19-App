@@ -16,14 +16,17 @@
         />
 
     <com.wang.avi.AVLoadingIndicatorView
-        android:paddingVertical="300sp"
-        android:paddingHorizontal="150sp"
         android:id="@+id/category_avi"
         style="@style/AVLoadingIndicatorView.Large"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:foregroundGravity="center"
         android:visibility="visible"
         app:indicatorColor="@color/loading"
-        app:indicatorName="LineScaleIndicator" />
+        app:indicatorName="LineScalePulseOutRapidIndicator"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/cat_recycler"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -23,7 +23,7 @@
         android:layout_width="250sp"
         android:layout_height="250sp"
         android:scaleType="centerCrop"
-        android:src="@drawable/imgcat" />
+        android:src="@drawable/new_logo" />
     </androidx.cardview.widget.CardView>
     <TextView
         android:id="@+id/name"
@@ -49,6 +49,7 @@
             android:textColor="@color/txt_color"
             android:textSize="16sp"
             android:fontFamily="@font/opensa"
+            android:justificationMode="inter_word"
             android:layout_marginStart="8sp"
             android:layout_marginEnd="8sp"
             app:layout_constraintBottom_toBottomOf="parent"

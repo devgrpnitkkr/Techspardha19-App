@@ -9,9 +9,14 @@ import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import androidx.recyclerview.widget.ListAdapter;
 
@@ -28,6 +33,7 @@ import com.rengwuxian.materialedittext.MaterialEditText;
 import java.util.ArrayList;
 import java.util.List;
 
+import es.dmoral.toasty.Toasty;
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
@@ -51,6 +57,8 @@ public class DetailsDialogue {
         final EditText phone=dialog.findViewById(R.id.mobile);
         final EditText college=dialog.findViewById(R.id.college);
         final EditSpinner year = dialog.findViewById(R.id.year);
+        final ImageView close =dialog.findViewById(R.id.dialouge_close);
+        final RelativeLayout dismissKeyboard = dialog.findViewById(R.id.layout_year);
         year.setEnabled(false);
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(activity,android.R.layout.simple_spinner_dropdown_item,
@@ -60,9 +68,37 @@ public class DetailsDialogue {
 
         Button register = (Button) dialog.findViewById(R.id.register);
 
+        dismissKeyboard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.d("CLicked","Hide");
+                dialog.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+
+            }
+        });
+
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                if(phone.getText().toString().isEmpty()){
+                    phone.requestFocus();
+                    phone.setError("Please enter mobile number");
+                    return;
+                }
+
+                if(college.getText().toString().isEmpty()){
+                    college.requestFocus();
+                    college.setError("Please enter college");
+                    return;
+                }
+
+                if(year.getText().toString().isEmpty()){
+                    year.requestFocus();
+                    year.setError("Please select year");
+                    return;
+                }
+
                 Log.i("details",phone.getText().toString());
 
 
@@ -109,8 +145,8 @@ public class DetailsDialogue {
                                         userData.changeState("true");
                                         isOnboarded=true;
                                     }
-
                                     dialog.cancel();
+                                    Toasty.success(activity,"Successfully Registerd",Toast.LENGTH_LONG).show();
 
                                 }
                             });
@@ -125,7 +161,12 @@ public class DetailsDialogue {
         });
 
         dialog.show();
-
+        close.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+            }
+        });
     }
 
     public boolean getResult(){

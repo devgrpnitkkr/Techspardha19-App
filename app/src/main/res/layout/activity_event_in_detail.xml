@@ -10,6 +10,7 @@
         android:layout_height="match_parent"
         android:background="@android:color/white"
         android:backgroundTint="@color/background"
+        android:paddingBottom="75dp"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <RelativeLayout
@@ -38,6 +39,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="12dp"
+                    android:justificationMode="inter_word"
                     android:layout_marginEnd="10dp"
                     android:text="Development is all about identifying and analysing real life problems and using the skills to solve them.Once the idea is selected, prepare your app and give a presentation on it"
                     android:textColor="#fff"
@@ -59,6 +61,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="5dp"
                     android:layout_marginEnd="5dp"
+                    android:justificationMode="inter_word"
                     android:textColor="#fff"
                     android:textSize="16dp" />
 
@@ -162,22 +165,22 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
-                    <ImageView
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:layout_marginStart="10dp"
-                        android:layout_marginTop="8dp"
-                        android:src="@drawable/call" />
+                        <ImageView
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="8dp"
+                            android:src="@drawable/call" />
 
-                    <TextView
-                        android:id="@+id/name2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="7dp"
-                        android:layout_marginTop="8dp"
-                        android:text="Akshay Verma"
-                        android:textColor="#fff"
-                        android:textSize="18dp" />
+                        <TextView
+                            android:id="@+id/name2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="7dp"
+                            android:layout_marginTop="8dp"
+                            android:text="Akshay Verma"
+                            android:textColor="#fff"
+                            android:textSize="16sp" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -202,7 +205,7 @@
                             android:layout_marginTop="8dp"
                             android:text="Shivam Dhammi"
                             android:textColor="#fff"
-                            android:textSize="18dp" />
+                            android:textSize="16sp" />
 
                     </LinearLayout>
 
@@ -252,18 +255,23 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <Button
-        android:id="@+id/register"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
         android:layout_gravity="bottom"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
-        android:background="@drawable/bluebutton"
-        android:text="Register"
-        android:textColor="#fff"
-        android:textSize="16dp" />
+        android:background="@color/background">
+        <Button
+            android:id="@+id/register"
+            android:layout_width="match_parent"
+            android:layout_marginBottom="20dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/bluebutton"
+            android:text="Register"
+            android:textColor="#fff"
+            android:textSize="16dp" />
+    </LinearLayout>
 
     <com.wang.avi.AVLoadingIndicatorView
         android:paddingVertical="300dp"
@@ -275,7 +283,7 @@
         android:background="#DD000000"
         android:visibility="gone"
         app:indicatorColor="#179FEB"
-        app:indicatorName="LineScaleIndicator" />
+        app:indicatorName="LineScalePulseOutRapidIndicator" />
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

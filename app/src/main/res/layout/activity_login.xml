@@ -21,21 +21,43 @@
         app:srcCompat="@drawable/new_logo" />
 
 
-    <Button
+    <LinearLayout
         android:id="@+id/sign_in_button"
         android:layout_width="wrap_content"
-        android:paddingHorizontal="20dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="50dp"
-        android:layout_marginEnd="50dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingHorizontal="10dp"
+        android:paddingVertical="5dp"
+        android:layout_marginHorizontal="100dp"
         android:background="@drawable/bluebutton"
-        android:text="signin"
-        android:textSize="20sp"
-        android:textColor="#fff"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView"
-        app:layout_constraintVertical_bias="0.59000003" />
+        app:layout_constraintVertical_bias="0.59000003">
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:duplicateParentState="true"
+            android:layout_marginVertical="5dp"
+            app:srcCompat="@drawable/google_logo" />
+        <TextView
+            android:paddingHorizontal="5dp"
+            android:clickable="false"
+            android:duplicateParentState="true"
+            android:id="@+id/signin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="5dp"
+            android:text="Sign In"
+            android:fontFamily="@font/gillsans"
+            android:background="#179FEB"
+            android:textSize="24sp"
+            android:textColor="#fff"
+            />
+
+    </LinearLayout>
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

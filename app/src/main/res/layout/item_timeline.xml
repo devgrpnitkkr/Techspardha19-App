@@ -32,15 +32,15 @@
     android:background="#000">
 
     <LinearLayout
-        android:background="#000"
+        android:background="@color/background"
         android:id="@+id/timeline_layout"
         android:layout_width="match_parent"
         android:orientation="horizontal"
         android:layout_height="wrap_content">
 
         <de.hdodenhof.circleimageview.CircleImageView
-            android:layout_width="150sp"
-            android:layout_height="150sp"
+            android:layout_width="130sp"
+            android:layout_height="130sp"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:padding="7sp"
@@ -63,13 +63,16 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
                 android:layout_margin="18sp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="7dp"
                 android:text="Akshay Verma"
                 android:textColor="@color/txt_color"
-                android:textSize="26sp"
+                android:textSize="22sp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/dateg"
+                app:layout_constraintBottom_toTopOf="@+id/imageView3"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintTop_toTopOf="parent"
                 card_view:layout_constraintEnd_toEndOf="parent"
-                card_view:layout_constraintHorizontal_bias="0.05"
                 card_view:layout_constraintStart_toStartOf="parent"
                 card_view:layout_constraintVertical_bias="0.0" />
 
@@ -77,11 +80,10 @@
                 android:id="@+id/imageView3"
                 android:layout_width="30sp"
                 android:layout_height="30sp"
-                android:layout_marginBottom="16dp"
+                android:layout_marginTop="7dp"
                 android:src="@drawable/iconfinder_calendar_285670"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintHorizontal_bias="0.089"
-                app:layout_constraintVertical_bias="0.846"
+                app:layout_constraintHorizontal_bias="0.1"
+                app:layout_constraintTop_toBottomOf="@+id/nameguest"
                 card_view:layout_constraintEnd_toEndOf="parent"
                 card_view:layout_constraintStart_toStartOf="parent" />
 
@@ -90,39 +92,40 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/nameguest"
-                android:layout_marginBottom="20dp"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="52dp"
+                android:layout_marginBottom="64dp"
                 android:text="20th August"
                 android:textColor="@color/txt_color"
                 android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.203"
+                app:layout_constraintTop_toBottomOf="@+id/nameguest"
+                app:layout_constraintVertical_bias="0.0"
                 card_view:layout_constraintBottom_toBottomOf="parent"
-                card_view:layout_constraintEnd_toEndOf="parent"
-                card_view:layout_constraintHorizontal_bias="0.043"
-                card_view:layout_constraintStart_toEndOf="@+id/imageView3"
-                card_view:layout_constraintVertical_bias="0.909" />
+                card_view:layout_constraintStart_toEndOf="@+id/imageView3" />
 
             <ImageView
                 android:id="@+id/imageView4"
                 android:layout_width="30sp"
                 android:layout_height="30sp"
-                android:layout_marginStart="5dp"
-                android:layout_marginBottom="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="10dp"
                 android:src="@drawable/iconfinder_clock_1055090"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                card_view:layout_constraintEnd_toEndOf="parent"
-                card_view:layout_constraintStart_toEndOf="@+id/dateg" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageView3" />
 
             <TextView
                 android:id="@+id/timeg"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
-                android:layout_marginBottom="20dp"
+                android:layout_marginTop="16dp"
                 android:text="9 PM"
                 android:textColor="@color/txt_color"
                 android:textSize="18sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintHorizontal_bias="0.121"
+                app:layout_constraintTop_toBottomOf="@+id/dateg"
                 card_view:layout_constraintEnd_toEndOf="parent"
                 card_view:layout_constraintStart_toEndOf="@+id/imageView4"
                 card_view:layout_constraintVertical_bias="0.802" />

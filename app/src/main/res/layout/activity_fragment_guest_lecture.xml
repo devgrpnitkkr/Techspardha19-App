@@ -132,17 +132,15 @@
             </LinearLayout>
 
         </androidx.core.widget.NestedScrollView>
-    </LinearLayout>
 
-    <com.wang.avi.AVLoadingIndicatorView
-        android:paddingVertical="300sp"
-        android:paddingHorizontal="150sp"
-        android:id="@+id/guest_avi"
-        style="@style/AVLoadingIndicatorView.Large"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="gone"
-        app:indicatorColor="@color/loading"
-        app:indicatorName="LineScaleIndicator" />
+        <com.wang.avi.AVLoadingIndicatorView
+            android:id="@+id/guest_avi"
+            style="@style/AVLoadingIndicatorView.Large"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:visibility="visible"
+            app:indicatorColor="@color/loading"
+            app:indicatorName="LineScalePulseOutRapidIndicator" />
+    </LinearLayout>
 
 </RelativeLayout>

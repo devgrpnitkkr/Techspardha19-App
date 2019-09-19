@@ -108,6 +108,17 @@
                         android:textColor="@color/txt_color"/>
                 </LinearLayout>
             </LinearLayout>
+
+            <com.wang.avi.AVLoadingIndicatorView
+                android:layout_gravity="center"
+                android:id="@+id/dev_avi"
+                style="@style/AVLoadingIndicatorView.Large"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:visibility="visible"
+                app:indicatorColor="@color/loading"
+                app:indicatorName="LineScalePulseOutRapidIndicator" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_weight="50"
@@ -197,16 +208,5 @@
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>
-
-    <com.wang.avi.AVLoadingIndicatorView
-        android:paddingVertical="300sp"
-        android:paddingHorizontal="150sp"
-        android:id="@+id/dev_avi"
-        style="@style/AVLoadingIndicatorView.Large"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="visible"
-        app:indicatorColor="@color/loading"
-        app:indicatorName="LineScaleIndicator" />
 
 </RelativeLayout>

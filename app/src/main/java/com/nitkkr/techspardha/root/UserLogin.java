@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -37,7 +38,8 @@ import java.util.List;
 public class UserLogin extends AppCompatActivity {
 
     int RC_SIGN_IN = 0;
-    Button signInButton;
+    LinearLayout signInButton;
+    Button signin;
     GoogleSignInClient mGoogleSignInClient;
     private List<Registered> edata=new ArrayList<>();
     private DBManager dbManager;
