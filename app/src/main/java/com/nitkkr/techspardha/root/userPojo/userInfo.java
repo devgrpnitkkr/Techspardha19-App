@@ -96,5 +96,4 @@ public class userInfo {
     {
         this.picture = picture;
     }
-
 }

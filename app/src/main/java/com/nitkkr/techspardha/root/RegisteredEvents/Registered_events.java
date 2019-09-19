@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
+import android.widget.TextView;
 
 import com.nitkkr.techspardha.Database_Internal.DBManager;
 import com.nitkkr.techspardha.R;
@@ -33,6 +34,7 @@ public class Registered_events extends AppCompatActivity {
     CategoryListAdapter adapter;
     private DBManager dbManager;
     AVLoadingIndicatorView progress;
+    TextView text;
 
 
 
@@ -46,6 +48,7 @@ public class Registered_events extends AppCompatActivity {
 
         recyclerView = (RecyclerView) findViewById(R.id.r_recycler);
         progress = findViewById(R.id.myevents_avi);
+        text = findViewById(R.id.myevents_text);
 
         intent = getIntent();
         dbManager = new DBManager(this);
@@ -87,6 +90,9 @@ public class Registered_events extends AppCompatActivity {
 
                     @Override
                     public void onError(Throwable e) {
+                        Log.d("Events","Not Found");
+                        progress.setVisibility(View.GONE);
+                        text.setVisibility(View.VISIBLE);
                         Toasty.error(Registered_events.this,"No Internet", Toast.LENGTH_LONG).show();
                     }
 

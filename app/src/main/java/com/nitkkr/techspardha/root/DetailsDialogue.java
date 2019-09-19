@@ -143,7 +143,8 @@ public class DetailsDialogue {
                                 @Override
                                 public void onError(Throwable e) {
 
-                                    Toasty.error(activity,"Unable to Register", Toast.LENGTH_LONG).show();
+                                    Log.i("Code", e.getMessage());
+                                    Toasty.error(activity,"Unable to Register.",Toast.LENGTH_LONG).show();
 
                                 }
 

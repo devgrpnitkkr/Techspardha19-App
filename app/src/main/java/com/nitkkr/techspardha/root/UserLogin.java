@@ -1,7 +1,6 @@
 package com.nitkkr.techspardha.root;
 
 import androidx.appcompat.app.AppCompatActivity;
-import es.dmoral.toasty.Toasty;
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
@@ -32,6 +31,7 @@ import com.nitkkr.techspardha.retrofit.RetroClient;
 import com.nitkkr.techspardha.root.RegisteredEvents.Registered;
 import com.nitkkr.techspardha.root.db.userDataStore;
 import com.nitkkr.techspardha.root.userPojo.Udata;
+import com.wang.avi.AVLoadingIndicatorView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,6 +42,7 @@ public class UserLogin extends AppCompatActivity {
     LinearLayout signInButton;
     Button signin;
     GoogleSignInClient mGoogleSignInClient;
+    AVLoadingIndicatorView progress;
     private List<Registered> edata=new ArrayList<>();
     private DBManager dbManager;
 
@@ -57,6 +58,7 @@ public class UserLogin extends AppCompatActivity {
         getSupportActionBar().hide();
 
         signInButton = findViewById(R.id.sign_in_button);
+        progress = findViewById(R.id.login_avi);
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
 
                 .requestEmail()
@@ -67,6 +69,7 @@ public class UserLogin extends AppCompatActivity {
         signInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                progress.setVisibility(View.VISIBLE);
                 switch (view.getId()) {
                     case R.id.sign_in_button:
                         signIn();
@@ -100,8 +103,10 @@ public class UserLogin extends AppCompatActivity {
             startActivity(new Intent(UserLogin.this, RootActivity.class));
             finish();
 
+
         } catch (ApiException e) {
 
+            progress.setVisibility(View.GONE);
             Log.d("Google Sign In Error", "signInResult:failed code=" + e.getStatusCode());
             Toast.makeText(UserLogin.this, "Failed"+e.getStatusCode(), Toast.LENGTH_LONG).show();
         }
@@ -158,17 +163,21 @@ public class UserLogin extends AppCompatActivity {
 
                     @Override
                     public void onError(Throwable e) {
+                        //
+                        progress.setVisibility(View.GONE);
+                        Log.i("Code", e.getMessage());
 
                     }
 
                     @Override
                     public void onComplete() {
+                        progress.setVisibility(View.GONE);
 
                         Log.i("succs",lst.get(0).getInformation().getName() );
                         userDataStore userData=userDataStore.getInstance(UserLogin.this);
                         userData.saveData(lst.get(0).getInformation(),lst.get(0).getOnBoard());
 
-                       Log.i("object",userData.getData().getOnBoard());
+                        Log.i("object",userData.getData().getOnBoard());
                         if(userData.getData().getOnBoard().equals("true")){
                             LoadEvents(userData.getData().getEmail());
                         }
