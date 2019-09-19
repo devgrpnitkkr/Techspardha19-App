@@ -2,6 +2,7 @@ package com.nitkkr.techspardha.root.RegisteredEvents;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
+import es.dmoral.toasty.Toasty;
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
@@ -11,6 +12,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import com.nitkkr.techspardha.Database_Internal.DBManager;
 import com.nitkkr.techspardha.R;
@@ -85,7 +87,7 @@ public class Registered_events extends AppCompatActivity {
 
                     @Override
                     public void onError(Throwable e) {
-                        Log.i("register",e.getMessage());
+                        Toasty.error(Registered_events.this,"No Internet", Toast.LENGTH_LONG).show();
                     }
 
                     @Override

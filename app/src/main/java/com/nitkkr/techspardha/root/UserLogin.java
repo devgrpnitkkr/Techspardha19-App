@@ -1,6 +1,7 @@
 package com.nitkkr.techspardha.root;
 
 import androidx.appcompat.app.AppCompatActivity;
+import es.dmoral.toasty.Toasty;
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
@@ -96,6 +97,8 @@ public class UserLogin extends AppCompatActivity {
         try {
             GoogleSignInAccount account = completedTask.getResult(ApiException.class);
             LoadJson(account.getIdToken());
+            startActivity(new Intent(UserLogin.this, RootActivity.class));
+            finish();
 
         } catch (ApiException e) {
 
@@ -155,8 +158,6 @@ public class UserLogin extends AppCompatActivity {
 
                     @Override
                     public void onError(Throwable e) {
-                       //
-                        Log.i("Code", e.getMessage());
 
                     }
 
