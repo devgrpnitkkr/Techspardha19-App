@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="#101111"
+    app:cardCornerRadius="5dp"
     android:orientation="vertical">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -91,7 +92,6 @@
                 android:layout_marginTop="12sp"
                 android:layout_weight="0.25"
                 android:cropToPadding="true"
-
                 android:src="@drawable/imgcat"
                 android:visibility="gone"
                 app:layout_constraintBottom_toBottomOf="parent"

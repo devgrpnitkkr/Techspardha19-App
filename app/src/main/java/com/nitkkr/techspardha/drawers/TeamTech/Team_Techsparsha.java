@@ -8,12 +8,15 @@ import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
 import android.os.Bundle;
+import android.view.View;
+
 import com.nitkkr.techspardha.Fragments.guestLecture.lecturesPojo.LectureData;
 import com.nitkkr.techspardha.R;
 import com.nitkkr.techspardha.drawers.TeamTech.pojo.Contacts;
 import com.nitkkr.techspardha.drawers.TeamTech.pojo.tech1;
 import com.nitkkr.techspardha.retrofit.Interface;
 import com.nitkkr.techspardha.retrofit.RetroClient;
+import com.wang.avi.AVLoadingIndicatorView;
 
 import java.sql.Array;
 import java.util.ArrayList;
@@ -24,12 +27,15 @@ public class Team_Techsparsha extends AppCompatActivity {
     TeamAdapter adapter;
 
     RecyclerView recyclerView;
+    AVLoadingIndicatorView progress;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_team__techsparsha);
         recyclerView = (RecyclerView) findViewById(R.id.cat_recycler);
+        progress = findViewById(R.id.team_progress);
         getSupportActionBar().setTitle("Team Techspardha");
 
         Loadjson();
@@ -67,6 +73,7 @@ public class Team_Techsparsha extends AppCompatActivity {
 
                     @Override
                     public void onComplete() {
+                        progress.setVisibility(View.GONE);
 
                         ArrayList<Contacts> lst=new ArrayList<>();
 

@@ -52,12 +52,24 @@
             android:text="Sign In"
             android:fontFamily="@font/gillsans"
             android:background="#179FEB"
-            android:textSize="24sp"
+            android:textSize="26sp"
             android:textColor="#fff"
             />
 
     </LinearLayout>
 
+    <com.wang.avi.AVLoadingIndicatorView
+        android:id="@+id/login_avi"
+        style="@style/AVLoadingIndicatorView.Large"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:visibility="gone"
+        app:indicatorColor="#179FEB"
+        app:indicatorName="LineScalePulseOutRapidIndicator"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

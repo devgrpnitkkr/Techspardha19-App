@@ -1,5 +1,6 @@
 package com.nitkkr.techspardha.retrofit;
 
+import com.nitkkr.techspardha.Fragments.food.foodPojo.MyPojo;
 import com.nitkkr.techspardha.Fragments.sponsership.sponsorshipPojo.SponsorshipData;
 import com.nitkkr.techspardha.drawers.TeamTech.pojo.tech1;
 import com.nitkkr.techspardha.drawers.developers.developersPojo.DevelopersData;
@@ -34,6 +35,10 @@ public interface Interface {
 
     @GET("sponsors/")
     Observable<SponsorshipData> getSponsorship(
+    );
+
+    @GET("foodsponsors/")
+    Observable<MyPojo> getFoodSponser(
     );
 
     @GET("lectures")

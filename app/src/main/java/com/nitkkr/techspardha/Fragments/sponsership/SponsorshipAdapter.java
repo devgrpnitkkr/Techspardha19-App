@@ -47,7 +47,6 @@ public class SponsorshipAdapter extends RecyclerView.Adapter<SponsorshipAdapter.
         ViewHolder viewHolder = new ViewHolder(listItem);
         this.context=parent.getContext();
         return viewHolder;
-
     }
 
 
@@ -112,8 +111,6 @@ public class SponsorshipAdapter extends RecyclerView.Adapter<SponsorshipAdapter.
             this.img[1]=(ImageView) itemView.findViewById(R.id.img2spon);
             this.img[2]=(ImageView) itemView.findViewById(R.id.img3spon);
             this.img[3]=(ImageView) itemView.findViewById(R.id.img4spon);
-
-
         }
     }
 }
