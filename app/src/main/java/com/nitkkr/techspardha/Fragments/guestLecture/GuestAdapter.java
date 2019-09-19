@@ -65,6 +65,7 @@ class GuestAdapter extends RecyclerView.Adapter<GuestAdapter.TimeLineViewHolder>
 
         Glide.with(holder.itemView.getContext())
                 .load(myListData.getImageUrl())
+                .placeholder(R.drawable.deafultpic)
                 .into(holder.img);
 
         holder.mTimelineView.setElevation(5);

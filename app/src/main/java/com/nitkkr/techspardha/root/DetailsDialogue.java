@@ -131,6 +131,7 @@ public class DetailsDialogue {
                                 public void onError(Throwable e) {
 
                                     Log.i("Code", e.getMessage());
+                                    Toasty.error(activity,"Unable to register.",Toast.LENGTH_LONG).show();
 
                                 }
 

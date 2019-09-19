@@ -179,8 +179,7 @@ public class UserLogin extends AppCompatActivity {
                             LoadEvents(userData.getData().getEmail());
                         }
 
-                        startActivity(new Intent(UserLogin.this, RootActivity.class));
-                        finish();
+
 
 
                     }

@@ -78,7 +78,10 @@ public class RootActivity extends AppCompatActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
+		Log.i("Launch","Launch Event");
+
         account = GoogleSignIn.getLastSignedInAccount(this);
+
         if(account == null) {
             finish();
             System.exit(0);
@@ -118,7 +121,6 @@ public class RootActivity extends AppCompatActivity {
 			public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
 				switch (menuItem.getItemId()){
 					case R.id.drawer_profile:
-
 						if(userData.getData().getOnBoard().equals("false")){
 							Toasty.info(getApplicationContext(),"Please Enter Your Details first",Toast.LENGTH_LONG).show();
 							DetailsDialogue detailsDialogue=new DetailsDialogue();
@@ -220,22 +222,8 @@ public class RootActivity extends AppCompatActivity {
 				}
 			};
 
-	@Override
-	protected void onPostResume() {
-		//Log.i("vapas","MAIN sTART HUIN");
-		super.onPostResume();
-		LoadEvents(userData.getData().getEmail());
-
-	}
-
-	@Override
-	protected void onStart() {
-		Log.i("vapas","MAIN sTART HUIN");
-		LoadEvents(userData.getData().getEmail());
-		super.onStart();
 
 
-	}
 
 	private void signOut() {
 		mGoogleSignInClient.signOut()
@@ -248,65 +236,6 @@ public class RootActivity extends AppCompatActivity {
 					}
 				});
 	}
-
-	public void LoadEvents(final String keyword) {
-
-
-
-		Interface service = RetroClient.getClient().create(Interface.class);
-
-
-		service
-				.getRegisteredEvents(keyword)
-				.subscribeOn(Schedulers.io())
-				.observeOn(AndroidSchedulers.mainThread())
-				.subscribe(new Observer<Registered>() {
-
-					@Override
-					public void onSubscribe(Disposable d) {
-
-					}
-
-					@Override
-					public void onNext(Registered categoryData) {
-
-						Log.i("Code", categoryData.getSuccess());
-						edata.add(categoryData);
-
-					}
-
-
-					@Override
-					public void onError(Throwable e) {
-
-					}
-
-					@Override
-					public void onComplete() {
-
-						ArrayList<Data> eventd = new ArrayList<>();
-						dbManager = new DBManager(RootActivity.this);
-						dbManager.open();
-
-						for(int i=0;i<edata.get(0).getData().getEvents().length;i++) {
-							Log.i("data", edata.get(0).getData().getEvents()[i].getEventName());
-							eventd.add(edata.get(0).getData().getEvents()[i]);
-							addtoDatabase(edata.get(0).getData().getEvents()[i]);
-						}
-
-
-
-					}
-				});
-
-
-	}
-	public void addtoDatabase(Data data){
-
-		dbManager.insert(data.getEventName(),data.getEventCategory(),data.getBanner());
-
-	}
-
 
 
 

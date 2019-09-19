@@ -15,6 +15,7 @@
         android:layout_height="match_parent"
         app:markerSize="20dp"
         app:lineWidth="3dp"
+        app:marker="@drawable/circlemarker"
         app:startLineColor="#BDBDBD"
         app:endLineColor="#BDBDBD"
         app:lineStyle="normal"/>

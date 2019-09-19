@@ -80,14 +80,11 @@ public class Team_Techsparsha extends AppCompatActivity {
                         for(int i=0;i<list.get(0).getData().getContacts().length;i++){
                             lst.add(list.get(0).getData().getContacts()[i]);
                         }
-                        adapter = new TeamAdapter(lst,getApplicationContext());
+                        adapter = new TeamAdapter(lst,Team_Techsparsha.this);
 
                         recyclerView.setHasFixedSize(true);
                         recyclerView.setAdapter(adapter);
                         adapter.notifyDataSetChanged();
-
-
-
 
                     }
                 });
