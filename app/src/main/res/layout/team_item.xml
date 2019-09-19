@@ -17,6 +17,7 @@
         app:markerSize="20dp"
         app:lineWidth="3dp"
         app:startLineColor="#BDBDBD"
+        app:marker="@drawable/circlemarker"
         app:endLineColor="#BDBDBD"
         app:lineStyle="normal"/>
 

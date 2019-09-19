@@ -1,8 +1,10 @@
 package com.nitkkr.techspardha.drawers.TeamTech;
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.graphics.drawable.ColorDrawable;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
@@ -28,10 +30,10 @@ import androidx.recyclerview.widget.RecyclerView;
 class TeamAdapter extends RecyclerView.Adapter<TeamAdapter.TimeLineViewHolder> {
 
     ArrayList<Contacts> list;
-    Context context;
+    Activity context;
 
 
-    public TeamAdapter(ArrayList<Contacts> list, Context context) {
+    public TeamAdapter(ArrayList<Contacts> list, Activity context) {
         this.list = list;
         this.context = context;
     }
@@ -52,14 +54,9 @@ class TeamAdapter extends RecyclerView.Adapter<TeamAdapter.TimeLineViewHolder> {
         holder.linearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-              //  showDialog(myListData);
+              showDialog(myListData);
             }
         });
-
-
-
-
-
 
 
     }
@@ -85,26 +82,76 @@ class TeamAdapter extends RecyclerView.Adapter<TeamAdapter.TimeLineViewHolder> {
         }
     }
 
-//    public void showDialog(Contacts contacts) {
-//
-//        final Dialog dialog = new Dialog(context);
-//        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-//        dialog.setCancelable(true);
-//        dialog.setContentView(R.layout.gl_about);
-//        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
-//
-//
-//        final ImageView image = (ImageView) dialog.findViewById(R.id.expandedImage);
-//        final TextView gname = (TextView) dialog.findViewById(R.id.name);
-//        final TextView desc = (TextView) dialog.findViewById(R.id.description);
-//
-//        Glide.with(context)
-//                .load(url)
-//                .into(image);
-//        gname.setText(name);
-//        desc.setText(Descrip);
-//
-//
-//        dialog.show();
-//    }
+    private void showDialog(Contacts contacts) {
+
+        final Dialog dialog;
+        dialog = new Dialog(context);
+
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setCancelable(true);
+        dialog.setContentView(R.layout.team_tech);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+
+        final TextView title=(TextView)dialog.findViewById(R.id.sname);
+
+        final LinearLayout ll5=(LinearLayout)dialog.findViewById(R.id.p5);
+        final LinearLayout ll6=(LinearLayout)dialog.findViewById(R.id.p6);
+
+        final ImageView img1 = (ImageView) dialog.findViewById(R.id.img1);
+        final TextView nme1 = (TextView) dialog.findViewById(R.id.name1);
+        final TextView pst1 = (TextView) dialog.findViewById(R.id.post1);
+
+        final ImageView img2 = (ImageView) dialog.findViewById(R.id.img2);
+        final TextView nme2 = (TextView) dialog.findViewById(R.id.name2);
+        final TextView pst2 = (TextView) dialog.findViewById(R.id.post2);
+
+        final ImageView img3 = (ImageView) dialog.findViewById(R.id.img3);
+        final TextView nme3 = (TextView) dialog.findViewById(R.id.name3);
+        final TextView pst3 = (TextView) dialog.findViewById(R.id.post3);
+
+        final ImageView img4 = (ImageView) dialog.findViewById(R.id.img4);
+        final TextView nme4 = (TextView) dialog.findViewById(R.id.name4);
+        final TextView pst4= (TextView) dialog.findViewById(R.id.post4);
+
+        final ImageView img5 = (ImageView) dialog.findViewById(R.id.img5);
+        final TextView nme5 = (TextView) dialog.findViewById(R.id.name5);
+        final TextView pst5 = (TextView) dialog.findViewById(R.id.post5);
+
+        final ImageView img6 = (ImageView) dialog.findViewById(R.id.img6);
+        final TextView nme6 = (TextView) dialog.findViewById(R.id.name6);
+        final TextView pst6 = (TextView) dialog.findViewById(R.id.post6);
+
+
+        TextView[] txtview={nme1,nme2,nme3,nme4,nme5,nme6};
+        ImageView[] imageViews={img1,img2,img3,img4,img5,img6};
+        TextView[] posts={pst1,pst2,pst3,pst4,pst5,pst6};
+
+        title.setText(contacts.getSection());
+        Log.i("pic",contacts.getPeople()[3].getImageUrl() + "djkdn");
+
+        for(int i=0;i<contacts.getPeople().length;i++) {
+
+            if (i > 3) {
+                ll5.setVisibility(View.VISIBLE);
+                txtview[i].setText(contacts.getPeople()[i].getName());
+                posts[i].setText(contacts.getPeople()[i].getPost());
+                Glide.with(context)
+                        .load(contacts.getPeople()[i].getImageUrl())
+                        .centerCrop()
+                        .placeholder(R.drawable.deafultpic).into(imageViews[i]);
+
+            } else {
+                txtview[i].setText(contacts.getPeople()[i].getName());
+                posts[i].setText(contacts.getPeople()[i].getPost());
+                Glide.with(context)
+                        .load(contacts.getPeople()[i].getImageUrl())
+                        .centerCrop()
+                        .placeholder(R.drawable.deafultpic).into(imageViews[i]);
+
+            }
+        }
+
+
+        dialog.show();
+    }
 }

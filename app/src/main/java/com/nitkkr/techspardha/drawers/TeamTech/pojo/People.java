@@ -1,11 +1,21 @@
 package com.nitkkr.techspardha.drawers.TeamTech.pojo;
 
 public class People {
+    private String post;
+
     private String imageUrl;
 
     private String name;
 
-    private String phoneNo;
+    public String getPost ()
+    {
+        return post;
+    }
+
+    public void setPost (String post)
+    {
+        this.post = post;
+    }
 
     public String getImageUrl ()
     {
@@ -25,15 +35,5 @@ public class People {
     public void setName (String name)
     {
         this.name = name;
-    }
-
-    public String getPhoneNo ()
-    {
-        return phoneNo;
-    }
-
-    public void setPhoneNo (String phoneNo)
-    {
-        this.phoneNo = phoneNo;
     }
 }

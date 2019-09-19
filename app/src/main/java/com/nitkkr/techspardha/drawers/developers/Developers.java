@@ -114,12 +114,14 @@ public class Developers extends AppCompatActivity {
                         i4.setVisibility(View.VISIBLE);
                         i5.setVisibility(View.VISIBLE);
 
-                        Glide.with(getApplicationContext()).load(DeveloperD.getData().getInformation()[0].getImageUrl()).into(i0);
-                        Glide.with(getApplicationContext()).load(DeveloperD.getData().getInformation()[1].getImageUrl()).into(i1);
-                        Glide.with(getApplicationContext()).load(DeveloperD.getData().getInformation()[2].getImageUrl()).into(i2);
-                        Glide.with(getApplicationContext()).load(DeveloperD.getData().getInformation()[3].getImageUrl()).into(i3);
-                        Glide.with(getApplicationContext()).load(DeveloperD.getData().getInformation()[4].getImageUrl()).into(i4);
-                        Glide.with(getApplicationContext()).load(DeveloperD.getData().getInformation()[5].getImageUrl()).into(i5);
+
+
+                        Glide.with(getApplicationContext()).load(DeveloperD.getData().getInformation()[0].getImageUrl()).placeholder(R.drawable.dev_icon).into(i0);
+                        Glide.with(getApplicationContext()).load(DeveloperD.getData().getInformation()[1].getImageUrl()).placeholder(R.drawable.dev_icon).into(i1);
+                        Glide.with(getApplicationContext()).load(DeveloperD.getData().getInformation()[2].getImageUrl()).placeholder(R.drawable.dev_icon).into(i2);
+                        Glide.with(getApplicationContext()).load(DeveloperD.getData().getInformation()[3].getImageUrl()).placeholder(R.drawable.dev_icon).into(i3);
+                        Glide.with(getApplicationContext()).load(DeveloperD.getData().getInformation()[4].getImageUrl()).placeholder(R.drawable.dev_icon).into(i4);
+                        Glide.with(getApplicationContext()).load(DeveloperD.getData().getInformation()[5].getImageUrl()).placeholder(R.drawable.dev_icon).into(i5);
 
                         name0.setText(DeveloperD.getData().getInformation()[0].getName());
                         name1.setText(DeveloperD.getData().getInformation()[1].getName());

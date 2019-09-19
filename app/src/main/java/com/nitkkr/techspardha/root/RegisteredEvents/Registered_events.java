@@ -85,7 +85,7 @@ public class Registered_events extends AppCompatActivity {
 
                     @Override
                     public void onError(Throwable e) {
-
+                        Log.i("register",e.getMessage());
                     }
 
                     @Override

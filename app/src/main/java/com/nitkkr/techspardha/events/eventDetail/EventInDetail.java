@@ -162,7 +162,9 @@ public class EventInDetail extends AppCompatActivity {
         time.setText(getDate(etime));
         evenue.setText(cust.getVenue());
 
-        Glide.with(getApplicationContext()).load(cust.getBanner()).into(img);
+        Glide.with(getApplicationContext())
+                .load(cust.getBanner())
+                .placeholder(R.drawable.new_logo).into(img);
         img.setScaleType(ImageView.ScaleType.FIT_XY);
 
 
