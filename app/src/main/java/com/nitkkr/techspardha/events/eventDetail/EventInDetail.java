@@ -189,7 +189,15 @@ public class EventInDetail extends AppCompatActivity {
 
         Log.i("use",userData.getData().getOnBoard());
 
-        if ((dbManager.ifNumberExists(cust.getEventName()))) {
+        long time= System.currentTimeMillis();
+        long endtime=Long.parseLong(cust.getEndTime());
+
+        if(time>endtime){
+            register.setText("Sorry you are late!");
+            register.setBackground(getDrawable(R.drawable.redbutton));
+            register.setClickable(false);
+
+        }else if ((dbManager.ifNumberExists(cust.getEventName()))) {
            setRegisterButton();
         } else {
             register.setOnClickListener(new View.OnClickListener() {
