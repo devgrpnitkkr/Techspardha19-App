@@ -193,7 +193,7 @@ public class EventInDetail extends AppCompatActivity {
         long endtime=Long.parseLong(cust.getEndTime());
 
         if(time>endtime){
-            register.setText("Sorry you are late!");
+            register.setText("Event Ended");
             register.setBackground(getDrawable(R.drawable.redbutton));
             register.setClickable(false);
 
