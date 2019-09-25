@@ -130,7 +130,7 @@ public class GuestLecture2 extends Fragment {
                     public void onComplete() {
                         progress.setVisibility(View.GONE);
 
-
+                        Log.i("size",String.valueOf(lectureD.getData().getLectures().length));
                         for (int i = 0; i < lectureD.getData().getLectures().length; i++) {
                             lectures.add(lectureD.getData().getLectures()[i]);
                         }

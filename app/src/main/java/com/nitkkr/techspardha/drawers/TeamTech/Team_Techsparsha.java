@@ -42,6 +42,14 @@ public class Team_Techsparsha extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onResume(){
+        super.onResume();
+
+        Loadjson();
+    }
+
+
     private void Loadjson() {
 
         Interface service = RetroClient.getClient().create(Interface.class);

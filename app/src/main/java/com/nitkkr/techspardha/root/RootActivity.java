@@ -88,7 +88,7 @@ public class RootActivity extends AppCompatActivity {
 		}
 		userData=userDataStore.getInstance(this);
 
-
+		Log.i("State",userData.getState());
 		if(userData.getState().equals("false")&&noDetail){
 			DetailsDialogue detailsDialogue=new DetailsDialogue();
 			detailsDialogue.showDialog(RootActivity.this,account.getEmail());

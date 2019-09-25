@@ -47,7 +47,7 @@ class TeamAdapter extends RecyclerView.Adapter<TeamAdapter.TimeLineViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull TimeLineViewHolder holder, int position) {
-        final Contacts myListData = list.get(position);
+        final Contacts myListData = list.get(list.size()-1-position);
 
 
         holder.name.setText(myListData.getSection());
@@ -131,7 +131,7 @@ class TeamAdapter extends RecyclerView.Adapter<TeamAdapter.TimeLineViewHolder> {
 
         for(int i=0;i<contacts.getPeople().length;i++) {
 
-            if (i > 3) {
+            if (i == 4) {
                 ll5.setVisibility(View.VISIBLE);
                 txtview[i].setText(contacts.getPeople()[i].getName());
                 posts[i].setText(contacts.getPeople()[i].getPost());
@@ -140,7 +140,15 @@ class TeamAdapter extends RecyclerView.Adapter<TeamAdapter.TimeLineViewHolder> {
                         .centerCrop()
                         .placeholder(R.drawable.deafultpic).into(imageViews[i]);
 
-            } else {
+            } else if(i==5) {
+                ll6.setVisibility(View.VISIBLE);
+                txtview[i].setText(contacts.getPeople()[i].getName());
+                posts[i].setText(contacts.getPeople()[i].getPost());
+                Glide.with(context)
+                        .load(contacts.getPeople()[i].getImageUrl())
+                        .centerCrop()
+                        .placeholder(R.drawable.deafultpic).into(imageViews[i]);
+            }else{
                 txtview[i].setText(contacts.getPeople()[i].getName());
                 posts[i].setText(contacts.getPeople()[i].getPost());
                 Glide.with(context)
