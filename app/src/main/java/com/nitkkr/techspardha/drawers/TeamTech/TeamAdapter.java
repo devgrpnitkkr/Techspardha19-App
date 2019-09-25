@@ -127,7 +127,6 @@ class TeamAdapter extends RecyclerView.Adapter<TeamAdapter.TimeLineViewHolder> {
         TextView[] posts={pst1,pst2,pst3,pst4,pst5,pst6};
 
         title.setText(contacts.getSection());
-        Log.i("pic",contacts.getPeople()[3].getImageUrl() + "djkdn");
 
         for(int i=0;i<contacts.getPeople().length;i++) {
 

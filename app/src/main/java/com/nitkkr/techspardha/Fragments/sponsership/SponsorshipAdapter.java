@@ -57,14 +57,15 @@ public class SponsorshipAdapter extends RecyclerView.Adapter<SponsorshipAdapter.
 
         holder.name.setText(myListData.getSponsorSection());
 
-       for(int i=0;i<myListData.getSponsors().length;i=i+1) {
-           Log.i("string", myListData.getSponsors()[i].getImageUrl() + "     " + i);
 
-           if (myListData.getSponsors()[0].getImageUrl() != null) {
+       for(int i=0;i<myListData.getSponsors().length;i=i+1) {
+           Log.i("string", myListData.getSponsors()[i].getImageUrl() + "     " + myListData.getSponsorSection());
+
+           if (myListData.getSponsors()[i].getImageUrl() != null) {
                Log.i("string", myListData.getSponsors()[0].getImageUrl() + "     " + i);
                holder.img[i].setVisibility(View.VISIBLE);
                Glide.with(holder.itemView.getContext())
-                       .load(myListData.getSponsors()[0].getImageUrl())
+                       .load(myListData.getSponsors()[i].getImageUrl())
                        .into(holder.img[i]);
 
 

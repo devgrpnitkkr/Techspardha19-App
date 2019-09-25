@@ -178,7 +178,6 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="7dp"
                             android:layout_marginTop="8dp"
-                            android:text="Akshay Verma"
                             android:textColor="#fff"
                             android:textSize="16sp" />
                     </LinearLayout>
@@ -203,7 +202,6 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="7dp"
                             android:layout_marginTop="8dp"
-                            android:text="Shivam Dhammi"
                             android:textColor="#fff"
                             android:textSize="16sp" />
 
