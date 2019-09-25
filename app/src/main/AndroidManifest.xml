@@ -21,31 +21,61 @@
         tools:replace="android:icon">
         <activity
             android:name=".drawers.TeamTech.Team_Techsparsha"
-            android:parentActivityName=".root.RootActivity" />
-        <activity android:name=".Fragments.guestLecture.FragmentGuestLecture" />
+            android:parentActivityName=".root.RootActivity"
+            android:screenOrientation="portrait"
+            />
+        <activity android:name=".Fragments.guestLecture.FragmentGuestLecture"
+            android:screenOrientation="portrait"
+            />
         <activity
             android:name=".root.RegisteredEvents.Registered_events"
-            android:parentActivityName=".root.RootActivity" />
+            android:parentActivityName=".root.RootActivity"
+            android:screenOrientation="portrait"
+            />
         <activity
             android:name=".drawers.AboutUs.AboutUs"
-            android:parentActivityName=".root.RootActivity" />
+            android:parentActivityName=".root.RootActivity"
+            android:screenOrientation="portrait"
+            />
         <activity
             android:name=".drawers.developers.Developers"
-            android:parentActivityName=".root.RootActivity" />
-        <activity android:name=".events.eventDetail.EventInDetail" />
+            android:parentActivityName=".root.RootActivity"
+            android:screenOrientation="portrait"
+            />
+        <activity android:name=".events.eventDetail.EventInDetail"
+            android:screenOrientation="portrait"
+            />
         <activity
             android:name=".events.eventList.CategoryList"
-            android:parentActivityName=".root.RootActivity" /> <!-- android:parentActivityName=".events.eventList.CategoryList"/> -->
-        <activity android:name=".root.UserLogin" />
+            android:parentActivityName=".root.RootActivity"
+            android:screenOrientation="portrait"
+            /> <!-- android:parentActivityName=".events.eventList.CategoryList"/> -->
+        <activity android:name=".root.UserLogin"
+            android:screenOrientation="portrait"
+            />
         <activity
             android:name=".drawers.LeftDrawerProfile"
-            android:parentActivityName=".root.RootActivity" />
-        <activity android:name=".root.IntroSlider" />
-        <activity android:name=".Fragments.food.FragmentFood" />
-        <activity android:name=".Fragments.sponsership.FragmentSponsership" />
-        <activity android:name=".Fragments.home.FragmentEventCategory" />
-        <activity android:name=".root.RootActivity" />
-        <activity android:name=".MainActivitySplashScreen">
+            android:parentActivityName=".root.RootActivity"
+            android:screenOrientation="portrait"
+            />
+        <activity android:name=".root.IntroSlider"
+            android:screenOrientation="portrait"
+            />
+        <activity android:name=".Fragments.food.FragmentFood"
+            android:screenOrientation="portrait"
+            />
+        <activity android:name=".Fragments.sponsership.FragmentSponsership"
+            android:screenOrientation="portrait"
+            />
+        <activity android:name=".Fragments.home.FragmentEventCategory"
+            android:screenOrientation="portrait"
+            />
+        <activity android:name=".root.RootActivity"
+            android:screenOrientation="portrait"
+            />
+        <activity android:name=".MainActivitySplashScreen"
+            android:screenOrientation="portrait"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -58,7 +88,9 @@
             android:value="@string/google_maps_key" />
         <service
             android:name="com.nitkkr.techspardha.PushNotification.MyFirebaseMessagingService"
-            android:stopWithTask="false">
+            android:stopWithTask="false"
+            android:screenOrientation="portrait"
+            >
             <intent-filter>
 
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />

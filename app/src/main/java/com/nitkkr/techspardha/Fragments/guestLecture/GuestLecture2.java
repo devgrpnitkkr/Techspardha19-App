@@ -11,6 +11,7 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
+import es.dmoral.toasty.Toasty;
 import io.reactivex.Observable;
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -25,8 +26,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.Toast;
 
-import com.nitkkr.techspardha.Fragments.DownloadImage;
 import com.nitkkr.techspardha.Fragments.guestLecture.lecturesPojo.LectureData;
 import com.nitkkr.techspardha.Fragments.guestLecture.lecturesPojo.Lectures;
 import com.nitkkr.techspardha.R;
@@ -121,13 +122,15 @@ public class GuestLecture2 extends Fragment {
                     @Override
                     public void onError(Throwable e) {
 
+                        Toasty.error(getContext(),"No Internet", Toast.LENGTH_LONG).show();
+
                     }
 
                     @Override
                     public void onComplete() {
                         progress.setVisibility(View.GONE);
 
-
+                        Log.i("size",String.valueOf(lectureD.getData().getLectures().length));
                         for (int i = 0; i < lectureD.getData().getLectures().length; i++) {
                             lectures.add(lectureD.getData().getLectures()[i]);
                         }

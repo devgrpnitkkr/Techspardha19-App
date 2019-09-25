@@ -9,11 +9,20 @@
     android:layout_height="wrap_content"
     tools:context=".drawers.developers.Developers"
     android:background="@drawable/edittextround">
+    <com.yarolegovich.discretescrollview.DiscreteScrollView
+        android:layout_marginTop="10sp"
+        android:id="@+id/guest_picker"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:dsv_orientation="horizontal"
+        android:background="@drawable/buttonbackground"
+        android:backgroundTint="#000"
+        android:layout_weight="60"
+        />
     <TextView
         android:id="@+id/sname"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Akshay Verma"
         android:textAlignment="center"
         android:layout_marginBottom="5sp"
         android:fontFamily="@font/gillsans"
@@ -43,13 +52,12 @@
                     android:padding="5sp"
                     android:layout_gravity="center"
                     android:src="@drawable/deafultpic"
-                    android:layout_width="150sp"
-                    android:layout_height="150sp"
+                    android:layout_width="120sp"
+                    android:layout_height="120sp"
                     android:id="@+id/img1"/>
                 <TextView
                     android:textStyle="bold"
-                    android:textSize="18sp"
-                    android:text="Akshay Verma"
+                    android:textSize="16sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/name1"
@@ -78,14 +86,13 @@
                     app:civ_border_width="5sp"
                     app:civ_border_color="@color/loading"
                     android:src="@drawable/deafultpic"
-                    android:layout_width="150sp"
-                    android:layout_height="150sp"
+                    android:layout_width="120sp"
+                    android:layout_height="120sp"
                     android:layout_gravity="center"
                     android:id="@+id/img3"/>
                 <TextView
                     android:textStyle="bold"
-                    android:textSize="18sp"
-                    android:text="Akshay Verma"
+                    android:textSize="16sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/name3"
@@ -107,23 +114,22 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="10sp"
-                android:id="@+id/p6"
-                android:layout_margin="10sp"
                 android:visibility="gone"
+                android:id="@+id/p5"
+                android:layout_margin="10sp"
                 android:orientation="vertical">
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:padding="5sp"
                     app:civ_border_width="5sp"
                     app:civ_border_color="@color/loading"
-                    android:layout_width="150sp"
-                    android:layout_height="150sp"
+                    android:layout_width="120sp"
+                    android:layout_height="120sp"
                     android:layout_gravity="center"
                     android:src="@drawable/deafultpic"
                     android:id="@+id/img5"/>
                 <TextView
                     android:textStyle="bold"
-                    android:textSize="18sp"
-                    android:text="Akshay Verma"
+                    android:textSize="16sp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/name5"
@@ -132,7 +138,7 @@
                     android:textColor="@color/txt_color"/>
                 <TextView
                     android:textStyle="bold"
-                    android:textSize="18sp"
+                    android:textSize="15sp"
                     android:text="President"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -159,13 +165,12 @@
                     android:padding="5sp"
                     android:layout_gravity="center"
                     android:src="@drawable/deafultpic"
-                    android:layout_width="150sp"
-                    android:layout_height="150sp"
+                    android:layout_width="120sp"
+                    android:layout_height="120sp"
                     android:id="@+id/img2"/>
                 <TextView
                     android:textStyle="bold"
-                    android:textSize="18sp"
-                    android:text="Akshay Verma"
+                    android:textSize="16sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/name2"
@@ -193,14 +198,13 @@
                     app:civ_border_width="5sp"
                     app:civ_border_color="@color/loading"
                     android:src="@drawable/deafultpic"
-                    android:layout_width="150sp"
-                    android:layout_height="150sp"
+                    android:layout_width="120sp"
+                    android:layout_height="120sp"
                     android:layout_gravity="center"
                     android:id="@+id/img4"/>
                 <TextView
                     android:textStyle="bold"
-                    android:textSize="18sp"
-                    android:text="Akshay Verma"
+                    android:textSize="16sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/name4"
@@ -223,22 +227,21 @@
                 android:layout_height="wrap_content"
                 android:padding="10sp"
                 android:layout_margin="10sp"
-                android:id="@+id/p5"
                 android:visibility="gone"
+                android:id="@+id/p6"
                 android:orientation="vertical">
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:padding="5sp"
                     app:civ_border_width="5sp"
                     app:civ_border_color="@color/loading"
-                    android:layout_width="80sp"
-                    android:layout_height="80sp"
+                    android:layout_width="120sp"
+                    android:layout_height="120sp"
                     android:layout_gravity="center"
                     android:src="@drawable/deafultpic"
                     android:id="@+id/img6"/>
                 <TextView
                     android:textStyle="bold"
-                    android:textSize="18sp"
-                    android:text="Akshay Verma"
+                    android:textSize="16sp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/name6"
@@ -247,7 +250,7 @@
                     android:textColor="@color/txt_color"/>
                 <TextView
                     android:textStyle="bold"
-                    android:textSize="18sp"
+                    android:textSize="15sp"
                     android:text="President"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -262,5 +265,6 @@
 
 
     </LinearLayout>
+
 
 </LinearLayout>

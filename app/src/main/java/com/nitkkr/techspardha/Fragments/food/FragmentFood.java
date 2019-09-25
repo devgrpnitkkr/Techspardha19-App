@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.nitkkr.techspardha.Fragments.food.foodPojo.FoodSponsors;
 import com.nitkkr.techspardha.Fragments.food.foodPojo.MyPojo;
@@ -33,6 +34,7 @@ public class FragmentFood extends Fragment {
     RecyclerView recyclerView;
     FoodAdapter adapter;
     AVLoadingIndicatorView progress;
+    TextView food;
 
     @Nullable
     @Override
@@ -41,6 +43,7 @@ public class FragmentFood extends Fragment {
         progress = view.findViewById(R.id.food_progress);
         loadJson();
         recyclerView = view.findViewById(R.id.food_recyclerView);
+        food=view.findViewById(R.id.myevents_text);
         return view;
     }
 
@@ -73,6 +76,8 @@ public class FragmentFood extends Fragment {
 
                     @Override
                     public void onError(Throwable e) {
+                        progress.setVisibility(View.GONE);
+                        food.setVisibility(View.VISIBLE);
 
                     }
 
@@ -81,9 +86,13 @@ public class FragmentFood extends Fragment {
 
                         progress.setVisibility(View.GONE);
                         ArrayList<FoodSponsors> foodSponsors=new ArrayList<>();
+
+
                         for(int i=0;i<sData.get(0).getData().getFoodSponsors().length;i++){
                             foodSponsors.add(sData.get(0).getData().getFoodSponsors()[i]);
                         }
+
+
                         adapter = new FoodAdapter(foodSponsors);
 
                         recyclerView.setHasFixedSize(true);

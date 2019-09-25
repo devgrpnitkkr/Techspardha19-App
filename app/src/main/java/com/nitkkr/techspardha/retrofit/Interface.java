@@ -41,7 +41,7 @@ public interface Interface {
     Observable<MyPojo> getFoodSponser(
     );
 
-    @GET("lectures")
+    @GET("lectures/")
     Observable<LectureData> getLectureData(
     );
 

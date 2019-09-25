@@ -100,6 +100,9 @@ public class UserLogin extends AppCompatActivity {
         try {
             GoogleSignInAccount account = completedTask.getResult(ApiException.class);
             LoadJson(account.getIdToken());
+            startActivity(new Intent(UserLogin.this, RootActivity.class));
+            finish();
+
 
         } catch (ApiException e) {
 
@@ -114,7 +117,6 @@ public class UserLogin extends AppCompatActivity {
 
         GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
         if(account != null) {
-
             LoadJson(account.getIdToken());
             startActivity(new Intent(UserLogin.this, RootActivity.class));
             finish();
@@ -160,7 +162,6 @@ public class UserLogin extends AppCompatActivity {
 
                     @Override
                     public void onError(Throwable e) {
-                       //
                         progress.setVisibility(View.GONE);
                         Log.i("Code", e.getMessage());
 
@@ -174,9 +175,10 @@ public class UserLogin extends AppCompatActivity {
                         userDataStore userData=userDataStore.getInstance(UserLogin.this);
                         userData.saveData(lst.get(0).getInformation(),lst.get(0).getOnBoard());
 
-                       Log.i("object",userData.getData().getOnBoard());
+                        Log.i("object",userData.getState());
                         if(userData.getData().getOnBoard().equals("true")){
                             LoadEvents(userData.getData().getEmail());
+
                         }
 
 

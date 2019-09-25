@@ -63,14 +63,14 @@ public class RootActivity extends AppCompatActivity {
 	private DrawerLayout drawer;
 	ActionBarDrawerToggle toggle;
 	private NavigationView navLayout;
-    GoogleSignInClient mGoogleSignInClient;
-    LinearLayout logout;
+	GoogleSignInClient mGoogleSignInClient;
+	LinearLayout logout;
 	Intent intent;
 	private List<Registered> edata=new ArrayList<>();
 	private DBManager dbManager;
 	GoogleSignInAccount account;
 	static Boolean noDetail=true;
-	 userDataStore userData;
+	userDataStore userData;
 
 
 	@Override
@@ -80,24 +80,24 @@ public class RootActivity extends AppCompatActivity {
 
 		Log.i("Launch","Launch Event");
 
-        account = GoogleSignIn.getLastSignedInAccount(this);
+		account = GoogleSignIn.getLastSignedInAccount(this);
 
-        if(account == null) {
-            finish();
-            System.exit(0);
-        }
-        userData=userDataStore.getInstance(this);
+		if(account == null) {
+			finish();
+			System.exit(0);
+		}
+		userData=userDataStore.getInstance(this);
 
-
+		Log.i("State",userData.getState());
 		if(userData.getState().equals("false")&&noDetail){
 			DetailsDialogue detailsDialogue=new DetailsDialogue();
-			detailsDialogue.showDialog(RootActivity.this,userData.getData().getEmail());
+			detailsDialogue.showDialog(RootActivity.this,account.getEmail());
 			noDetail=false;
 		}
 
 
 		drawer = findViewById(R.id.main_drawer_layout);
-        logout = findViewById(R.id.nav_logout);
+		logout = findViewById(R.id.nav_logout);
 		NavigationView navigationView = findViewById(R.id.nav_view);
 		final View navHeader = navigationView.getHeaderView(0);
 		ImageView navHeaderPic = navHeader.findViewById(R.id.nav_header_image);
@@ -124,7 +124,7 @@ public class RootActivity extends AppCompatActivity {
 						if(userData.getData().getOnBoard().equals("false")){
 							Toasty.info(getApplicationContext(),"Please Enter Your Details first",Toast.LENGTH_LONG).show();
 							DetailsDialogue detailsDialogue=new DetailsDialogue();
-							detailsDialogue.showDialog(RootActivity.this,userData.getData().getEmail());
+							detailsDialogue.showDialog(RootActivity.this,account.getEmail());
 						}else{
 							intent = new Intent(getApplicationContext(), LeftDrawerProfile.class);
 							startActivity(intent);
@@ -133,17 +133,17 @@ public class RootActivity extends AppCompatActivity {
 						break;
 
 					case R.id.drawer_developers:
-//						Toast.makeText(getApplicationContext(),"clicled",Toast.LENGTH_LONG).show();
+//                Toast.makeText(getApplicationContext(),"clicled",Toast.LENGTH_LONG).show();
 						intent = new Intent(getApplicationContext(), Developers.class);
 						startActivity(intent);
 						break;
 					case R.id.drawer_aboutus:
-//						Toast.makeText(getApplicationContext(),"clicled",Toast.LENGTH_LONG).show();
+//                Toast.makeText(getApplicationContext(),"clicled",Toast.LENGTH_LONG).show();
 						intent = new Intent(getApplicationContext(), AboutUs.class);
 						startActivity(intent);
 						break;
 					case R.id.drawer_teamtechspardha:
-//						Toast.makeText(getApplicationContext(),"clicled",Toast.LENGTH_LONG).show();
+//                Toast.makeText(getApplicationContext(),"clicled",Toast.LENGTH_LONG).show();
 						intent = new Intent(getApplicationContext(), Team_Techsparsha.class);
 						startActivity(intent);
 						break;

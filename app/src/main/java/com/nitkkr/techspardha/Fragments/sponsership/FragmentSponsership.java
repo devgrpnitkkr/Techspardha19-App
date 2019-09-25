@@ -5,6 +5,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
+import es.dmoral.toasty.Toasty;
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
@@ -15,6 +16,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.nitkkr.techspardha.Fragments.sponsership.sponsorshipPojo.Paisa;
 import com.nitkkr.techspardha.Fragments.sponsership.sponsorshipPojo.SponsorshipData;
@@ -75,6 +77,7 @@ public class FragmentSponsership extends Fragment {
 
                     @Override
                     public void onError(Throwable e) {
+                        Toasty.error(getContext(),"No Internet", Toast.LENGTH_LONG).show();
 
                     }
 

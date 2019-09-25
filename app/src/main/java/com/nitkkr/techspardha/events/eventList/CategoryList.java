@@ -2,6 +2,7 @@ package com.nitkkr.techspardha.events.eventList;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
+import es.dmoral.toasty.Toasty;
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
@@ -10,6 +11,7 @@ import io.reactivex.schedulers.Schedulers;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import com.nitkkr.techspardha.Database_Internal.DBManager;
 import com.nitkkr.techspardha.retrofit.Interface;
@@ -89,6 +91,7 @@ public class CategoryList extends AppCompatActivity {
 
                     @Override
                     public void onError(Throwable e) {
+                        Toasty.error(getApplicationContext(),"No Internet", Toast.LENGTH_LONG).show();
 
                     }
 

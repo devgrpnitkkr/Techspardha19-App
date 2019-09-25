@@ -3,13 +3,16 @@ package com.nitkkr.techspardha.root;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.app.Dialog;
+import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -67,6 +70,16 @@ public class DetailsDialogue {
 
 
         Button register = (Button) dialog.findViewById(R.id.register);
+
+        year.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                InputMethodManager imm=(InputMethodManager)activity.getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(activity.getParent().getCurrentFocus()
+                        .getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+                return false;
+            }
+        });
 
         dismissKeyboard.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -131,7 +144,7 @@ public class DetailsDialogue {
                                 public void onError(Throwable e) {
 
                                     Log.i("Code", e.getMessage());
-                                    Toasty.error(activity,"Unable to register.",Toast.LENGTH_LONG).show();
+                                    Toasty.error(activity,"Unable to Register.",Toast.LENGTH_LONG).show();
 
                                 }
 
