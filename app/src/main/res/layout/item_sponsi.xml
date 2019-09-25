@@ -23,9 +23,9 @@
             android:text="Title Sponsor"
             android:textAlignment="center"
             android:textAllCaps="true"
+            android:textSize="18sp"
             android:textColor="@android:color/white"
             android:textStyle="bold"
-            android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -44,8 +44,9 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/titlesponsi">
-
+            app:layout_constraintTop_toBottomOf="@+id/titlesponsi"
+            android:layout_marginHorizontal="10dp"
+            android:paddingHorizontal="10dp">
 
             <ImageView
                 android:id="@+id/imgspon"
@@ -53,6 +54,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12sp"
                 android:padding="10dp"
+                android:layout_marginRight="5dp"
                 android:layout_weight="0.5"
                 android:visibility="gone"
                 android:background="@drawable/edittextround"
@@ -64,6 +66,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:visibility="gone"
+                android:layout_marginHorizontal="5dp"
                 android:layout_marginTop="12sp"
                 android:padding="10dp"
                 android:layout_weight="0.5"
@@ -79,16 +82,19 @@
             android:weightSum="1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/lay1">
+            app:layout_constraintTop_toBottomOf="@+id/lay1"
+            android:layout_marginHorizontal="10dp"
+            android:paddingHorizontal="10dp">
 
             <ImageView
                 android:id="@+id/img3spon"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:layout_marginRight="5dp"
                 android:layout_marginTop="12sp"
                 android:padding="10dp"
                 android:layout_weight="0.5"
-                android:visibility="gone"
                 android:background="@drawable/edittextround"
                 android:cropToPadding="true"
                 android:src="@drawable/imgcat" />
@@ -97,10 +103,12 @@
                 android:id="@+id/img4spon"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12sp"
-                android:layout_weight="0.5"
-                android:padding="10dp"
                 android:visibility="gone"
+                android:layout_marginTop="12sp"
+                android:padding="10dp"
+                android:layout_weight="0.5"
+                android:layout_marginHorizontal="10dp"
+                android:paddingHorizontal="10dp"
                 android:background="@drawable/edittextround"
                 android:cropToPadding="true"
                 android:src="@drawable/imgcat" />

@@ -96,6 +96,8 @@ class TeamAdapter extends RecyclerView.Adapter<TeamAdapter.TimeLineViewHolder> {
 
         final LinearLayout ll5=(LinearLayout)dialog.findViewById(R.id.p5);
         final LinearLayout ll6=(LinearLayout)dialog.findViewById(R.id.p6);
+        final LinearLayout ll1_2=(LinearLayout)dialog.findViewById(R.id.team_p1_2);
+        final LinearLayout ll2=(LinearLayout)dialog.findViewById(R.id.team_p2);
 
         final ImageView img1 = (ImageView) dialog.findViewById(R.id.img1);
         final TextView nme1 = (TextView) dialog.findViewById(R.id.name1);
@@ -128,6 +130,12 @@ class TeamAdapter extends RecyclerView.Adapter<TeamAdapter.TimeLineViewHolder> {
 
         title.setText(contacts.getSection());
 
+        if(contacts.getPeople().length==1){
+            ll1_2.setVisibility(View.GONE);
+            ll2.setVisibility(View.GONE);
+            img1.setLayoutParams(new LinearLayout.LayoutParams(400,400));
+        }
+
         for(int i=0;i<contacts.getPeople().length;i++) {
 
             if (i == 4) {
@@ -150,6 +158,7 @@ class TeamAdapter extends RecyclerView.Adapter<TeamAdapter.TimeLineViewHolder> {
             }else{
                 txtview[i].setText(contacts.getPeople()[i].getName());
                 posts[i].setText(contacts.getPeople()[i].getPost());
+                Log.d("Team_TechSpardha",contacts.getPeople()[i].getName()+"      "+contacts.getPeople()[i].getPost());
                 Glide.with(context)
                         .load(contacts.getPeople()[i].getImageUrl())
                         .centerCrop()
@@ -157,8 +166,6 @@ class TeamAdapter extends RecyclerView.Adapter<TeamAdapter.TimeLineViewHolder> {
 
             }
         }
-
-
         dialog.show();
     }
 }
