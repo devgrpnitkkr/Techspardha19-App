@@ -52,10 +52,6 @@ public class Registered_events extends AppCompatActivity {
         dbManager = new DBManager(this);
         dbManager.open();
         LoadJson(intent.getStringExtra("email"));
-
-
-
-
     }
 
     public void LoadJson(final String keyword) {
@@ -117,7 +113,6 @@ public class Registered_events extends AppCompatActivity {
     public void addtoDatabase(Data data) {
         if (!dbManager.ifNumberExists(data.getEventName())) {
             dbManager.insert(data.getEventName(), data.getEventCategory(), data.getBanner());
-
         }
     }
 }
