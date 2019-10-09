@@ -141,6 +141,7 @@ class TeamAdapter extends RecyclerView.Adapter<TeamAdapter.TimeLineViewHolder> {
             if (i == 4) {
                 ll5.setVisibility(View.VISIBLE);
                 txtview[i].setText(contacts.getPeople()[i].getName());
+                Log.i("Pic",contacts.getPeople()[i].getImageUrl());
                 posts[i].setText(contacts.getPeople()[i].getPost());
                 Glide.with(context)
                         .load(contacts.getPeople()[i].getImageUrl())

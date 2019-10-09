@@ -89,7 +89,6 @@ public class Registered_events extends AppCompatActivity {
                         Log.d("Events","Not Found");
                         progress.setVisibility(View.GONE);
                         text.setVisibility(View.VISIBLE);
-                        Toasty.error(Registered_events.this,"No Internet", Toast.LENGTH_LONG).show();
                     }
 
                     @Override
