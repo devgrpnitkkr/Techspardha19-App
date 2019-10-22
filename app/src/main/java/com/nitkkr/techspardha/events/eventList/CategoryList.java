@@ -37,7 +37,7 @@ public class CategoryList extends AppCompatActivity {
     private List<Registered> cdata=new ArrayList<>();
     private DBManager dbManager;
     userDataStore userData;
-
+    String s="";
 
 
 
@@ -45,11 +45,12 @@ public class CategoryList extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        s+="1";
         setContentView(R.layout.activity_category);
          recyclerView = (RecyclerView) findViewById(R.id.cat_recycler);
          progress = findViewById(R.id.category_avi);
         getSupportActionBar().setTitle(getIntent().getExtras().getString("eventList"));
-
+        Log.v(s);
         try {
             back=getIntent().getExtras().getString("eventList");
             LoadJson(getIntent().getExtras().getString("eventList"));
@@ -61,7 +62,6 @@ public class CategoryList extends AppCompatActivity {
 
 
     }
-
 
     public void LoadJson(final String keyword) {
 

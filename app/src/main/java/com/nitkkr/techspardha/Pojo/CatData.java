@@ -6,14 +6,14 @@ public class CatData {
 
     private String success;
 
-    public EventCat getData ()
-    {
-        return data;
-    }
-
     public void setData (EventCat data)
     {
         this.data = data;
+    }
+
+    public EventCat getData ()
+    {
+        return data;
     }
 
     public String getSuccess ()
