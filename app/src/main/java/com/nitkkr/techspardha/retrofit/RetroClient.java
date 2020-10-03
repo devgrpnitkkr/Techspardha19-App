@@ -20,21 +20,6 @@ public class RetroClient {
     public static final String BASE_URL = "https://us-central1-techspardha-87928.cloudfunctions.net/api/";
     public static Retrofit retrofit;
 
-    /*  public static Retrofit getRetrofit() {
-
-          if (retrofit == null) {
-
-              retrofit = new Retrofit.Builder().baseUrl(BASE_URL)
-                      .client(getUnsafeOkHttpClient().build())
-                      .addConverterFactory(GsonConverterFactory.create())
-                      .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                      .build();
-
-          }
-
-
-          return retrofit;
-      }*/
     public static Retrofit getClient() {
         if (retrofit == null) {
             retrofit = new Retrofit.Builder()

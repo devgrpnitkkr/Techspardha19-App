@@ -133,17 +133,14 @@ public class RootActivity extends AppCompatActivity {
 						break;
 
 					case R.id.drawer_developers:
-//                Toast.makeText(getApplicationContext(),"clicled",Toast.LENGTH_LONG).show();
 						intent = new Intent(getApplicationContext(), Developers.class);
 						startActivity(intent);
 						break;
 					case R.id.drawer_aboutus:
-//                Toast.makeText(getApplicationContext(),"clicled",Toast.LENGTH_LONG).show();
 						intent = new Intent(getApplicationContext(), AboutUs.class);
 						startActivity(intent);
 						break;
 					case R.id.drawer_teamtechspardha:
-//                Toast.makeText(getApplicationContext(),"clicled",Toast.LENGTH_LONG).show();
 						intent = new Intent(getApplicationContext(), Team_Techsparsha.class);
 						startActivity(intent);
 						break;

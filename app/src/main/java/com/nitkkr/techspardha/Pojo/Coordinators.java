@@ -2,9 +2,9 @@ package com.nitkkr.techspardha.Pojo;
 
 public class Coordinators
 {
-    private String coordinator_name;
+    public String coordinator_name;
 
-    private String coordinator_number;
+    public String coordinator_number;
 
     public String getCoordinator_name ()
     {
