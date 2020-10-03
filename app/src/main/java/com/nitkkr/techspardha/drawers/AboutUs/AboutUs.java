@@ -22,7 +22,7 @@ public class AboutUs extends AppCompatActivity {
         setContentView(R.layout.activity_about_us);
 
         getSupportActionBar().setTitle("About Us");
-        pager = (ViewPager) findViewById(R.id.myviewpager);
+        pager = findViewById(R.id.myviewpager);
 
         adapter = new MyPagerAdapter(this, this.getSupportFragmentManager());
         pager.setAdapter(adapter);

@@ -83,14 +83,14 @@ public class EventInDetail extends AppCompatActivity {
         setContentView(R.layout.activity_event_in_detail);
         getSupportActionBar().hide();
 
-        img=(ImageView)findViewById(R.id.expandedImage);
-        rus = (TextView) findViewById(R.id.description);
-        erules = (TextView) findViewById(R.id.rules);
-        time = (TextView) findViewById(R.id.time_event);
-        evenue = (TextView) findViewById(R.id.venue);
-        edate = (TextView) findViewById(R.id.date);
-        c1 = (TextView) findViewById(R.id.name1);
-        c2 = (TextView) findViewById(R.id.name2);
+        img=findViewById(R.id.expandedImage);
+        rus =  findViewById(R.id.description);
+        erules =  findViewById(R.id.rules);
+        time =  findViewById(R.id.time_event);
+        evenue = findViewById(R.id.venue);
+        edate = findViewById(R.id.date);
+        c1 =  findViewById(R.id.name1);
+        c2 = findViewById(R.id.name2);
         call1 =  findViewById(R.id.phone1);
         call2 = findViewById(R.id.phone2);
         progress = findViewById(R.id.eventindetail_avi);

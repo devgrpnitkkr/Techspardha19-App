@@ -1,7 +1,6 @@
 package com.nitkkr.techspardha.Pojo;
 
 public class CatData {
-
     private EventCat data;
 
     private String success;
@@ -25,6 +24,4 @@ public class CatData {
     {
         this.success = success;
     }
-
-
 }
